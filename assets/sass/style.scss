@@ -1,0 +1,15 @@
+/*!
+Theme Name: Crosby
+Theme URI: http://theinitgroup.com
+Description: A custom WordPress theme
+Version: 1.0
+Author: Kyle Bebeau
+Author URI: http://theinitgroup.com
+*/
+
+// import all custom theme styles
+
+@import "theme/_screen.scss";
+@import "theme/_print.scss";
+@import "theme/_ie.scss";
+@import "theme/_responsive.scss";
