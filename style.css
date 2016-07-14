@@ -1,8 +1,16 @@
-﻿/*!
-Theme Name: INiT Framework
+/*!
+Theme Name: Crosby
 Theme URI: http://theinitgroup.com
-Description: A custom WordPress starter theme created by and for The INiT Group
+Description: A custom WordPress theme
 Version: 1.0
 Author: Kyle Bebeau
 Author URI: http://theinitgroup.com
 */
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+/* Welcome to Compass. Use this file to write IE specific override styles.
+ * Import this file using the following HTML or equivalent:
+ * <!--[if IE]>
+ *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ * <![endif]--> */
