@@ -93,10 +93,37 @@
 </head>
 
 <body>
-
+	<?php if(is_front_page()) { ?>
+		<div class="home_bg"></div>
+	<?php } ?>
 <header>
-	<div class="container">
-		<div class="row">
-		</div>
-	</div>
+	<div class="logo"></div>
+	<?php if(is_front_page()) {
+		$args = array(
+		    'hierarchical'             => 1,
+		    'orderby'                  => 'id',
+		    'order'                    => 'ASC'
+		); 
+		$cats = get_categories($args);
+		echo '<ul class="menu">';
+			foreach($cats as $cat) {
+				$catID = $cat->term_id;
+				$catLink = get_category_link($catID);
+				echo '<li>'.$cat->name.' //';
+					query_posts( array(
+							'post_type' => 'portfolios',
+							'order' 	=> 'DESC',
+							'cat'		=> $catID
+						)
+				    );
+				    if (have_posts()) : while (have_posts()) : the_post();
+				    	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID), 'large' );
+				    	echo '<ul>';
+				    		echo '<li><a class="person" href="'.get_the_permalink().'" data-image="'.$image[0].'">'.get_the_title().'</a></li>';
+				    	echo '</ul>';
+				    endwhile; endif;
+				echo '</li>';
+			}
+		echo '</ul>';
+	} ?>
 </header>

@@ -1,9 +1,30 @@
-#commercials {
+#commercials, #MusicVideos {
 	input {
 		line-height: 40px;
 		width: 100%;
 		display: block;
 		margin: 10px auto;
 		font-size: 14pt;
+	}
+}
+.videoWrap {
+	display: block;
+	margin-top: 10px;
+	.video {
+		width: 300px;
+		height: auto;
+		display: inline-block;
+		position: relative;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		.button-remove {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: red;
+			font-weight: bold;
+		}
 	}
 }

@@ -1,6 +1,24 @@
-#commercials input {
+#commercials input, #MusicVideos input {
   line-height: 40px;
   width: 100%;
   display: block;
   margin: 10px auto;
   font-size: 14pt; }
+
+.videoWrap {
+  display: block;
+  margin-top: 10px; }
+  .videoWrap .video {
+    width: 300px;
+    height: auto;
+    display: inline-block;
+    position: relative; }
+    .videoWrap .video img {
+      max-width: 100%;
+      height: auto; }
+    .videoWrap .video .button-remove {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: red;
+      font-weight: bold; }

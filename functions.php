@@ -15,7 +15,7 @@ if (!function_exists( 'load_custom_scripts' ) ) {
 		wp_enqueue_script('jquery');
 
 		// Load custom scripts
-		wp_enqueue_script('custom', get_bloginfo( 'template_url' ) . '/assets/js/custom.min.js', array('jquery'), null, true);
+		wp_enqueue_script('custom', get_bloginfo( 'template_url' ) . '/assets/js/custom.js', array('jquery'), null, true);
 
 	}
 }

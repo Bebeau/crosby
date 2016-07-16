@@ -9,6 +9,9 @@ Author URI: http://theinitgroup.com
 
 // import all custom theme styles
 
+@import "bourbon/_bourbon.scss";
+@import "fontawesome/font-awesome.scss";
+
 @import "theme/_screen.scss";
 @import "theme/_print.scss";
 @import "theme/_ie.scss";

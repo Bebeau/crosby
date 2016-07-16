@@ -19,23 +19,28 @@ var user = {
 	        }
 	    }); 
 	},
-	removeVideo: function(postID) {
+	removeVideo: function(postID, key, video_type) {
 		jQuery.ajax({
 	        url: ajaxurl,
 	        type: "GET",
 	        data: {
 	            action: 'removeVideo',
-	            postID: postID
+	            postID: postID,
+	            video_type: video_type,
+	            key: key
 	        },
 	        dataType: 'html',
 	        error : function(jqXHR, textStatus, errorThrown) {
 	            window.alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
 	        }
 	    });
-	    jQuery(".remove-btn").click(function(e){
+	    jQuery(".button-remove").click(function(e){
             e.preventDefault();
-            var postID = jQuery(this).attr("data-post");
-            removeVideo(postID);
+            var postID = jQuery(this).parent().attr("data-post");
+            var key = jQuery(this).parent().attr("data-key");
+            var video_type = jQuery(this).parent().attr("data-type");
+            user.removeVideo(postID, key, video_type);
+            jQuery(this).parent().remove();
         });
 	}
 };

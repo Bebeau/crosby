@@ -12,8 +12,6 @@ function load_portfolios_admin() {
     wp_register_script( 'meta-box-image-upload', get_template_directory_uri() . '/assets/js/admin.js', array( 'jquery' ) );
     wp_localize_script( 'meta-box-image-upload', 'meta_image',
         array(
-            'title' => 'Choose or Upload Image',
-            'button' => 'Select Image',
             'ajaxurl' => admin_url( 'admin-ajax.php' )
         )
     );
@@ -128,90 +126,133 @@ function commercials() {
 
     //get the saved meta as an arry
     $commercials = get_post_meta($post->ID,'commercials', true);
-    var_dump($commercials);
-
+    
     $c = 0;
+    echo '<h3>Upload YouTube videos</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> Video Links below and save/update to assign commercials to this portfolio.</p>';
     echo '<section id="Commercials">';
-        if ( !is_array($commercials) ) {
-            echo '<div class="single-instruction"><article class="link"> <input type="text" name="commercials['.$c.'][link]" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article></div>';
-        }
+        echo '<article class="link"> <input type="text" name="commercials" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article>';
     echo '</section>'; ?>
-    <span class="add_commercial button button-primary button-large">+ <?php _e('Add YouTube Video Link'); ?></span>
-    <?php 
-        if ( is_array($commercials) ) {
-            foreach( $commercials as $commercial ) {
-                printf( '
-                    <div class="commercial">
-                        <img src="http://img.youtube.com/vi/%2$s/hqdefault.jpg" alt="" />
-                        <span class="button-remove"><i class="fa fa-close"></i></span>
-                    </div>', 
-                    $c, 
-                    $commercial['link']
-                );
-                $c = $c + 1;
-            }
+    <button type="submit" class="button button-primary button-large">+ Add Video</button>
+    <?php
+        if ( !empty($commercials) ) {
+            echo '<h3>Videos</h3>';
+            echo '<p>Below is a listing of commercials being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
+            echo '<section class="videoWrap">';
+                $c = 0;
+                foreach( $commercials as $commercial ) { ?>
+                    <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="commercials">
+                        <a href="https://www.youtube.com/watch?v=<?php echo $commercial; ?>" target="_BLANK">
+                            <img src="https://i1.ytimg.com/vi/<?php echo $commercial; ?>/hqdefault.jpg" alt="" />
+                        </a>
+                        <span class="button button-remove">X</span>
+                    </div>
+                <?php $c++; }
+            echo '</section>';
         }
-    ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            removeInstructions = function() {
-                jQuery(".button-remove").on('click', function(e) {
-                    e.preventDefault();
-                    jQuery(this).parent().remove();
-                });
-            }
-            var count = <?php echo $c; ?>;
-            jQuery(".add_commercial").click(function(e) {
-                count = count + 1;
-                e.preventDefault();
-                jQuery('#Commercials').append('<div class="single-instruction"><article class="link"> <input type="text" name="commercials['+count+'][link]" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article></div>' );
-                removeInstructions();
-            });
-            removeInstructions();
-        });
-    </script>
-<?php }
+    }
 function music_videos() { 
-    echo "test";
-}
+    global $post;
+    // Use nonce for verification
+    wp_nonce_field( 'music_videos', 'music_videos_noncename' );
+
+    //get the saved meta as an arry
+    $music_videos = get_post_meta($post->ID,'music_videos', true);
+
+    $c = 0;
+    echo '<h3>Upload YouTube videos</h3>';
+    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> Video Links below and save/update to assign music videos to this portfolio.</p>';
+    echo '<section id="MusicVideos">';
+        echo '<article class="link"> <input type="text" name="music_videos" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article>';
+    echo '</section>'; ?>
+    <button type="submit" class="button button-primary button-large">+ Add Video</button>
+    <?php
+        if ( !empty($music_videos) ) {
+            echo '<h3>Videos</h3>';
+            echo '<p>Below is a listing of music videos being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
+            echo '<section class="videoWrap">';
+                $c = 0;
+                foreach( $music_videos as $video ) { ?>
+                    <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="music_videos">
+                        <a href="https://www.youtube.com/watch?v=<?php echo $video; ?>" target="_BLANK">
+                            <img src="https://i1.ytimg.com/vi/<?php echo $video; ?>/hqdefault.jpg" alt="" />
+                        </a>
+                        <span class="button button-remove">X</span>
+                    </div>
+                <?php $c++; }
+            echo '</section>';
+        }
+    }
 /* When the post is saved, saves our custom data */
+add_action( 'save_post', 'dynamic_save_postdata' );
 function dynamic_save_postdata( $post_id ) {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
         return;
 
-    if ( !isset( $_POST['instructions_noncename'] ) || !wp_verify_nonce( $_POST['instructions_noncename'], plugin_basename( __FILE__ ) ) )
+    if ( !isset( $_POST['commercials_noncename'] ) || !wp_verify_nonce( $_POST['commercials_noncename'], 'commercial_links' ) )
         return;
 
-    if(isset($_POST['instructions'])) {
-        $instructions = $_POST['instructions'];
-        update_post_meta($post_id,'instructions',$instructions);
+    // save commercials
+    if(!empty($_POST['commercials'])) {
+        // add current video ID's to array
+        $old  = get_post_meta($post_id,'commercials', true);
+        $new  = $_POST['commercials'];
+        if($old && !empty($new)) {
+            $old[] = getYoutubeIdFromUrl($new);
+            $result1 = $old;
+        } elseif($new) {
+            $commercials[] = getYoutubeIdFromUrl($new);
+            $result1 = $commercials;
+        }
+        update_post_meta($post_id,'commercials',$result1);
+    }
+
+    if ( !isset( $_POST['music_videos_noncename'] ) || !wp_verify_nonce( $_POST['music_videos_noncename'], 'music_videos' ) )
+        return;
+
+    // save music videos
+    if(!empty($_POST['music_videos'])) {
+        // add current video ID's to array
+        $oldVids  = get_post_meta($post_id,'music_videos', true);
+        $newVid  = $_POST['music_videos'];
+        if($oldVids) {
+            $oldVids[] = getYoutubeIdFromUrl($newVid);
+            $result2 = $oldVids;
+        } elseif($newVid) {
+            $music_videos[] = getYoutubeIdFromUrl($newVid);
+            $result2 = $music_videos;
+        }
+        update_post_meta($post_id,'music_videos',$result2);
     }
 }
-
+function getYoutubeIdFromUrl($url) {
+    $parts = parse_url($url);
+    if(isset($parts['query'])){
+        parse_str($parts['query'], $qs);
+        if(isset($qs['v'])){
+            return $qs['v'];
+        }else if(isset($qs['vi'])){
+            return $qs['vi'];
+        }
+    }
+    if(isset($parts['path'])){
+        $path = explode('/', trim($parts['path'], '/'));
+        return $path[count($path)-1];
+    }
+    return false;
+}
 // ajax response to save download track
-add_action('wp_ajax_setVideo', 'setYouTubeVideo');
-add_action('wp_ajax_nopriv_setVideo', 'setYouTubeVideo');
-function setYouTubeVideo() {
-    
-    $videoID = (isset($_GET['videoID'])) ? $_GET['videoID'] : 0;
-
-    $postID = (isset($_GET['userID'])) ? $_GET['userID'] : 0;
-    
-    if ( !current_user_can( 'edit_user', $userID ) ) { 
-        return false; 
-    }
-
-    if(isset($videoID)) {
-        update_post_meta($postID, 'heard_epk_featureVideoID', $videoID);
-    }
-}
-// ajax response to display random winner
-add_action('wp_ajax_removeVideo', 'removeVideo');
-add_action('wp_ajax_nopriv_removeVideo', 'removeVideo');
-function removeVideo() {
+add_action('wp_ajax_removeVideo', 'removeYouTubeVideo');
+add_action('wp_ajax_nopriv_removeVideo', 'removeYouTubeVideo');
+function removeYouTubeVideo() {
     $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
-    update_post_meta( $postID, 'video_link', '' );
+    $key = (isset($_GET['key'])) ? $_GET['key'] : 0;
+    $video_type = (isset($_GET['video_type'])) ? $_GET['video_type'] : 0;
+
+    $videos = get_post_meta($postID, $video_type, true );
+    unset($videos[$key]);
+
+    update_post_meta($postID, $video_type, $videos);
 }
 
 ?>
