@@ -7,6 +7,7 @@ add_filter('show_admin_bar', '__return_false');
 if (!function_exists( 'load_custom_scripts' ) ) {
 	function load_custom_scripts() {
 		// Styles
+		wp_enqueue_style( 'Bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', false, '', 'all' );
 		wp_enqueue_style( 'Style CSS', get_bloginfo( 'template_url' ) . '/style.css', false, '', 'all' );
 
 		// Load default Wordpress jQuery
@@ -15,6 +16,7 @@ if (!function_exists( 'load_custom_scripts' ) ) {
 		wp_enqueue_script('jquery');
 
 		// Load custom scripts
+		wp_enqueue_script('bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array('jquery'), null, true);
 		wp_enqueue_script('custom', get_bloginfo( 'template_url' ) . '/assets/js/custom.js', array('jquery'), null, true);
 
 	}

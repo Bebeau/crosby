@@ -73,9 +73,10 @@ function init_image_type() {
     $args = array(
         'labels' => $labels,
         'hierarchical' => true,
-        'query_var' => 'true',
+        'query_var' => true,
         'rewrite' => array( 'slug' => 'image-type' ),
-        'show_admin_column' => 'true',
+        'show_admin_column' => true,
+        'show_ui' => true
     );
     register_taxonomy(
         'image_type',
@@ -88,9 +89,9 @@ add_action( 'init', 'init_image_type' );
 // Thumbnail Support
 add_theme_support( 'post-thumbnails', array('portfolios') );
 
-add_action( 'admin_footer-post-new.php', 'artist_specific_images' );
-add_action( 'admin_footer-post.php', 'artist_specific_images' );
-function artist_specific_images() { ?>
+add_action( 'admin_footer-post-new.php', 'portfolio_specific_images' );
+add_action( 'admin_footer-post.php', 'portfolio_specific_images' );
+function portfolio_specific_images() { ?>
   <script type="text/javascript">
     jQuery(document).on("DOMNodeInserted", function(){
         // Lock uploads to "Uploaded to this post"
@@ -253,6 +254,56 @@ function removeYouTubeVideo() {
     unset($videos[$key]);
 
     update_post_meta($postID, $video_type, $videos);
+}
+
+function has_Images($cat) {
+    global $post;
+    $args = array(
+        'post_parent' => $post->ID,
+        'post_type' => 'attachment',
+        'post_status' => 'inherit',
+        'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'image_type',
+                'field' => 'slug',
+                'terms' => $cat
+            )
+        )
+    );
+    $query = new WP_Query($args);
+    return $query->have_posts();
+}
+
+function list_Images($cat) {
+    global $post;
+    $args = array(
+        'post_parent' => $post->ID,
+        'post_type' => 'attachment',
+        'posts_per_page'    => -1,
+        'post_status' => 'inherit',
+        'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'image_type',
+                'field' => 'slug',
+                'terms' => $cat
+            )
+        )
+    );
+    $query = new WP_Query($args);
+    if($query->have_posts()) {
+        echo '<div role="tabpanel" class="tab-pane fade" id="'.$cat.'">';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
+                echo '<img src="'.$post->guid.'" alt="" />';
+                echo '<div class="playwrap"><i class="fa fa-plus"></i></div>';
+            echo '</a>';
+        }
+        echo '</div>';
+    }
+    wp_reset_query();
 }
 
 ?>

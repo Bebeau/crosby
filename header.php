@@ -93,37 +93,79 @@
 </head>
 
 <body>
-	<?php if(is_front_page()) { ?>
-		<div class="home_bg"></div>
-	<?php } ?>
-<header>
-	<div class="logo"></div>
-	<?php if(is_front_page()) {
-		$args = array(
-		    'hierarchical'             => 1,
-		    'orderby'                  => 'id',
-		    'order'                    => 'ASC'
-		); 
-		$cats = get_categories($args);
-		echo '<ul class="menu">';
-			foreach($cats as $cat) {
-				$catID = $cat->term_id;
-				$catLink = get_category_link($catID);
-				echo '<li>'.$cat->name.' //';
-					query_posts( array(
-							'post_type' => 'portfolios',
-							'order' 	=> 'DESC',
-							'cat'		=> $catID
-						)
-				    );
-				    if (have_posts()) : while (have_posts()) : the_post();
-				    	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID), 'large' );
-				    	echo '<ul>';
-				    		echo '<li><a class="person" href="'.get_the_permalink().'" data-image="'.$image[0].'">'.get_the_title().'</a></li>';
-				    	echo '</ul>';
-				    endwhile; endif;
-				echo '</li>';
+
+<?php if(is_front_page()) {
+	echo '<div class="home_bg"></div>';
+} ?>
+
+<div class="container-fluid">
+
+<?php if(is_front_page()) {
+	echo '<header class="col-sm-4">';
+		echo '<a href="'.get_site_url().'"><div class="logo"></div></a>';
+
+			$args = array(
+			    'hierarchical'             => 1,
+			    'orderby'                  => 'id',
+			    'order'                    => 'ASC'
+			); 
+			$cats = get_categories($args);
+			echo '<ul class="menu">';
+				foreach($cats as $cat) {
+					$catID = $cat->term_id;
+					$catLink = get_category_link($catID);
+					echo '<li>'.$cat->name.' //';
+						query_posts( array(
+								'post_type' => 'portfolios',
+								'order' 	=> 'DESC',
+								'cat'		=> $catID
+							)
+					    );
+					    if (have_posts()) : while (have_posts()) : the_post();
+					    	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID), 'large' );
+					    	echo '<ul>';
+					    		echo '<li><a class="person" href="'.get_the_permalink().'" data-image="'.$image[0].'">'.get_the_title().'</a></li>';
+					    	echo '</ul>';
+					    endwhile; endif;
+					echo '</li>';
+				}
+			echo '</ul>';
+	echo '</header>';
+}
+
+if(is_singular()) {
+	// get current user id
+	global $post;
+
+	$commercials 	= get_post_meta($post->ID, 'commercials', true);
+	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
+	$attachments 	= get_children( array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image') );
+
+	$image_types = get_the_terms($post->ID, 'image_type');
+
+	echo '<header class="col-sm-4">';
+		echo '<a href="'.get_site_url().'"><div class="logo"></div></a>';
+		echo '<ul class="menu"><li>'.get_the_title().' //';
+			echo '<ul role="tablist">';
+			$terms = get_terms( array(
+				'post_parent' => $post->ID,
+			    'taxonomy' => 'image_type',
+			    'hide_empty' => true,
+			) );
+			if($terms) {
+				foreach ($terms  as $term ) {
+					if(has_Images($term->slug)) {
+						echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
+					}
+				}
+			}  
+			if(!empty($commercials)) {
+				echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
 			}
-		echo '</ul>';
-	} ?>
-</header>
+			if(!empty($music_videos)) {
+				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
+			}
+			echo '</ul>';
+		echo '</li></ul>';
+	echo '</header>';
+} ?>

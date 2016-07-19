@@ -1,6 +1,6 @@
-		<footer>
-			footer goes here.
-		</footer>
+		</div>
+		
+		<footer></footer>
     
 	</body>
 </html>
