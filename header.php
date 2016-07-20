@@ -98,11 +98,11 @@
 	echo '<div class="home_bg"></div>';
 } ?>
 
-<div class="container-fluid">
+<div class="container-fluid wrap">
 
 <?php if(is_front_page()) {
-	echo '<header class="col-sm-4">';
-		echo '<a href="'.get_site_url().'"><div class="logo"></div></a>';
+	echo '<header class="col-sm-4 home">';
+		echo '<a href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 
 			$args = array(
 			    'hierarchical'             => 1,
@@ -143,8 +143,8 @@ if(is_singular()) {
 
 	$image_types = get_the_terms($post->ID, 'image_type');
 
-	echo '<header class="col-sm-4">';
-		echo '<a href="'.get_site_url().'"><div class="logo"></div></a>';
+	echo '<header class="col-sm-4 sub hidden-xs">';
+		echo '<a href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		echo '<ul class="menu"><li>'.get_the_title().' //';
 			echo '<ul role="tablist">';
 			$terms = get_terms( array(
@@ -167,5 +167,34 @@ if(is_singular()) {
 			}
 			echo '</ul>';
 		echo '</li></ul>';
+	echo '</header>';
+
+	echo '<header class="col-sm-4 sub visible-xs">';
+		echo '<a href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+		echo '<div class="dropdown">';
+		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			echo 'Categories';
+		    echo ' <span class="caret"></span>';
+		echo '</button>';
+		echo '<ul role="tablist" class="dropdown-menu" aria-labelledby="dLabel">';
+			$terms = get_terms( array(
+				'post_parent' => $post->ID,
+			    'taxonomy' => 'image_type',
+			    'hide_empty' => true,
+			) );
+			if($terms) {
+				foreach ($terms  as $term ) {
+					if(has_Images($term->slug)) {
+						echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
+					}
+				}
+			}  
+			if(!empty($commercials)) {
+				echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
+			}
+			if(!empty($music_videos)) {
+				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
+			}
+		echo '</ul>';
 	echo '</header>';
 } ?>

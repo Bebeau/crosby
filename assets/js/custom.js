@@ -55,7 +55,7 @@ var init = {
 		});
 	},
 	activeTab: function() {
-		jQuery('.menu ul li:first-child').trigger("click");
+		jQuery('.menu ul li:first-child a').tab('show');
 	}
 
 };

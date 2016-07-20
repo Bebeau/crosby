@@ -1,0 +1,85 @@
+@media (max-width: 768px) {
+	header {
+		position: relative;
+		z-index: 11;
+		overflow: scroll;
+		width: 100%;
+		&.sub {
+			height: auto;
+			overflow: visible;
+			background: none;
+			text-align: center;
+		}
+		.dropdown {
+			border: 1px solid $white;
+			font-size: 14pt;
+			color: $white;
+			width: 180px;
+			margin: 0 auto;
+			button {
+				text-transform: uppercase;
+			}
+		}
+		.dropdown-menu {
+			@include border-top-radius(0);
+			@include border-bottom-radius(0);
+			margin: 0;
+			padding: 0;
+			width: 101%;
+			border: 1px solid $white;
+			margin: 0 -1px;
+			li {
+				a {
+					font-size: 18pt;
+				}
+			}
+		}
+		.menu {
+			li {
+				font-size: 18pt;
+				ul {
+					li {
+						padding: 0 5px;
+						a {
+							font-size: 12pt;
+						}
+					}
+				}
+			}
+		}
+	}
+	#singlePortfolio {
+		.tab-pane {
+			line-height: 0;
+			-webkit-column-count: 2;
+			-webkit-column-gap: 0px;
+			-moz-column-count: 2;
+			-moz-column-gap: 0px;
+			column-count: 2;
+			column-gap: 0px;
+		}
+		h1 {
+			font-size: 18pt;
+			margin: 0;
+			text-align: center;
+		}
+		#bio {
+			padding: 0;
+			font-size: 12pt;
+			img {
+				min-width: 100%;
+			}
+			.col-sm-4 {
+				padding: 0;
+			}
+			.col-sm-8 {
+				padding: 15px;
+			}
+		}
+	}
+	.modal {
+		.modal-dialog { 
+			margin: 15px;
+		}
+	}
+}

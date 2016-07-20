@@ -56,19 +56,19 @@ img {
 	height: 100vh;
 	z-index: 1;
 	background: url('assets/images/bg.jpg') no-repeat scroll top center / cover $blue;
-	@include transition(all, 0.5s, ease-in-out);
+	@include transition(all, 0.2s, ease-in-out);
 	&.fade {
 		opacity: 0;
-		@include transition(all, 0.5s, ease-in-out);
+		@include transition(all, 0.2s, ease-in-out);
 	}
 }
+.wrap {
+	padding: 0;
+}
 header {
-	position: fixed !important;
-	left: 0;
-	top: 0;
 	z-index: 2;
 	display: inline-block;
-	padding: 10px;
+	padding: 15px;
 	font-family: "Neutra", sans-serif;
 	height: 100vh;
 	box-sizing: border-box;
@@ -80,11 +80,18 @@ header {
 	background: -ms-linear-gradient(left, rgba(0,0,0,0.75) 0%, rgba(19,19,19,0) 100%);
 	background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(19,19,19,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1 );
+	&.sub {
+		position: fixed;
+	}
 	.logo {
-		margin-bottom: 10px;
+		margin-bottom: 5px;
 		width: 200px;
-		height: 79px;
-		background: url('assets/images/logo.png') no-repeat scroll center / cover;
+		height: auto;
+		@include transition(all, 0.3s, ease-in-out);
+		&.logo-sub {
+			@include transform(scale(0.9));
+			@include transition(all, 0.3s, ease-in-out);
+		}
 	}
 	.menu {
 		color: $white;
@@ -114,6 +121,18 @@ header {
 #singlePortfolio {
 	position: relative;
 	z-index: 10;
+	.info {
+		i {
+			@include transform(rotate(45deg));
+			@include transition(all, 0.3s, ease-in-out);
+		}
+		&.collapsed {
+			i {
+				@include transform(rotate(0deg));
+				@include transition(all, 0.3s, ease-in-out);
+			}
+		}
+	}
 	h1 {
 		position: relative;
 	    margin-top: 20px auto 0;
@@ -222,10 +241,17 @@ header {
 }
 .modal {
 	text-align: center;
+	@include transform(scale(0.8));
+	@include transition(all, 0.25s, ease-in-out);
+	&.in {
+		@include transform(scale(1));
+		@include transition(all, 0.25s, ease-in-out);
+	}
 	.modal-dialog {
 		display: inline-block;
 		width: auto;
 		max-height: 80vh;
+		max-width: 90vh;
 	}
 	.modal-body {
 		padding: 0;
@@ -246,6 +272,9 @@ header {
 		text-align: center;
 		@include border-top-radius(50%);
 		@include border-bottom-radius(50%);
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
 .modal-backdrop {

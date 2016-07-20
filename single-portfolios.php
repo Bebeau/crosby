@@ -13,7 +13,7 @@
 		    
 		    echo '<div class="row">';
 			    // get title
-		    	echo '<a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio">';
+		    	echo '<a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio" class="info collapsed">';
 			    	echo '<h1 class="col-sm-12">';
 				    echo '<i class="fa fa-plus"></i> ';
 				    	the_title();
