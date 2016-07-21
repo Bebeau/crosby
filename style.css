@@ -2173,8 +2173,11 @@ header {
     z-index: 11;
     overflow: scroll;
     width: 100%; }
-    header #logo {
-      width: auto; }
+    header .logoWrap {
+      width: auto;
+      display: block;
+      width: 200px;
+      margin: 0 auto; }
     header .logo-sub {
       background: #020045;
       margin-bottom: 0; }
@@ -2186,12 +2189,25 @@ header {
       text-align: center; }
     header .dropdown {
       border: 1px solid #ffffff;
-      font-size: 14pt;
+      border-top: none;
       color: #ffffff;
-      width: 180px;
-      margin: 15px auto 0; }
+      width: 195px;
+      margin: 0 auto;
+      position: relative;
+      top: -3px; }
       header .dropdown button {
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        background: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border: none;
+        display: block;
+        width: 100%;
+        font-size: 12pt;
+        letter-spacing: 3px;
+        line-height: 30px; }
     header .dropdown-menu {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -2200,18 +2216,19 @@ header {
       margin: 0;
       padding: 0;
       width: 101%;
-      background: #020045;
-      border: 1px solid #020045;
+      background: #ffffff;
+      border: 1px solid #ffffff;
       margin: 0 -1px; }
       header .dropdown-menu li a {
-        font-size: 18pt;
-        color: #ffffff; }
+        font-size: 14pt;
+        color: #020045;
+        text-transform: capitalize; }
     header .menu li {
-      font-size: 18pt; }
+      font-size: 14pt; }
       header .menu li ul li {
         padding: 0 5px; }
         header .menu li ul li a {
-          font-size: 12pt; }
+          font-size: 14pt; }
 
   #singlePortfolio {
     margin: 0;

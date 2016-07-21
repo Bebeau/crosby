@@ -9,8 +9,11 @@
 		z-index: 11;
 		overflow: scroll;
 		width: 100%;
-		#logo {
+		.logoWrap {
 			width: auto;
+			display: block;
+			width: 200px;
+			margin: 0 auto;
 		}
 		.logo-sub {
 			background: $blue;
@@ -25,12 +28,23 @@
 		}
 		.dropdown {
 			border: 1px solid $white;
-			font-size: 14pt;
+			border-top: none;
 			color: $white;
-			width: 180px;
-			margin: 15px auto 0;
+			width: 195px;
+			margin: 0 auto;
+			position: relative;
+			top: -3px;
 			button {
 				text-transform: uppercase;
+				background: none;
+				@include border-top-radius(0);
+				@include border-bottom-radius(0);
+				border: none;
+				display: block;
+				width: 100%;
+				font-size: 12pt;
+				letter-spacing: 3px;
+				line-height: 30px;
 			}
 		}
 		.dropdown-menu {
@@ -39,24 +53,25 @@
 			margin: 0;
 			padding: 0;
 			width: 101%;
-			background: $blue;
-			border: 1px solid $blue;
+			background: $white;
+			border: 1px solid $white;
 			margin: 0 -1px;
 			li {
 				a {
-					font-size: 18pt;
-					color: $white;
+					font-size: 14pt;
+					color: $blue;
+					text-transform: capitalize;
 				}
 			}
 		}
 		.menu {
 			li {
-				font-size: 18pt;
+				font-size: 14pt;
 				ul {
 					li {
 						padding: 0 5px;
 						a {
-							font-size: 12pt;
+							font-size: 14pt;
 						}
 					}
 				}

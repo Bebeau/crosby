@@ -185,8 +185,8 @@ if(is_singular()) {
 		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-			echo 'Categories';
-		    echo ' <span class="caret"></span>';
+			echo 'Filter';
+		    echo ' <i class="fa fa-angle-down"></i>';
 		echo '</button>';
 		echo '<ul role="tablist" class="dropdown-menu" aria-labelledby="dLabel">';
 			$terms = get_terms( array(
@@ -197,7 +197,7 @@ if(is_singular()) {
 			) );
 			if($terms) {
 				foreach ($terms  as $term ) {
-					if(has_Images($term->slug)) {
+					if(has_Images($term->slug) && $term->name != "featured") {
 						echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
 					}
 				}
@@ -208,8 +208,6 @@ if(is_singular()) {
 			if(!empty($music_videos)) {
 				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
 			}
-			echo '<li><a href="">About //</a></li>';
-			echo '<li><a href="">Contact //</a></li>';
 		echo '</ul>';
 	echo '</header>';
 } ?>
