@@ -144,7 +144,7 @@
 					<?php 
 						query_posts( array(
 								'post_type' => 'page',
-								'page_id' 	=> '2'
+								'page_id' 	=> '48'
 							)
 					    );
 					    if (have_posts()) : while (have_posts()) : the_post();
