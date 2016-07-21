@@ -290,7 +290,7 @@ function list_Images($cat, $name) {
     );
     $query = new WP_Query($args);
     if($query->have_posts()) {
-        echo '<div role="tabpanel" class="tab-pane fade" id="'.$cat.'">';
+        echo '<div class="pane" id="'.$cat.'">';
         echo '<h3 class="termName">// '.$name.'</h3>';
             echo '<div class="imageWrap">';
                 while ($query->have_posts()) {
@@ -304,6 +304,27 @@ function list_Images($cat, $name) {
         echo '</div>';
     }
     wp_reset_query();
+}
+
+function get_featured($id) {
+    $args = array(
+        'post_parent' => $id,
+        'post_type' => 'attachment',
+        'posts_per_page' => 1,
+        'post_status' => 'inherit',
+        'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'image_type',
+                'field' => 'slug',
+                'terms' => 'featured'
+            )
+        )
+    );
+    $featured = get_posts($args);
+    foreach($featured as $image) {
+        return $image->guid;
+    }
 }
 
 ?>

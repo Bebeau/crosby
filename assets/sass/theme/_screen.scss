@@ -34,10 +34,14 @@ body,html{
 	background-color: $white;
 }
 body {
+	position: relative;
 	&.page {
 		.dropdown {
 			display: none;
 		}
+	}
+	&.home {
+		background: $blue;
 	}
 }
 a {
@@ -71,28 +75,30 @@ p {
 	color: $blue;
 }
 .home_bg {
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto; 
+	overflow: hidden;
 	position: fixed;
+	min-height: 100% !important;
 	width: 100%;
-	height: 100vh;
-	z-index: 1;
-	background: url('assets/images/bg.jpg') no-repeat scroll top center / cover $blue;
-	@include transition(all, 0.2s, ease-in-out);
-	&.fade {
-		opacity: 0;
-		@include transition(all, 0.2s, ease-in-out);
-	}
+	z-index: 0;
+	background: url('assets/images/bg.jpg') no-repeat scroll center / cover;
 }
-.wrap {
-	padding: 0;
+.ibg-bg {
+	position: absolute;
 }
 header {
-	z-index: 2;
+	z-index: 9999;
 	display: inline-block;
 	padding: 15px;
 	font-family: "Neutra", sans-serif;
 	height: 100vh;
+	position: fixed;
+	overflow-y: scroll;
+	z-index: 2;
 	box-sizing: border-box;
-	background: rgba(0,0,0,1);
+	background: $blue;
 	background: -moz-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(2,0,69,0.75)), color-stop(100%, rgba(250,250,250,0)));
 	background: -webkit-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
@@ -102,14 +108,31 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1 );
 	&.sub {
 		position: fixed;
+		background: $blue !important;
 	}
-	.logo {
+	#logo {
+		display: block;
 		margin-bottom: 5px;
-		width: 200px;
+		width: 275px;
 		height: auto;
-		@include transition(all, 0.3s, ease-in-out);
-		&.logo-sub {
-			@include transform(scale(0.9));
+		position: relative;
+		top: -150px;
+		opacity: 0;
+		@include transition(all, 1s, ease-in-out);
+		&.slideIn {
+			top: 0;
+			opacity: 1;
+			@include transition(all, 1s, ease-in-out);
+		}
+		img {
+			max-width: 100%;
+		}
+		.logo-sub {
+			@include transform(scale(1));
+			@include transition(all, 0.3s, ease-in-out);
+		}
+		&.down {
+			@include transform(scale(0.8));
 			@include transition(all, 0.3s, ease-in-out);
 		}
 	}
@@ -117,20 +140,47 @@ header {
 		color: $white;
 		text-transform: uppercase;
 		li {
+			position: relative;
 			display: block;
 			font-size: 14px;
 			font-weight: bold;
-			padding: 5px 10px;
+			padding: 0 10px;
+			line-height: 30px;
+			left: -100%;
+			opacity: 0;
+			@include transition(all, 0.75s, ease-in-out);
+			&.slideIn {
+				left: 0;
+				opacity: 1;
+				@include transition(all, 0.75s, ease-in-out);
+			}
 			ul {
 				margin-left: 5px;
 				li {
+					left: -100%;
+					opacity: 0;
+					@include transition(all, 1s, ease-in-out);
 					a {
 						font-weight: 300;
 						font-size: 16px;
 						@include transition(all, 0.3s, ease-in-out);
+						color: lighten($blue, 80%);
 						&:hover {
+							color: $white;
+							@include transition(all, 0.75s, ease-in-out);
+						}
+					}
+					&.slideIn {
+						left: 0;
+						opacity: 1;
+						@include transition(all, 1s, ease-in-out);
+					}
+					&.active {
+						margin-left: 5px;
+						@include transition(all, 1s, ease-in-out);
+						a {
+							color: $white;
 							@include transition(all, 0.3s, ease-in-out);
-							padding-left: 5px;
 						}
 					}
 				}
@@ -138,9 +188,37 @@ header {
 		}
 	}
 }
+.tab-content {
+	position: relative;
+	top: 50px;
+	opacity: 0;
+	@include transition(all, 0.5s, ease-in-out);
+	&.in {
+		top: 0;
+		opacity: 1;
+		@include transition(all, 0.5s, ease-in-out);
+	}
+}
+.pane {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
 #singlePortfolio {
 	position: relative;
 	z-index: 10;
+	top: 50vh;
+	opacity: 0;
+	margin-left: 325px;
+	padding-right: 25px;
+	box-sizing: border-box;
+	@include transition(all, 1s, ease-in-out);
+	&.slideIn {
+		opacity: 1;
+		top: 0;
+		@include transition(all, 1s, ease-in-out);
+	}
 	.info {
 		i {
 			@include transform(rotate(45deg));
@@ -165,11 +243,11 @@ header {
 	.imageWrap {
 		line-height: 0;
 		-webkit-column-count: 3;
-		-webkit-column-gap: 0px;
+		-webkit-column-gap: 0;
 		-moz-column-count: 3;
-		-moz-column-gap: 0px;
+		-moz-column-gap: 0;
 		column-count: 3;
-		column-gap: 0px;
+		column-gap: 0;
 		&.video-pane {
 			-webkit-column-count: auto;
 			-webkit-column-gap: 0px;
@@ -229,7 +307,7 @@ header {
 		box-sizing: border-box;
 		.singlevideo {
 			display: block;
-			height: 300px;
+			height: 360px;
 			@include transform(scale(1));
 			@include transition(all, 0.25s, ease-out);
 			&:hover {
@@ -242,8 +320,8 @@ header {
 			}
 		}
 		.singlephoto {
+			margin: 1px;
 			display: block;
-			height: 300px;
 			@include transform(scale(1));
 			@include transition(all, 0.25s, ease-out);
 			&:hover {
@@ -267,7 +345,7 @@ header {
 #bio {
 	font-size: 14pt;
 	background: $white;
-	padding: 25px;
+	padding: 25px 25px 25px 0;
 	box-sizing: border-box;
 	.col-sm-4 {
 		padding-left: 0;
@@ -275,8 +353,9 @@ header {
 }
 .modal {
 	text-align: center;
-	@include transform(scale(0.8));
-	@include transition(all, 0.25s, ease-in-out);
+	top: -100%;
+	@include transform(scale(0.5));
+	@include transition(all, 0.5s, ease-in-out);
 	&#about, &#contact {
 		.modal-body {
 			text-align: left;
@@ -292,8 +371,9 @@ header {
 		}
 	}
 	&.in {
+		top: 0;
 		@include transform(scale(1));
-		@include transition(all, 0.25s, ease-in-out);
+		@include transition(all, 0.5s, ease-in-out);
 	}
 	.modal-dialog {
 		display: inline-block;

@@ -26,7 +26,7 @@
 	<link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon-114x114.png">
-	
+
 	<!-- Facebook open graph tags -->
 	<meta property="og:title" content="<?php the_title(); ?>"/>
 	<meta property="og:description" content="<?php
@@ -94,20 +94,21 @@
 
 <body <?php body_class();?>>
 
+	<div id="loader">
+		<div id="load"></div>
+	</div>
+
+<?php if(is_front_page()) { ?>
+	<div class="home_bg"></div>
+<?php } ?>
+
 <?php if(is_front_page()) {
-	echo '<div class="home_bg"></div>';
-} ?>
-
-<div class="container-fluid wrap">
-
-<?php if(is_front_page()) {
-	echo '<header class="col-sm-4 home">';
-		echo '<a href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
-
+	echo '<header class="home">';
+		echo '<a id="logo" href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 			$args = array(
-			    'hierarchical'             => 1,
-			    'orderby'                  => 'id',
-			    'order'                    => 'ASC'
+			    'hierarchical'	=> 1,
+			    'orderby'       => 'id',
+			    'order'         => 'ASC'
 			); 
 			$cats = get_categories($args);
 			echo '<ul class="menu">';
@@ -115,18 +116,22 @@
 					$catID = $cat->term_id;
 					$catLink = get_category_link($catID);
 					echo '<li>'.$cat->name.' //';
-						query_posts( array(
-								'post_type' => 'portfolios',
-								'order' 	=> 'DESC',
-								'cat'		=> $catID
-							)
-					    );
-					    if (have_posts()) : while (have_posts()) : the_post();
-					    	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID), 'large' );
-					    	echo '<ul>';
-					    		echo '<li><a class="person" href="'.get_the_permalink().'" data-image="'.$image[0].'">'.get_the_title().'</a></li>';
-					    	echo '</ul>';
-					    endwhile; endif;
+						$args = array(
+							'post_type' => 'portfolios',
+							'orderby'	=> 'title',
+							'order' 	=> 'ASC',
+							'cat'		=> array($catID)
+						);
+						$people = get_posts($args);
+					    foreach($people as $person) {
+					        $featured = get_featured($person->ID);
+					        $link = $person->guid;
+					        $title = get_the_title($person->ID);
+				         ?>
+					    	<ul>
+					    		<li><a class="person" href="#" data-link="<?php echo $link;?>" data-image="<?php echo $featured; ?>"><?php echo $title; ?></a></li>
+					    	</ul>
+					   <?php }
 					echo '</li>';
 				}
 				echo '<li>Agency //<ul>';
@@ -135,50 +140,6 @@
 				echo '</ul></li>';
 			echo '</ul>';
 	echo '</header>'; ?>
-
-	<div class="modal fade in bs-example-modal-lg" id="about">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<i class="fa fa-times-circle" data-dismiss="modal"></i>
-					<?php 
-						query_posts( array(
-								'post_type' => 'page',
-								'page_id' 	=> '48'
-							)
-					    );
-					    if (have_posts()) : while (have_posts()) : the_post();
-					    	the_title('<h1>','</h1>');
-							the_content();
-					    endwhile; endif;
-					    wp_reset_query();
-				    ?>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade in bs-example-modal-lg" id="contact">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<i class="fa fa-times-circle" data-dismiss="modal"></i>
-					<?php 
-						query_posts( array(
-								'post_type' => 'page',
-								'page_id' 	=> '49'
-							)
-					    );
-					    if (have_posts()) : while (have_posts()) : the_post();
-					    	the_title('<h1>','</h1>');
-							the_content();
-					    endwhile; endif;
-					    wp_reset_query();
-				    ?>
-				</div>
-			</div>
-		</div>
-	</div>
 
 <?php }
 
@@ -192,34 +153,35 @@ if(is_singular()) {
 
 	$image_types = get_the_terms($post->ID, 'image_type');
 
-	echo '<header class="col-sm-4 sub hidden-xs">';
-		echo '<a href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+	echo '<header class="sub hidden-xs">';
+		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		echo '<ul class="menu"><li>'.get_the_title().' //';
-			echo '<ul role="tablist">';
-			$terms = get_terms( array(
+			echo '<ul>';
+			$args = array(
 				'post_parent' => $post->ID,
 			    'taxonomy' => 'image_type',
-			    'hide_empty' => true,
-			) );
+			    'hide_empty' => true
+			);
+			$terms = get_terms($args);
 			if($terms) {
 				foreach ($terms  as $term ) {
-					if(has_Images($term->slug)) {
-						echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
+					if(has_Images($term->slug) && $term->name != "featured") {
+						echo '<li><a class="tab" href="#'.$term->slug.'">'.$term->name.'</a></li>';
 					}
 				}
 			}  
 			if(!empty($commercials)) {
-				echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
+				echo '<li><a class="tab" href="#commercial">Commercials</a></li>';
 			}
 			if(!empty($music_videos)) {
-				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
+				echo '<li><a class="tab" href="#music">Music Videos</a></li>';
 			}
 			echo '</ul>';
 		echo '</li>';
 		echo '</ul>';
 	echo '</header>';
 
-	echo '<header class="col-sm-4 sub visible-xs">';
+	echo '<header class="sub visible-xs">';
 		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
@@ -231,6 +193,7 @@ if(is_singular()) {
 				'post_parent' => $post->ID,
 			    'taxonomy' => 'image_type',
 			    'hide_empty' => true,
+			    'exclude' => '22'
 			) );
 			if($terms) {
 				foreach ($terms  as $term ) {

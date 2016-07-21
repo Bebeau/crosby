@@ -1,13 +1,13 @@
 <?php get_header(); 
-	
+
 	// get current user id
 	global $post;
 
 	$commercials 	= get_post_meta($post->ID, 'commercials', true);
 	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
-
+	
 ?>
-	<div class="col-md-offset-3 col-lg-offset-2 col-sm-offset-3 col-sm-9 col-md-9" id="singlePortfolio">
+	<div id="singlePortfolio">
 
 		<?php if (have_posts()) : while (have_posts()) : the_post();
 		    
@@ -37,6 +37,7 @@
 		    	$terms = get_terms( array(
 				    'taxonomy' => 'image_type',
 				    'hide_empty' => true,
+				    'exclude' => 22
 				) );
 				if($terms) {
 					foreach ($terms  as $term ) {
@@ -48,46 +49,28 @@
     		
 			    // get commercials
 			    if(!empty($commercials)) {
-			    	echo '<div role="tabpanel" class="tab-pane video-pane fade" id="commercial">';
+			    	echo '<div class="video-pane pane" id="commercial">';
 			    		echo '<h3 class="termName">// Commercials</h3>';
-				    	$c = 0;
-				    	$total = count($commercials);
-				    	echo '<div class="row">';
-					    	foreach($commercials as $video) {
-						    	echo '<div class="col-sm-4 single">';
-							    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-video="'.$video.'" style="background:url(https://i1.ytimg.com/vi/'.$video.'/hqdefault.jpg) no-repeat scroll center / cover;">';
-							    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
-							    	echo '</a>';
-						    	echo '</div>';
-						    	$c++;
-						    	if($c % 3 === 0 && $c != $total) {
-						    		echo '</div><div class="row">';
-						    	} elseif($c === $total) {
-						    		echo '</div>';
-						    	}
-						    }
+				    	foreach($commercials as $video) {
+					    	echo '<div class="col-sm-4 single">';
+						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-video="'.$video.'" style="background:url(https://i1.ytimg.com/vi/'.$video.'/hqdefault.jpg) no-repeat scroll center / cover;">';
+						    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
+						    	echo '</a>';
+					    	echo '</div>';
+					    }
 					echo '</div>';
 			    }
 
 			    // get music videos
 			    if(!empty($music_videos)) {
-			    	echo '<div role="tabpanel" class="tab-pane video-pane fade" id="music">';
+			    	echo '<div class="video-pane pane" id="music">';
 			    		echo '<h3 class="termName">// Music Videos</h3>';
-				    	$c = 0;
-				    	$total = count($music_videos);
-				    	echo '<div class="row">';
 				    	foreach($music_videos as $video) {
 					    	echo '<div class="col-sm-4 single">';
 					    		echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-video="'.$video.'" style="background:url(https://i1.ytimg.com/vi/'.$video.'/hqdefault.jpg) no-repeat scroll center / cover;">';
 					    			echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
 					    		echo '</a>';
 					    	echo '</div>';
-					    	$c++;
-					    	if($c % 3 === 0 && $c != $total) {
-					    		echo '</div><div class="row">';
-					    	} elseif($c === $total) {
-					    		echo '</div>';
-					    	}
 					    }
 					echo '</div>';
 			    }
@@ -120,4 +103,6 @@
 		</div>
 	</div>
 
-<?php get_footer(); ?>
+<?php 
+
+get_footer(); ?>
