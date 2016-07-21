@@ -1696,12 +1696,24 @@ body, html {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
   background-color: #ffffff; }
 
+body.page .dropdown {
+  display: none; }
+
 a {
   text-decoration: none;
   color: #ffffff; }
   a:hover, a:active, a:focus {
     color: #ffffff;
     text-decoration: none; }
+
+h1 {
+  position: relative;
+  margin: 20px auto 0;
+  color: #020045;
+  font-size: 48px;
+  line-height: 62px;
+  font-weight: 600;
+  text-transform: uppercase; }
 
 ul, ol {
   list-style: none;
@@ -1711,6 +1723,10 @@ ul, ol {
 img {
   max-width: 100%;
   height: auto; }
+
+p {
+  margin: 0 0 25px;
+  color: #020045; }
 
 .home_bg {
   position: fixed;
@@ -1806,15 +1822,15 @@ header {
     -webkit-transition: all, 0.3s, ease-in-out;
     -moz-transition: all, 0.3s, ease-in-out;
     transition: all, 0.3s, ease-in-out; }
-  #singlePortfolio h1 {
-    position: relative;
-    margin-top: 20px auto 0;
+  #singlePortfolio .termName {
+    text-transform: capitalize;
+    width: 100%;
+    display: block;
+    margin: 15px 0;
     color: #020045;
-    font-size: 48px;
-    line-height: 62px;
-    font-weight: 600;
-    text-transform: uppercase; }
-  #singlePortfolio .tab-pane {
+    font-weight: lighter;
+    letter-spacing: 2px; }
+  #singlePortfolio .imageWrap {
     line-height: 0;
     -webkit-column-count: 3;
     -webkit-column-gap: 0px;
@@ -1822,11 +1838,18 @@ header {
     -moz-column-gap: 0px;
     column-count: 3;
     column-gap: 0px; }
-    #singlePortfolio .tab-pane a {
+    #singlePortfolio .imageWrap.video-pane {
+      -webkit-column-count: auto;
+      -webkit-column-gap: 0px;
+      -moz-column-count: auto;
+      -moz-column-gap: 0px;
+      column-count: auto;
+      column-gap: 0px; }
+    #singlePortfolio .imageWrap a {
       position: relative;
       display: block;
       z-index: 10; }
-      #singlePortfolio .tab-pane a:hover .playwrap {
+      #singlePortfolio .imageWrap a:hover .playwrap {
         -webkit-transform: scale(0.5);
         -moz-transform: scale(0.5);
         -ms-transform: scale(0.5);
@@ -1835,7 +1858,7 @@ header {
         -webkit-transition: all, 0.25s, ease-out;
         -moz-transition: all, 0.25s, ease-out;
         transition: all, 0.25s, ease-out; }
-      #singlePortfolio .tab-pane a img {
+      #singlePortfolio .imageWrap a img {
         width: 100% !important;
         height: auto !important; }
   #singlePortfolio .playwrap {
@@ -1871,7 +1894,6 @@ header {
         left: 5px; }
   #singlePortfolio .single {
     position: relative;
-    height: 300px;
     display: block;
     overflow: hidden;
     margin: 0;
@@ -1936,6 +1958,12 @@ header {
           -moz-transition: all, 0.25s, ease-out;
           transition: all, 0.25s, ease-out; }
 
+#singlePage {
+  position: relative;
+  z-index: 10; }
+  #singlePage p {
+    font-size: 14pt; }
+
 #bio {
   font-size: 14pt;
   background: #ffffff;
@@ -1954,6 +1982,15 @@ header {
   -webkit-transition: all, 0.25s, ease-in-out;
   -moz-transition: all, 0.25s, ease-in-out;
   transition: all, 0.25s, ease-in-out; }
+  .modal#about .modal-body, .modal#contact .modal-body {
+    text-align: left;
+    padding: 25px 50px; }
+    .modal#about .modal-body p, .modal#contact .modal-body p {
+      font-size: 14pt; }
+    .modal#about .modal-body a, .modal#contact .modal-body a {
+      color: #020045;
+      text-decoration: underline;
+      font-weight: bold; }
   .modal.in {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -2004,13 +2041,20 @@ header {
  *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
  * <![endif]--> */
 @media (max-width: 768px) {
+  h1 {
+    font-size: 18pt;
+    margin: 0;
+    text-align: center; }
+
   header {
     position: relative;
     z-index: 11;
     overflow: scroll;
-    width: 100%; }
+    width: 100%;
+    padding: 15px 0 0; }
     header .logo-sub {
-      background: #020045; }
+      background: #020045;
+      margin-bottom: 0; }
     header.sub {
       position: relative;
       height: auto;
@@ -2054,10 +2098,6 @@ header {
     -moz-column-gap: 0px;
     column-count: 2;
     column-gap: 0px; }
-  #singlePortfolio h1 {
-    font-size: 18pt;
-    margin: 0;
-    text-align: center; }
   #singlePortfolio #bio {
     padding: 0;
     font-size: 12pt; }

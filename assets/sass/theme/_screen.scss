@@ -33,6 +33,13 @@ body,html{
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.04);
 	background-color: $white;
 }
+body {
+	&.page {
+		.dropdown {
+			display: none;
+		}
+	}
+}
 a {
 	text-decoration: none;
 	color: $white;
@@ -40,6 +47,15 @@ a {
 		color: $white;
 		text-decoration: none;
 	}
+}
+h1 {
+	position: relative;
+    margin: 20px auto 0;
+    color: $blue;
+    font-size: 48px;
+    line-height: 62px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 ul,ol {
 	list-style: none;
@@ -49,6 +65,10 @@ ul,ol {
 img {
 	max-width: 100%;
 	height: auto;
+}
+p {
+	margin: 0 0 25px;
+	color: $blue;
 }
 .home_bg {
 	position: fixed;
@@ -133,16 +153,16 @@ header {
 			}
 		}
 	}
-	h1 {
-		position: relative;
-	    margin-top: 20px auto 0;
-	    color: $blue;
-	    font-size: 48px;
-	    line-height: 62px;
-	    font-weight: 600;
-	    text-transform: uppercase;
+	.termName {
+		text-transform: capitalize;
+		width: 100%;
+		display: block;
+		margin: 15px 0;
+		color: $blue;
+		font-weight: lighter;
+		letter-spacing: 2px;
 	}
-	.tab-pane {
+	.imageWrap {
 		line-height: 0;
 		-webkit-column-count: 3;
 		-webkit-column-gap: 0px;
@@ -150,6 +170,14 @@ header {
 		-moz-column-gap: 0px;
 		column-count: 3;
 		column-gap: 0px;
+		&.video-pane {
+			-webkit-column-count: auto;
+			-webkit-column-gap: 0px;
+			-moz-column-count: auto;
+			-moz-column-gap: 0px;
+			column-count: auto;
+			column-gap: 0px;
+		}
 		a {
 			position: relative;
 			display: block;
@@ -194,7 +222,6 @@ header {
 	}
 	.single {
 		position: relative;
-		height: 300px;
 		display: block;
 		overflow: hidden;
 		margin: 0;
@@ -230,6 +257,13 @@ header {
 		}
 	}
 }
+#singlePage {
+	position: relative;
+	z-index: 10;
+	p {
+		font-size: 14pt;
+	}
+}
 #bio {
 	font-size: 14pt;
 	background: $white;
@@ -243,6 +277,20 @@ header {
 	text-align: center;
 	@include transform(scale(0.8));
 	@include transition(all, 0.25s, ease-in-out);
+	&#about, &#contact {
+		.modal-body {
+			text-align: left;
+			padding: 25px 50px;
+			p {
+				font-size: 14pt;
+			}
+			a {
+				color: $blue;
+				text-decoration: underline;
+				font-weight: bold;
+			}
+		}
+	}
 	&.in {
 		@include transform(scale(1));
 		@include transition(all, 0.25s, ease-in-out);

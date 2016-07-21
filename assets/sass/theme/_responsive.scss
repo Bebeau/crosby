@@ -1,11 +1,18 @@
 @media (max-width: 768px) {
+	h1 {
+		font-size: 18pt;
+		margin: 0;
+		text-align: center;
+	}
 	header {
 		position: relative;
 		z-index: 11;
 		overflow: scroll;
 		width: 100%;
+		padding: 15px 0 0;
 		.logo-sub {
 			background: $blue;
+			margin-bottom: 0;
 		}
 		&.sub {
 			position: relative;
@@ -63,11 +70,6 @@
 			-moz-column-gap: 0px;
 			column-count: 2;
 			column-gap: 0px;
-		}
-		h1 {
-			font-size: 18pt;
-			margin: 0;
-			text-align: center;
 		}
 		#bio {
 			padding: 0;

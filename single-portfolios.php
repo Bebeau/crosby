@@ -7,7 +7,7 @@
 	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
 
 ?>
-	<div class="col-md-offset-3 col-lg-offset-2 col-sm-10 col-md-9" id="singlePortfolio">
+	<div class="col-md-offset-3 col-lg-offset-2 col-sm-offset-3 col-sm-9 col-md-9" id="singlePortfolio">
 
 		<?php if (have_posts()) : while (have_posts()) : the_post();
 		    
@@ -24,9 +24,11 @@
 		    echo '<div class="tab-content">';
 
 		    	echo '<div class="collapse clearfix" id="bio">';
-		    		echo '<div class="col-sm-4">';
-		    			the_post_thumbnail();
-		    		echo '</div>';
+			    	if(has_post_thumbnail()) {
+			    		echo '<div class="col-sm-4">';
+			    			the_post_thumbnail();
+			    		echo '</div>';
+			    	}
 		    		echo '<div class="col-sm-8">';
 		    			the_content();
 		    		echo '</div>';
@@ -39,14 +41,15 @@
 				if($terms) {
 					foreach ($terms  as $term ) {
 						if(has_Images($term->slug)) {
-							list_Images($term->slug);
+							list_Images($term->slug, $term->name);
 						}
 					}
 				}
     		
 			    // get commercials
 			    if(!empty($commercials)) {
-			    	echo '<div role="tabpanel" class="tab-pane fade" id="commercial">';
+			    	echo '<div role="tabpanel" class="tab-pane video-pane fade" id="commercial">';
+			    		echo '<h3 class="termName">// Commercials</h3>';
 				    	$c = 0;
 				    	$total = count($commercials);
 				    	echo '<div class="row">';
@@ -68,7 +71,8 @@
 
 			    // get music videos
 			    if(!empty($music_videos)) {
-			    	echo '<div role="tabpanel" class="tab-pane fade" id="music">';
+			    	echo '<div role="tabpanel" class="tab-pane video-pane fade" id="music">';
+			    		echo '<h3 class="termName">// Music Videos</h3>';
 				    	$c = 0;
 				    	$total = count($music_videos);
 				    	echo '<div class="row">';
@@ -100,7 +104,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<i class="fa fa-times-circle" data-dismiss="modal"></i>
-					<iframe class="videoFrame" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+					<iframe class="videoFrame" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>

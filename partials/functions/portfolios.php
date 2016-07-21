@@ -86,9 +86,6 @@ function init_image_type() {
 }
 add_action( 'init', 'init_image_type' );
 
-// Thumbnail Support
-add_theme_support( 'post-thumbnails', array('portfolios') );
-
 add_action( 'admin_footer-post-new.php', 'portfolio_specific_images' );
 add_action( 'admin_footer-post.php', 'portfolio_specific_images' );
 function portfolio_specific_images() { ?>
@@ -275,7 +272,7 @@ function has_Images($cat) {
     return $query->have_posts();
 }
 
-function list_Images($cat) {
+function list_Images($cat, $name) {
     global $post;
     $args = array(
         'post_parent' => $post->ID,
@@ -294,13 +291,16 @@ function list_Images($cat) {
     $query = new WP_Query($args);
     if($query->have_posts()) {
         echo '<div role="tabpanel" class="tab-pane fade" id="'.$cat.'">';
-        while ($query->have_posts()) {
-            $query->the_post();
-            echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
-                echo '<img src="'.$post->guid.'" alt="" />';
-                echo '<div class="playwrap"><i class="fa fa-plus"></i></div>';
-            echo '</a>';
-        }
+        echo '<h3 class="termName">// '.$name.'</h3>';
+            echo '<div class="imageWrap">';
+                while ($query->have_posts()) {
+                    $query->the_post();
+                    echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
+                        echo '<img src="'.$post->guid.'" alt="" />';
+                        echo '<div class="playwrap"><i class="fa fa-plus"></i></div>';
+                    echo '</a>';
+                }
+            echo '</div>';
         echo '</div>';
     }
     wp_reset_query();

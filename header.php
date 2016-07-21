@@ -92,7 +92,7 @@
     
 </head>
 
-<body>
+<body <?php body_class();?>>
 
 <?php if(is_front_page()) {
 	echo '<div class="home_bg"></div>';
@@ -129,9 +129,58 @@
 					    endwhile; endif;
 					echo '</li>';
 				}
+				echo '<li>Agency //<ul>';
+					echo '<li><a href="#about" data-toggle="modal">About</a></li>';
+					echo '<li><a href="#contact" data-toggle="modal">Contact</a></li>';
+				echo '</ul></li>';
 			echo '</ul>';
-	echo '</header>';
-}
+	echo '</header>'; ?>
+
+	<div class="modal fade in bs-example-modal-lg" id="about">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<i class="fa fa-times-circle" data-dismiss="modal"></i>
+					<?php 
+						query_posts( array(
+								'post_type' => 'page',
+								'page_id' 	=> '2'
+							)
+					    );
+					    if (have_posts()) : while (have_posts()) : the_post();
+					    	the_title('<h1>','</h1>');
+							the_content();
+					    endwhile; endif;
+					    wp_reset_query();
+				    ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade in bs-example-modal-lg" id="contact">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<i class="fa fa-times-circle" data-dismiss="modal"></i>
+					<?php 
+						query_posts( array(
+								'post_type' => 'page',
+								'page_id' 	=> '49'
+							)
+					    );
+					    if (have_posts()) : while (have_posts()) : the_post();
+					    	the_title('<h1>','</h1>');
+							the_content();
+					    endwhile; endif;
+					    wp_reset_query();
+				    ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php }
 
 if(is_singular()) {
 	// get current user id
@@ -166,7 +215,8 @@ if(is_singular()) {
 				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
 			}
 			echo '</ul>';
-		echo '</li></ul>';
+		echo '</li>';
+		echo '</ul>';
 	echo '</header>';
 
 	echo '<header class="col-sm-4 sub visible-xs">';
@@ -195,6 +245,8 @@ if(is_singular()) {
 			if(!empty($music_videos)) {
 				echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
 			}
+			echo '<li><a href="">About //</a></li>';
+			echo '<li><a href="">Contact //</a></li>';
 		echo '</ul>';
 	echo '</header>';
 } ?>

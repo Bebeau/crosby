@@ -49,6 +49,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/contact_bg.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.08475e+06,
+		"inputAbbreviatedPath": "\/assets\/images\/contact_bg.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/contact_bg.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/default_facebook.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
