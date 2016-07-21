@@ -4,16 +4,20 @@
 		z-index: 11;
 		overflow: scroll;
 		width: 100%;
+		.logo-sub {
+			background: $blue;
+		}
 		&.sub {
+			position: relative;
 			height: auto;
 			overflow: visible;
 			background: none;
 			text-align: center;
 		}
 		.dropdown {
-			border: 1px solid $white;
+			border: 1px solid $blue;
 			font-size: 14pt;
-			color: $white;
+			color: $blue;
 			width: 180px;
 			margin: 0 auto;
 			button {
@@ -26,11 +30,13 @@
 			margin: 0;
 			padding: 0;
 			width: 101%;
-			border: 1px solid $white;
+			background: $blue;
+			border: 1px solid $blue;
 			margin: 0 -1px;
 			li {
 				a {
 					font-size: 18pt;
+					color: $white;
 				}
 			}
 		}

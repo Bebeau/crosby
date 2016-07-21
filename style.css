@@ -1694,7 +1694,7 @@ body, html {
   padding: 0;
   height: 100%;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
-  background-color: #020045; }
+  background-color: #ffffff; }
 
 a {
   text-decoration: none;
@@ -1738,12 +1738,12 @@ header {
   height: 100vh;
   box-sizing: border-box;
   background: black;
-  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.75) 0%, rgba(19, 19, 19, 0) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0, 0, 0, 0.75)), color-stop(100%, rgba(19, 19, 19, 0)));
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.75) 0%, rgba(19, 19, 19, 0) 100%);
-  background: -o-linear-gradient(left, rgba(0, 0, 0, 0.75) 0%, rgba(19, 19, 19, 0) 100%);
-  background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.75) 0%, rgba(19, 19, 19, 0) 100%);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(19, 19, 19, 0) 100%);
+  background: -moz-linear-gradient(left, rgba(2, 0, 69, 0.75) 0%, rgba(250, 250, 250, 0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(2, 0, 69, 0.75)), color-stop(100%, rgba(250, 250, 250, 0)));
+  background: -webkit-linear-gradient(left, rgba(2, 0, 69, 0.75) 0%, rgba(250, 250, 250, 0) 100%);
+  background: -o-linear-gradient(left, rgba(2, 0, 69, 0.75) 0%, rgba(250, 250, 250, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(2, 0, 69, 0.75) 0%, rgba(250, 250, 250, 0) 100%);
+  background: linear-gradient(to right, rgba(2, 0, 69, 0.75) 0%, rgba(250, 250, 250, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1 ); }
   header.sub {
     position: fixed; }
@@ -1809,7 +1809,7 @@ header {
   #singlePortfolio h1 {
     position: relative;
     margin-top: 20px auto 0;
-    color: #ffffff;
+    color: #020045;
     font-size: 48px;
     line-height: 62px;
     font-weight: 600;
@@ -2009,15 +2009,18 @@ header {
     z-index: 11;
     overflow: scroll;
     width: 100%; }
+    header .logo-sub {
+      background: #020045; }
     header.sub {
+      position: relative;
       height: auto;
       overflow: visible;
       background: none;
       text-align: center; }
     header .dropdown {
-      border: 1px solid #ffffff;
+      border: 1px solid #020045;
       font-size: 14pt;
-      color: #ffffff;
+      color: #020045;
       width: 180px;
       margin: 0 auto; }
       header .dropdown button {
@@ -2030,10 +2033,12 @@ header {
       margin: 0;
       padding: 0;
       width: 101%;
-      border: 1px solid #ffffff;
+      background: #020045;
+      border: 1px solid #020045;
       margin: 0 -1px; }
       header .dropdown-menu li a {
-        font-size: 18pt; }
+        font-size: 18pt;
+        color: #ffffff; }
     header .menu li {
       font-size: 18pt; }
       header .menu li ul li {

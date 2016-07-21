@@ -170,7 +170,7 @@ if(is_singular()) {
 	echo '</header>';
 
 	echo '<header class="col-sm-4 sub visible-xs">';
-		echo '<a href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			echo 'Categories';
