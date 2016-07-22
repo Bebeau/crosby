@@ -15,14 +15,20 @@ var init = {
 		// init.pageAjax();
 	},
 	shrinkLogo: function() {
-		jQuery(window).scroll(function() {    
-		    var scroll = jQuery(window).scrollTop();    
-		    if (scroll >= 50) {
-		        jQuery("#logo").addClass("down");
-		    } else {
-		    	jQuery("#logo").removeClass("down");
-		    }
-		});
+		// jQuery(window).scroll(function() {    
+		//     var scroll = jQuery(window).scrollTop();    
+		//     if (scroll >= 50) {
+		//         jQuery("#logo").addClass("down");
+		//     } else {
+		//     	jQuery("#logo").removeClass("down");
+		//     }
+		// });
+		
+		// setTimeout(
+		// 	function(){
+		// 		jQuery("header.sub").addClass("shrink");
+		// 	}, 1000
+		// );
 	},
 	loaded: function() {
 		setTimeout(

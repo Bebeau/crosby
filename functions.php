@@ -51,7 +51,7 @@ function remove_menus(){
 	remove_menu_page( 'tools.php' );
 	// remove_menu_page( 'themes.php' );
 	remove_menu_page( 'plugins.php' );
-	remove_menu_page( 'users.php' );
+	// remove_menu_page( 'users.php' );
 	// remove_menu_page( 'upload.php' );
 }
 add_action( 'admin_menu', 'remove_menus' );

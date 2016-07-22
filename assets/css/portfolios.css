@@ -1,9 +1,28 @@
-#commercials input, #MusicVideos input {
-  line-height: 40px;
-  width: 100%;
-  display: block;
-  margin: 10px auto;
-  font-size: 14pt; }
+#commercials .link, #MusicVideos .link {
+  margin: 10px auto; }
+  #commercials .link i, #MusicVideos .link i {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    z-index: 10; }
+    #commercials .link i.youtube, #MusicVideos .link i.youtube {
+      background: url("../images/admin/youtube.svg") no-repeat scroll center #bb0000;
+      background-size: 70% 70%; }
+    #commercials .link i.vimeo, #MusicVideos .link i.vimeo {
+      background: url("../images/admin/vimeo.svg") no-repeat scroll center #1ab7ea;
+      background-size: 70% 70%; }
+  #commercials .link input, #MusicVideos .link input {
+    line-height: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 14pt;
+    width: 100%;
+    padding-left: 45px;
+    margin-left: -40px;
+    vertical-align: top; }
 
 .videoWrap {
   display: block;
@@ -22,3 +41,9 @@
       right: 5px;
       color: red;
       font-weight: bold; }
+
+.assignedAgent {
+  width: 100%; }
+
+#cc_crosby {
+  line-height: 40px; }

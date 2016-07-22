@@ -1,10 +1,36 @@
+$youtube: #bb0000;
+$vimeo: #1ab7ea;
+
 #commercials, #MusicVideos {
-	input {
-		line-height: 40px;
-		width: 100%;
-		display: block;
+	.link {
 		margin: 10px auto;
-		font-size: 14pt;
+		i {
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			z-index: 10;
+			&.youtube {
+				background: url('../images/admin/youtube.svg') no-repeat scroll center $youtube;
+				background-size: 70% 70%;
+			}
+			&.vimeo {
+				background: url('../images/admin/vimeo.svg') no-repeat scroll center $vimeo;
+				background-size: 70% 70%;
+			}
+		}
+		input {
+			line-height: 40px;
+			height: 40px;
+			display: inline-block;
+			margin: 0 auto;
+			font-size: 14pt;
+			width: 100%;
+			padding-left: 45px;
+			margin-left: -40px;
+			vertical-align: top;
+		}
 	}
 }
 .videoWrap {
@@ -27,4 +53,10 @@
 			font-weight: bold;
 		}
 	}
+}
+.assignedAgent {
+	width: 100%;
+}
+#cc_crosby {
+	line-height: 40px;
 }

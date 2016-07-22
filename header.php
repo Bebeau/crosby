@@ -115,7 +115,7 @@
 				foreach($cats as $cat) {
 					$catID = $cat->term_id;
 					$catLink = get_category_link($catID);
-					echo '<li>'.$cat->name.' //';
+					echo '<li>'.$cat->name.' <span class="slash">//</span>';
 						$args = array(
 							'post_type' => 'portfolios',
 							'orderby'	=> 'title',
@@ -155,7 +155,7 @@ if(is_singular()) {
 
 	echo '<header class="sub hidden-xs">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
-		echo '<ul class="menu"><li>'.get_the_title().' //';
+		echo '<ul class="menu"><li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';
 			$args = array(
 				'post_parent' => $post->ID,
