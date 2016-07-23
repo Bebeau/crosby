@@ -1,6 +1,13 @@
 $white: #ffffff;
 $black: #000000;
-$blue: #020045;
+$blue: #00041e;
+
+$youtube: 	#bb0000;
+$vimeo: 	#1ab7ea;
+$facebook:	#3b5998;
+$twitter: 	#00aced;
+$instagram: #517fa4;
+$linkedin:	#0077b5;
 
 @font-face {
   font-family: 'Neutra';
@@ -102,12 +109,12 @@ header {
 	z-index: 2;
 	box-sizing: border-box;
 	background: $blue;
-	background: -moz-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(2,0,69,0.75)), color-stop(100%, rgba(250,250,250,0)));
-	background: -webkit-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
-	background: -o-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
-	background: -ms-linear-gradient(left, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
-	background: linear-gradient(to right, rgba(2,0,69,0.75) 0%, rgba(250,250,250,0) 100%);
+	background: -moz-linear-gradient(left, rgba(0,4,30,1) 0%, rgba(250,250,250,0) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,4,30,1)), color-stop(100%, rgba(250,250,250,0)));
+	background: -webkit-linear-gradient(left, rgba(1,4,30,1) 0%, rgba(250,250,250,0) 100%);
+	background: -o-linear-gradient(left, rgba(0,4,30,1) 0%, rgba(250,250,250,0) 100%);
+	background: -ms-linear-gradient(left, rgba(0,4,30,1) 0%, rgba(250,250,250,0) 100%);
+	background: linear-gradient(to right, rgba(0,4,30,1) 0%, rgba(250,250,250,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1 );
 	&.sub {
 		position: fixed;
@@ -124,12 +131,70 @@ header {
 						&.active {
 							a {
 								color: $blue;
+								&:hover {
+									color: $blue;
+								}
 							}
 						}
 						a {
 							color: $blue;
-
+							&:hover {
+								color: $blue;
+							}
 						}
+					}
+				}
+			}
+		}
+		.contact-btn {
+			display: block;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+			background: $blue;
+			color: $white;
+			line-height: 40px;
+		}
+		hr {
+			border-top: 1px solid darken($white, 15%);
+		}
+		#artistSocial {
+			display: block;
+			text-align: center;
+			margin: 15px 0;
+			i {
+				display: inline-block;
+				width: 35px;
+				height: 35px;
+				@include border-top-radius(50%);
+				@include border-bottom-radius(50%);
+				margin: 0 5px;
+				&.facebook {
+					background: url('assets/images/admin/facebook.svg') no-repeat scroll center $blue;
+					background-size: 50% 50%;
+					&:hover {
+						background-color: $facebook;
+					}
+				}
+				&.twitter {
+					background: url('assets/images/admin/twitter.svg') no-repeat scroll center $blue;
+					background-size: 50% 50%;
+					&:hover {
+						background-color: $twitter;
+					}
+				}
+				&.instagram {
+					background: url('assets/images/admin/instagram.svg') no-repeat scroll center $blue;
+					background-size: 50% 50%;
+					&:hover {
+						background-color: $instagram;
+					}
+				}
+				&.linkedin {
+					background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $blue;
+					background-size: 50% 50%;
+					&:hover {
+						background-color: $linkedin;
 					}
 				}
 			}
@@ -349,6 +414,30 @@ header {
 			padding: 22px;
 			&.fa-play {
 				left: 5px;
+			}
+		}
+		.plus {
+			&:before {
+				content: "";
+				display: block;
+				width: 50%;
+				height: 4px;
+				background: $white;
+				position: absolute;
+				top: 50%;
+				left: 25%;
+				margin: -2px 0 0;
+			}
+			&:after {
+				content: "";
+				display: block;
+				width: 4px;
+				height: 50%;
+				background: $white;
+				position: absolute;
+				left: 50%;
+				top: 25%;
+				margin: 0 0 0 -2px;
 			}
 		}
 	}

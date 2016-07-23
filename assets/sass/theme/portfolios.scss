@@ -1,5 +1,9 @@
-$youtube: #bb0000;
-$vimeo: #1ab7ea;
+$youtube: 	#bb0000;
+$vimeo: 	#1ab7ea;
+$facebook:	#3b5998;
+$twitter: 	#00aced;
+$instagram: #517fa4;
+$linkedin:	#0077b5;
 
 #commercials, #MusicVideos {
 	.link {
@@ -28,8 +32,16 @@ $vimeo: #1ab7ea;
 			font-size: 14pt;
 			width: 100%;
 			padding-left: 45px;
+			padding-right: 105px;
 			margin-left: -40px;
 			vertical-align: top;
+		}
+		button {
+			line-height: 40px;
+			height: 40px;
+			width: 100px;
+			display: inline-block;
+			margin: 0 0 0 -100px;
 		}
 	}
 }
@@ -57,6 +69,110 @@ $vimeo: #1ab7ea;
 .assignedAgent {
 	width: 100%;
 }
-#cc_crosby {
-	line-height: 40px;
+#agent {
+	input {
+		line-height: 30px;
+		height: 30px;
+		display: block;
+		width: 100%;
+		margin-top: 5px;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+	.button {
+		display: block;
+		text-align: center;
+		margin-top: 15px;
+		width: 100%;
+	}
+}
+#social {
+	.field {
+		margin-top: 5px;
+		input {
+			line-height: 30px;
+			height: 30px;
+			display: inline-block;
+			width: 100%;
+			margin-left: -31px;
+			padding-left: 35px;
+			vertical-align: top;
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		i {
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			z-index: 10;
+			&.facebook {
+				background: url('../images/admin/facebook.svg') no-repeat scroll center $facebook;
+				background-size: 50% 50%;
+			}
+			&.instagram {
+				background: url('../images/admin/instagram.svg') no-repeat scroll center $instagram;
+				background-size: 50% 50%;
+			}
+			&.twitter {
+				background: url('../images/admin/twitter.svg') no-repeat scroll center $twitter;
+				background-size: 50% 50%;
+			}
+			&.linkedin {
+				background: url('../images/admin/linkedin.svg') no-repeat scroll center $linkedin;
+				background-size: 50% 50%;
+			}
+		}
+	}
+}
+#image_type_ordering {
+	.inside {
+		margin: 0;
+		padding: 0;
+	}
+	tr {
+		&:hover {
+			cursor: move;
+		}
+	}
+	td {
+		line-height: 30px;
+		vertical-align: middle;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+	.bars {
+		position: relative;
+		width: 20px;
+		height: 25px;
+		display: inline-block;
+		vertical-align: middle;
+		top: -2px;
+		margin-right: 5px;
+		&:before, &:after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 1px;
+			background: #ccc;
+			position: absolute;
+		}
+		&:before {
+			top: 25%;
+		}
+		&:after {
+			top: 75%;
+		}
+		i {
+			width: 100%;
+			display: block;
+			height: 1px;
+			background: #ccc;
+			position: absolute;
+			top: 50%;
+		}
+	}
 }

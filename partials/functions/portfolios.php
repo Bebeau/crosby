@@ -1,5 +1,7 @@
 <?php
 
+global $post;
+
 add_role(
     'agent',
     __( 'Agent' ),
@@ -53,7 +55,6 @@ function remove_website_input() {
 add_action( 'admin_head-user-edit.php', 'remove_website_input' );
 add_action( 'admin_head-profile.php',   'remove_website_input' );
 
-
 // Add admin styles for portfolios
 add_action( 'admin_enqueue_scripts', 'load_portfolios_admin' );
 function load_portfolios_admin() {
@@ -61,6 +62,7 @@ function load_portfolios_admin() {
     if( $typenow == 'portfolios' ) {
         wp_enqueue_style( 'recipe-styles', get_bloginfo( 'template_url' ) . '/assets/css/portfolios.css', false, '1.0.0' );
         wp_localize_script( 'my-ajax-request', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+        wp_enqueue_script('jquery_ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js', array('jquery'), null, true);
     }
     // Registers and enqueues the required javascript.
     wp_register_script( 'meta-box-image-upload', get_template_directory_uri() . '/assets/js/admin.js', array( 'jquery' ) );
@@ -140,20 +142,9 @@ function init_image_type() {
 }
 add_action( 'init', 'init_image_type' );
 
-add_action( 'admin_footer-post-new.php', 'portfolio_specific_images' );
-add_action( 'admin_footer-post.php', 'portfolio_specific_images' );
-function portfolio_specific_images() { ?>
-  <script type="text/javascript">
-    jQuery(document).on("DOMNodeInserted", function(){
-        // Lock uploads to "Uploaded to this post"
-        jQuery('select.attachment-filters [value="uploaded"]').attr( 'selected', true ).parent().trigger('change');
-    });
-  </script>
-<?php }
-
 // Add custom meta boxes to display recipe specs
-add_action( 'add_meta_boxes', 'recipe_meta_box', 1 );
-function recipe_meta_box( $post ) {
+add_action( 'add_meta_boxes', 'portfolio_meta_box', 1 );
+function portfolio_meta_box( $post ) {
     add_meta_box(
         'commercials', 
         'Commercials', 
@@ -172,15 +163,31 @@ function recipe_meta_box( $post ) {
     );
     add_meta_box(
         'agent', 
-        'Agent Contact', 
+        'Assign Agent', 
         'agent',
         'portfolios', 
         'side', 
         'high'
     );
+    add_meta_box(
+        'social', 
+        'Artist Social', 
+        'social',
+        'portfolios', 
+        'side', 
+        'high'
+    );
+    add_meta_box(
+        'image_type_ordering', 
+        'Tab Ordering', 
+        'image_type_ordering',
+        'portfolios', 
+        'side', 
+        'high'
+    );
 }
-function commercials() { 
-    global $post;
+// commercials meta box
+function commercials($post) { 
     // Use nonce for verification
     wp_nonce_field( 'commercial_links', 'commercials_noncename' );
 
@@ -191,10 +198,9 @@ function commercials() {
     echo '<h3>Upload Commercials</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign commercials to this portfolio.</p>';
     echo '<section id="Commercials">';
-        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_commercial" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article>';
-        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_commercial" value="" placeholder="https://www.vimeo.com/VIDEOID"/></article>';
+        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_commercial" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
+        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_commercial" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
-    <button type="submit" class="button button-primary button-large">+ Add Video</button>
     <?php if ( !empty($commercials) ) {
         echo '<h3>Videos</h3>';
         echo '<p>Below is a listing of commercials being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
@@ -227,24 +233,21 @@ function commercials() {
         echo '</section>';
     }
 }
-function music_videos() { 
-    global $post;
+// music videos meta box
+function music_videos($post) { 
     // Use nonce for verification
     wp_nonce_field( 'music_videos', 'music_videos_noncename' );
 
     //get the saved meta as an arry
     $music_videos = get_post_meta($post->ID,'music_videos', true);
-
-    var_dump($music_videos);
     
     $c = 0;
     echo '<h3>Upload Music Videos</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign Music Videos to this portfolio.</p>';
     echo '<section id="MusicVideos">';
-        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_musicVideo" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/></article>';
-        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_musicVideo" value="" placeholder="https://www.vimeo.com/VIDEOID"/></article>';
+        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_musicVideo" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
+        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_musicVideo" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
-    <button type="submit" class="button button-primary button-large">+ Add Video</button>
     <?php if ( !empty($music_videos) ) {
         echo '<h3>Videos</h3>';
         echo '<p>Below is a listing of Music Videos being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
@@ -278,86 +281,157 @@ function music_videos() {
     }
 }
 // add assign to producer option
-function agent() {
-    global $post;
+function agent($post) {
 
-    $firstname = get_post_meta($post->ID,'agentFirstName', true);
-    $lastname = get_post_meta($post->ID,'agentLastName', true);
-    $emailaddress = get_post_meta($post->ID,'agentEmailaddress', true);
+    wp_nonce_field( 'agent_email', 'agent_noncename' );
 
-    $notify = get_post_meta($post->ID,'agentNotify', true); 
-
-    $current_user = wp_get_current_user();
-    $producerEmail = $current_user->user_email;
-    $producerName = $current_user->user_firstname;
-
-    $selected = get_post_meta($post->ID,'agent', true);
+    $agentID = get_post_meta($post->ID,'agentID', true);
 
     $args = array(
         'role' => 'agent'
     );
     $users = get_users($args);
     if( !empty($users) ) {
-        echo'<select name="agent" class="assignedAgent">';
+        echo '<p>Assign an agent to this artist from the dropdown below.</p>';
+        echo'<select name="agentID" class="assignedAgent" data-post="'.$post->ID.'">';
+        echo '<option value="">-- assign an agent --</option>';
         foreach( $users as $user ){
             $info = get_userdata($user->data->ID);
-            echo '<option value="'.$info->ID.'"'.selected( $selected, $info->ID ).'>'.$info->display_name.'</option>';
+            if(strval($info->ID) === $agentID) {
+                echo '<option value="'.$info->ID.'" selected="selected">'.$info->display_name.'</option>';
+            } else {
+                echo '<option value="'.$info->ID.'">'.$info->display_name.'</option>';
+            }
         }
         echo'</select>';
-        echo '<label for="ccd" id="cc_crosby"><input type="checkbox" name="ccd" id="ccd" /> CC Crosby</label>';
     } else {
         echo "<p>There are no agents.</p>";
     }
+    $emails = get_post_meta($post->ID,'cc_emails', true);
+    echo '<p>Add emails below to CC them in on contact inquiries through this artists portfolio page.</p>';
+    echo '<span class="emails">';
+    if(!empty($emails)) {
+        foreach($emails as $email) {
+            echo '<input type="text" name="cc_emails[]" placeholder="email@address.." value="'.$email.'" />';
+        }
+    } else {
+        echo '<input type="text" name="cc_emails[]" placeholder="email@address.." />';
+    }
+    echo '</span>';
+    echo '<button class="button email-button">+ Add Email</button>';
 
 }
-// ajax call to save shipped selection
-add_action( 'admin_footer', 'contact_javascript' );
-function contact_javascript() {
-    ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            notify = function(btn, producer) {
-                jQuery.ajax({
-                    url: "<?php echo admin_url('admin-ajax.php'); ?>",
-                    type: "GET",
-                    data: {
-                        email: btn.attr('data-email'),
-                        producer: producer,
-                        recipeID: btn.attr('data-recipe'),
-                        action: 'Notify',
-                        _ajax_nonce: "<?php echo wp_create_nonce( 'my_recipe_ajax_nonce' ); ?>"
-                    },
-                    dataType: 'html',
-                    success: function(response){
-                        jQuery('.producerWrap').replaceWith('<p class="success">Assigned</p>');
-                    },
-                    error : function(jqXHR, textStatus, errorThrown) {
-                        window.alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
-                    }
-                }); 
-            };
-            jQuery('.button-notify').click(function(e){
-                e.preventDefault();
-                var btn = jQuery(this);
-                var producer = jQuery('.assignedAgent').val();
-                notify(btn, producer);
-            });
-        });
-    </script>
-<?php }
+// add image_type ordering
+function image_type_ordering($post) {
+    $order = get_post_meta($post->ID, 'sub_nav_order', true);
+    var_dump($order);
+    $terms = get_terms( array(
+        'taxonomy' => 'image_type',
+        'hide_empty' => true
+    ) );
+    if($terms) {
+        echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
+        foreach ($terms as $term ) {
+            if(has_Images($term->slug) && $term->slug !== "featured") { ?>
+                <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
+                    <td>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?>
+                    </td>
+                </tr>
+           <?php }
+        }
+        echo '</tbody></table>';
+    }
+}
+// ajax response to save order
+add_action('wp_ajax_setOrder', 'setProjectOrder');
+add_action('wp_ajax_nopriv_setOrder', 'setProjectOrder');
+function setProjectOrder() {
+    $order = str_replace( array( '[', ']','"' ),'', $_GET['order'] );
+    $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
+    var_dump($order);
+    var_dump($postID);
+    update_post_meta($postID, 'sub_nav_order', $order );
+}
+
+// create custom plugin settings menu
+add_action('admin_menu', 'add_portfolio_ordering');
+function add_portfolio_ordering() {
+    add_submenu_page(
+        'edit.php?post_type=portfolios',
+        'Order',
+        'Order',
+        'manage_options',
+        'portfolio-order',
+        'portfolio_order_page' 
+    );
+}
+// ajax response to save download track
+add_action('wp_ajax_assignAgent', 'assignAgentEmail');
+add_action('wp_ajax_nopriv_assignAgent', 'assignAgentEmail');
+function assignAgentEmail() {
+    $agentID = (isset($_GET['agentID'])) ? $_GET['agentID'] : 0;
+    $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
+    update_post_meta($postID, 'agentID', $agentID);
+}
+// add social fields for artists
+function social($post) {
+    wp_nonce_field( 'social_links', 'social_noncename' );
+
+    $fb_url     = get_post_meta($post->ID,'artist_fb_url',true);
+    $twit_url   = get_post_meta($post->ID,'artist_twit_url',true);
+    $ig_url     = get_post_meta($post->ID,'artist_ig_url',true);
+    $in_url     = get_post_meta($post->ID,'artist_in_url',true);
+
+    echo '<p>Assign social media links to artists portfolios using the fields below</p>';
+    echo '<span class="field"><i class="facebook"></i><input type="text" name="artist_fb_url" placeholder="https://facebook.com/USER" value="'.$fb_url.'" /></span>';
+    echo '<span class="field"><i class="instagram"></i><input type="text" name="artist_ig_url" placeholder="https://instagram.com/USER" value="'.$ig_url.'" /></span>';
+    echo '<span class="field"><i class="twitter"></i><input type="text" name="artist_twit_url" placeholder="https://twitter.com/USER" value="'.$twit_url.'" /></span>';
+    echo '<span class="field"><i class="linkedin"></i><input type="text" name="artist_in_url" placeholder="https://linkedin.com/in/USER" value="'.$in_url.'" /></span>';
+}
 /* When the post is saved, saves our custom data */
 add_action( 'save_post', 'dynamic_save_postdata' );
 function dynamic_save_postdata( $post_id ) {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
         return;
 
+    // check for social link nonce
+    if ( !isset( $_POST['social_noncename'] ) || !wp_verify_nonce( $_POST['social_noncename'], 'social_links' ) )
+        return;
+
+    // save social links
+    $fb_url     = $_POST['artist_fb_url'];
+    $twit_url   = $_POST['artist_twit_url'];
+    $ig_url     = $_POST['artist_ig_url'];
+    $in_url     = $_POST['artist_in_url'];
+
+    if(isset($fb_url)) {
+        update_post_meta($post_id,'artist_fb_url',$fb_url);
+    } else {
+        update_post_meta($post_id,'artist_fb_url',"");
+    }
+    if(isset($twit_url)) {
+        update_post_meta($post_id,'artist_twit_url',$twit_url);
+    } else {
+        update_post_meta($post_id,'artist_twit_url',"");
+    }
+    if(isset($ig_url)) {
+        update_post_meta($post_id,'artist_ig_url',$ig_url);
+    } else {
+        update_post_meta($post_id,'artist_ig_url',"");
+    }
+    if(isset($in_url)) {
+        update_post_meta($post_id,'artist_in_url',$in_url);
+    } else {
+        update_post_meta($post_id,'artist_in_url',"");
+    }
+
+    // check for commercial nonce
     if ( !isset( $_POST['commercials_noncename'] ) || !wp_verify_nonce( $_POST['commercials_noncename'], 'commercial_links' ) )
         return;
 
-    // save youtube commercials
-    // add current video ID's to array
+    // save commercials
     $commercials  = get_post_meta($post_id,'commercials', true);
-    
     $yt_new  = $_POST['yt_commercial'];
     $vimeo_new  = $_POST['vimeo_commercial'];
 
@@ -365,25 +439,25 @@ function dynamic_save_postdata( $post_id ) {
         
         if($commercials && $yt_new) {
             $old[] = array(
-                    'id' => getYoutubeIdFromUrl($yt_new),
+                    'id' => getVideoIdFromUrl($yt_new),
                     'type' => 'youtube'
                 );
             $comms = $old;
         } elseif($commercials && $vimeo_new) {
             $old[] = array(
-                    'id' => getYoutubeIdFromUrl($vimeo_new),
+                    'id' => getVideoIdFromUrl($vimeo_new),
                     'type' => 'vimeo'
                 );
             $comms = $old;
         } elseif($yt_new) {
             $commercials[] = array(
-                    'id' => getYoutubeIdFromUrl($yt_new),
+                    'id' => getVideoIdFromUrl($yt_new),
                     'type' => 'youtube'
                 );
             $comms = $commercials;
         } elseif($vimeo_new) {
             $commercials[] = array(
-                    'id' => getYoutubeIdFromUrl($vimeo_new),
+                    'id' => getVideoIdFromUrl($vimeo_new),
                     'type' => 'vimeo'
                 );
             $comms = $commercials;
@@ -392,11 +466,12 @@ function dynamic_save_postdata( $post_id ) {
         update_post_meta($post_id,'commercials',$comms);
     }
 
+    // check for music video nonce
     if ( !isset( $_POST['music_videos_noncename'] ) || !wp_verify_nonce( $_POST['music_videos_noncename'], 'music_videos' ) )
         return;
 
+    // save music video
     $musicVideos  = get_post_meta($post_id,'music_videos', true);
-    
     $yt_newMusic  = $_POST['yt_musicVideo'];
     $vimeo_newMusic  = $_POST['vimeo_musicVideo'];
 
@@ -404,25 +479,25 @@ function dynamic_save_postdata( $post_id ) {
         
         if($musicVideos && $yt_newMusic) {
             $oldVideos[] = array(
-                    'id' => getYoutubeIdFromUrl($yt_newMusic),
+                    'id' => getVideoIdFromUrl($yt_newMusic),
                     'type' => 'youtube'
                 );
             $videos = $oldVideos;
         } elseif($musicVideos && $vimeo_newMusic) {
             $oldVideos[] = array(
-                    'id' => getYoutubeIdFromUrl($vimeo_newMusic),
+                    'id' => getVideoIdFromUrl($vimeo_newMusic),
                     'type' => 'vimeo'
                 );
             $videos = $oldVideos;
         } elseif($yt_newMusic) {
             $commercials[] = array(
-                    'id' => getYoutubeIdFromUrl($yt_newMusic),
+                    'id' => getVideoIdFromUrl($yt_newMusic),
                     'type' => 'youtube'
                 );
             $videos = $commercials;
         } elseif($vimeo_newMusic) {
             $commercials[] = array(
-                    'id' => getYoutubeIdFromUrl($vimeo_newMusic),
+                    'id' => getVideoIdFromUrl($vimeo_newMusic),
                     'type' => 'vimeo'
                 );
             $videos = $commercials;
@@ -431,8 +506,24 @@ function dynamic_save_postdata( $post_id ) {
         update_post_meta($post_id,'music_videos',$videos);
     }
 
+    // check for music video nonce
+    if ( !isset( $_POST['agent_noncename'] ) || !wp_verify_nonce( $_POST['agent_noncename'], 'agent_email' ) )
+        return;
+    
+    $cc_emails = array_filter($_POST['cc_emails']);
+    $emails = array();
+    if(is_array($cc_emails)) {
+        foreach($cc_emails as $email) {
+            $emails[] = $email;
+        }
+        update_post_meta($post_id, 'cc_emails', $emails);
+    } else {
+        update_post_meta($post_id, 'cc_emails', "");
+    }
+
 }
-function getYoutubeIdFromUrl($url) {
+// parse youtube/vimeo id from url submitted
+function getVideoIdFromUrl($url) {
     $parts = parse_url($url);
     if(isset($parts['query'])){
         parse_str($parts['query'], $qs);
@@ -461,7 +552,7 @@ function removeYouTubeVideo() {
 
     update_post_meta($postID, $video_type, $videos);
 }
-
+// check to see if image_type exists
 function has_Images($cat) {
     global $post;
     $args = array(
@@ -480,7 +571,7 @@ function has_Images($cat) {
     $query = new WP_Query($args);
     return $query->have_posts();
 }
-
+// list images from given category
 function list_Images($cat, $name) {
     global $post;
     $args = array(
@@ -489,6 +580,8 @@ function list_Images($cat, $name) {
         'posts_per_page'    => -1,
         'post_status' => 'inherit',
         'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
+        'orderby' => 'menu_order ID',
+        'order' => 'ASC',
         'tax_query' => array(
             array(
                 'taxonomy' => 'image_type',
@@ -506,7 +599,7 @@ function list_Images($cat, $name) {
                     $query->the_post();
                     echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
                         echo '<img src="'.$post->guid.'" alt="" />';
-                        echo '<div class="playwrap"><i class="fa fa-plus"></i></div>';
+                        echo '<div class="playwrap"><span class="plus"></span></div>';
                     echo '</a>';
                 }
             echo '</div>';
@@ -514,7 +607,7 @@ function list_Images($cat, $name) {
     }
     wp_reset_query();
 }
-
+// get featured photo link for portfolio
 function get_featured($id) {
     $args = array(
         'post_parent' => $id,

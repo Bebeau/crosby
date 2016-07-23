@@ -154,9 +154,10 @@ if(is_singular()) {
 	$image_types = get_the_terms($post->ID, 'image_type');
 
 	echo '<header class="sub hidden-xs">';
-		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<ul class="menu"><li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';
+			echo '<li><a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio" class="info collapsed">Bio</a></li>';
 			$args = array(
 				'post_parent' => $post->ID,
 			    'taxonomy' => 'image_type',
@@ -179,10 +180,52 @@ if(is_singular()) {
 			echo '</ul>';
 		echo '</li>';
 		echo '</ul>';
+
+		$agentID = get_post_meta($post->ID, 'agentID', true);
+
+		if(!empty($agentID)) {
+			echo '<hr>';
+		}
+
+		$fb_url = get_post_meta($post->ID, 'artist_fb_url', true);
+		$ig_url = get_post_meta($post->ID, 'artist_ig_url', true);
+		$twit_url = get_post_meta($post->ID, 'artist_twit_url', true);
+		$in_url = get_post_meta($post->ID, 'artist_in_url', true);
+
+		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url) || !empty($in_url)) {
+			echo '<div id="artistSocial">';
+				if(!empty($fb_url)) {
+					echo '<a href="'.$fb_url.'"><i class="facebook"></i></a>';
+				}
+				if(!empty($twit_url)) {
+					echo '<a href="'.$twit_url.'"><i class="twitter"></i></a>';
+				}
+				if(!empty($in_url)) {
+					echo '<a href="'.$ig_url.'"><i class="instagram"></i></a>';
+				}
+				if(!empty($in_url)) {
+					echo '<a href="'.$in_url.'"><i class="linkedin"></i></a>';
+				}
+			echo '</div>';
+		}
+		
+		if(!empty($agentID)) {
+			$userInfo = get_userdata($agentID);
+			$agentEmail = $userInfo->user_email;
+			$cc_emails = get_post_meta($post->ID, 'cc_emails', true);
+			$emails = array_filter($cc_emails);
+			if(!empty($emails)) {
+				$email_string = implode(",",$emails);
+				echo '<a class="contact-btn" href="mailto:'.$agentEmail.'?&subject='.get_the_title().'- Website Inquiry&cc='.$email_string.'">Contact Agent</a>';
+			} else {
+				echo '<a class="contact-btn" href="mailto:'.$agentEmail.'?&subject='.get_the_title().'- Website Inquiry">Contact Agent</a>';
+			}
+		}
+
 	echo '</header>';
 
 	echo '<header class="sub visible-xs">';
-		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			echo 'Filter';

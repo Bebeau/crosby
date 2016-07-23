@@ -95,7 +95,7 @@ var init = {
 		});
 	},
 	activeTab: function() {
-		jQuery('.single .menu ul li:first-child a').tab('show');
+		jQuery('.single .menu ul li:nth-child(2) a').tab('show');
 		jQuery('.tab-content').addClass("in");
 		jQuery('.menu ul li a').click(function(e){
 			e.preventDefault();
@@ -104,15 +104,17 @@ var init = {
 			jQuery('.menu ul li').removeClass("active");
 			jQuery(this).parent().addClass("active");
 
-			jQuery('.tab-content').removeClass("in");
-
-			setTimeout(
-				function(){
-					jQuery('.pane').removeClass("active");
-					jQuery(tab).addClass("active");
-					jQuery('.tab-content').addClass("in");
-				}, 500
-			);
+			if(!jQuery(this).hasClass("info")) {
+				jQuery('.tab-content').removeClass("in");
+				setTimeout(
+					function(){
+						jQuery('.pane').removeClass("active");
+						jQuery(tab).addClass("active");
+						jQuery('#bio').collapse('hide');
+						jQuery('.tab-content').addClass("in");
+					}, 500
+				);
+			}
 		});
 	},
 	portfolioIn: function() {
