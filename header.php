@@ -149,6 +149,7 @@ if(is_singular()) {
 
 	$commercials 	= get_post_meta($post->ID, 'commercials', true);
 	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
+	$order 			= get_post_meta($post->ID, 'sub_nav_order', true);
 	$attachments 	= get_children( array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image') );
 
 	$image_types = get_the_terms($post->ID, 'image_type');
@@ -161,7 +162,9 @@ if(is_singular()) {
 			$args = array(
 				'post_parent' => $post->ID,
 			    'taxonomy' => 'image_type',
-			    'hide_empty' => true
+			    'hide_empty' => true,
+			    'orderby' => 'include',
+			    'include' => $order
 			);
 			$terms = get_terms($args);
 			if($terms) {

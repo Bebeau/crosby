@@ -1816,8 +1816,8 @@ header {
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 5px;
-      background: #00041e;
-      color: #ffffff;
+      color: #00041e;
+      border: 2px solid #00041e;
       line-height: 40px; }
     header.sub hr {
       border-top: 1px solid #d9d9d9; }
@@ -1836,24 +1836,48 @@ header {
         margin: 0 5px; }
         header.sub #artistSocial i.facebook {
           background: url("assets/images/admin/facebook.svg") no-repeat scroll center #00041e;
-          background-size: 50% 50%; }
+          background-size: 50% 50%;
+          -webkit-transition: all, 0.3s, ease-in-out;
+          -moz-transition: all, 0.3s, ease-in-out;
+          transition: all, 0.3s, ease-in-out; }
           header.sub #artistSocial i.facebook:hover {
-            background-color: #3b5998; }
+            background-color: #3b5998;
+            -webkit-transition: all, 0.3s, ease-in-out;
+            -moz-transition: all, 0.3s, ease-in-out;
+            transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.twitter {
           background: url("assets/images/admin/twitter.svg") no-repeat scroll center #00041e;
-          background-size: 50% 50%; }
+          background-size: 50% 50%;
+          -webkit-transition: all, 0.3s, ease-in-out;
+          -moz-transition: all, 0.3s, ease-in-out;
+          transition: all, 0.3s, ease-in-out; }
           header.sub #artistSocial i.twitter:hover {
-            background-color: #00aced; }
+            background-color: #00aced;
+            -webkit-transition: all, 0.3s, ease-in-out;
+            -moz-transition: all, 0.3s, ease-in-out;
+            transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.instagram {
           background: url("assets/images/admin/instagram.svg") no-repeat scroll center #00041e;
-          background-size: 50% 50%; }
+          background-size: 50% 50%;
+          -webkit-transition: all, 0.3s, ease-in-out;
+          -moz-transition: all, 0.3s, ease-in-out;
+          transition: all, 0.3s, ease-in-out; }
           header.sub #artistSocial i.instagram:hover {
-            background-color: #517fa4; }
+            background-color: #517fa4;
+            -webkit-transition: all, 0.3s, ease-in-out;
+            -moz-transition: all, 0.3s, ease-in-out;
+            transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.linkedin {
           background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #00041e;
-          background-size: 50% 50%; }
+          background-size: 50% 50%;
+          -webkit-transition: all, 0.3s, ease-in-out;
+          -moz-transition: all, 0.3s, ease-in-out;
+          transition: all, 0.3s, ease-in-out; }
           header.sub #artistSocial i.linkedin:hover {
-            background-color: #0077b5; }
+            background-color: #0077b5;
+            -webkit-transition: all, 0.3s, ease-in-out;
+            -moz-transition: all, 0.3s, ease-in-out;
+            transition: all, 0.3s, ease-in-out; }
   header #logo {
     display: block;
     margin-bottom: 5px;

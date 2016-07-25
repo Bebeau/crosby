@@ -151,8 +151,8 @@ header {
 			text-align: center;
 			text-transform: uppercase;
 			letter-spacing: 5px;
-			background: $blue;
-			color: $white;
+			color: $blue;
+			border: 2px solid $blue;
 			line-height: 40px;
 		}
 		hr {
@@ -172,29 +172,37 @@ header {
 				&.facebook {
 					background: url('assets/images/admin/facebook.svg') no-repeat scroll center $blue;
 					background-size: 50% 50%;
+					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
 						background-color: $facebook;
+						@include transition(all, 0.3s, ease-in-out);
 					}
 				}
 				&.twitter {
 					background: url('assets/images/admin/twitter.svg') no-repeat scroll center $blue;
 					background-size: 50% 50%;
+					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
 						background-color: $twitter;
+						@include transition(all, 0.3s, ease-in-out);
 					}
 				}
 				&.instagram {
 					background: url('assets/images/admin/instagram.svg') no-repeat scroll center $blue;
 					background-size: 50% 50%;
+					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
 						background-color: $instagram;
+						@include transition(all, 0.3s, ease-in-out);
 					}
 				}
 				&.linkedin {
 					background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $blue;
 					background-size: 50% 50%;
+					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
 						background-color: $linkedin;
+						@include transition(all, 0.3s, ease-in-out);
 					}
 				}
 			}

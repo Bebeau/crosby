@@ -321,24 +321,48 @@ function agent($post) {
     echo '<button class="button email-button">+ Add Email</button>';
 
 }
+function cmp($a, $b) {
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
+}
 // add image_type ordering
 function image_type_ordering($post) {
+    // get previous saved order
     $order = get_post_meta($post->ID, 'sub_nav_order', true);
-    var_dump($order);
-    $terms = get_terms( array(
+    // get active term count
+    $args = array(
         'taxonomy' => 'image_type',
         'hide_empty' => true
-    ) );
-    if($terms) {
+    );
+    $terms = get_terms( $args );
+    $args = array(
+        'taxonomy' => 'image_type',
+        'hide_empty' => true,
+        'orderby' => 'include',
+        'include' => $order
+    );
+    $savedTerms = get_terms( $args );
+    if($savedTerms) {
         echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
-        foreach ($terms as $term ) {
+        foreach ($savedTerms as $term ) {
             if(has_Images($term->slug) && $term->slug !== "featured") { ?>
                 <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
-                        <span class="bars"><i></i></span> <?php echo $term->name; ?>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
                     </td>
                 </tr>
            <?php }
+        }
+        foreach ($terms as $term ) {
+            if(!in_array($term->term_id, $order) && has_Images($term->slug) && $term->slug !== "featured") { ?>
+                 <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
+                    <td>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
+                    </td>
+                </tr>
+            <?php }
         }
         echo '</tbody></table>';
     }
@@ -349,8 +373,6 @@ add_action('wp_ajax_nopriv_setOrder', 'setProjectOrder');
 function setProjectOrder() {
     $order = str_replace( array( '[', ']','"' ),'', $_GET['order'] );
     $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
-    var_dump($order);
-    var_dump($postID);
     update_post_meta($postID, 'sub_nav_order', $order );
 }
 
@@ -392,6 +414,7 @@ function social($post) {
 /* When the post is saved, saves our custom data */
 add_action( 'save_post', 'dynamic_save_postdata' );
 function dynamic_save_postdata( $post_id ) {
+
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
         return;
 
