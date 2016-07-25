@@ -193,8 +193,7 @@ function commercials($post) {
 
     //get the saved meta as an arry
     $commercials = get_post_meta($post->ID,'commercials', true);
-    
-    $c = 0;
+
     echo '<h3>Upload Commercials</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign commercials to this portfolio.</p>';
     echo '<section id="Commercials">';
@@ -203,34 +202,25 @@ function commercials($post) {
     echo '</section>'; ?>
     <?php if ( !empty($commercials) ) {
         echo '<h3>Videos</h3>';
-        echo '<p>Below is a listing of commercials being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
-        echo '<section class="videoWrap">';
+        echo '<p>Below is a listing of commercials being displayed on the portfolio page. Drag and drop the thumbnails to order the videos or simply click the "x" to remove any video.</p>';
+        echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="commercials">';
             $c = 0;
             foreach( $commercials as $commercial ) {
-                if($commercial['type'] === "youtube") {
-             ?>
-                <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="commercials">
-                    <a href="https://www.youtube.com/watch?v=<?php echo $commercial['id']; ?>" target="_BLANK">
-                        <img src="https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg" alt="" />
-                    </a>
+                if($commercial['type'] === "youtube") { ?>
+                    <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $commercial['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $commercial['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
+                        <span class="button button-remove">X</span>
+                    </li>
+                <?php } elseif($commercial['type'] === "vimeo") {
+                    $imgid = $commercial['id'];
+                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+                    $thumb = $hash[0]['thumbnail_large'];
+                ?>
+                <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $commercial['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $commercial['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">
                     <span class="button button-remove">X</span>
-                </div>
-            <?php 
-            $c++; 
-            } elseif($commercial['type'] === "vimeo") {
-                $imgid = $commercial['id'];
-                $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
-                $thumb = $hash[0]['thumbnail_large'];
-            ?>
-                <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="commercials">
-                    <a href="https://www.vimeo.com/<?php echo $commercial['id']; ?>" target="_BLANK">
-                        <img src="<?php echo $thumb; ?>" alt="" />
-                    </a>
-                    <span class="button button-remove">X</span>
-                </div>
-           <?php }
-        }
-        echo '</section>';
+                </li>
+                <?php } $c++;
+            }
+        echo '</ul>';
     }
 }
 // music videos meta box
@@ -241,7 +231,6 @@ function music_videos($post) {
     //get the saved meta as an arry
     $music_videos = get_post_meta($post->ID,'music_videos', true);
     
-    $c = 0;
     echo '<h3>Upload Music Videos</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign Music Videos to this portfolio.</p>';
     echo '<section id="MusicVideos">';
@@ -250,36 +239,37 @@ function music_videos($post) {
     echo '</section>'; ?>
     <?php if ( !empty($music_videos) ) {
         echo '<h3>Videos</h3>';
-        echo '<p>Below is a listing of Music Videos being displayed on the portfolio page. Simply click the "x" to remove any video.</p>';
-        echo '<section class="videoWrap">';
+        echo '<p>Below is a listing of Music Videos being displayed on the portfolio page. Drag and drop the thumbnails to order the videos or simply click the "x" to remove any video.</p>';
+        echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="music_videos">';
             $c = 0;
             foreach( $music_videos as $video ) {
-                if($video['type'] === "youtube") {
-             ?>
-                <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="music_videos">
-                    <a href="https://www.youtube.com/watch?v=<?php echo $video['id']; ?>" target="_BLANK">
-                        <img src="https://i1.ytimg.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" alt="" />
-                    </a>
+                if($video['type'] === "youtube") { ?>
+                    <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $music_videos['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
+                        <span class="button button-remove">X</span>
+                    </li>
+                <?php } elseif($video['type'] === "vimeo") {
+                    $imgid = $video['id'];
+                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+                    $thumb = $hash[0]['thumbnail_large'];
+                ?>
+                <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $music_videos['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">
                     <span class="button button-remove">X</span>
-                </div>
-            <?php 
-            $c++; 
-            } elseif($video['type'] === "vimeo") {
-                $imgid = $video['id'];
-                $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
-                $thumb = $hash[0]['thumbnail_large'];
-            ?>
-                <div class="video" data-post="<?php echo $post->ID; ?>" data-key="<?php echo $c; ?>" data-type="music_videos">
-                    <a href="https://www.vimeo.com/<?php echo $video['id']; ?>" target="_BLANK">
-                        <img src="<?php echo $thumb; ?>" alt="" />
-                    </a>
-                    <span class="button button-remove">X</span>
-                </div>
-           <?php }
-        }
+                </li>
+                <?php } $c++;
+            }
         echo '</section>';
     }
 }
+// ajax response to save order
+add_action('wp_ajax_setVideoOrder', 'setVidOrder');
+add_action('wp_ajax_nopriv_setVideoOrder', 'setVidOrder');
+function setVidOrder() {
+    $order = str_replace( array( '[', ']','"' ),'', $_GET['order'] );
+    $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
+    $type = (isset($_GET['type'])) ? $_GET['type'] : 0;
+    update_post_meta($postID, $type, $order );
+}
+
 // add assign to producer option
 function agent($post) {
 
@@ -308,7 +298,7 @@ function agent($post) {
         echo "<p>There are no agents.</p>";
     }
     $emails = get_post_meta($post->ID,'cc_emails', true);
-    echo '<p>Add emails below to CC them in on contact inquiries through this artists portfolio page.</p>';
+    echo '<p>Add emails below to CC them in on contact inquiries.</p>';
     echo '<span class="emails">';
     if(!empty($emails)) {
         foreach($emails as $email) {
@@ -321,22 +311,17 @@ function agent($post) {
     echo '<button class="button email-button">+ Add Email</button>';
 
 }
-function cmp($a, $b) {
-    if ($a == $b) {
-        return 0;
-    }
-    return ($a < $b) ? -1 : 1;
-}
 // add image_type ordering
 function image_type_ordering($post) {
     // get previous saved order
     $order = get_post_meta($post->ID, 'sub_nav_order', true);
-    // get active term count
+    // get terms
     $args = array(
         'taxonomy' => 'image_type',
         'hide_empty' => true
     );
     $terms = get_terms( $args );
+    // get saved terms
     $args = array(
         'taxonomy' => 'image_type',
         'hide_empty' => true,
@@ -344,7 +329,7 @@ function image_type_ordering($post) {
         'include' => $order
     );
     $savedTerms = get_terms( $args );
-    if($savedTerms) {
+    if($savedTerms && $order) {
         echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
         foreach ($savedTerms as $term ) {
             if(has_Images($term->slug) && $term->slug !== "featured") { ?>
@@ -365,6 +350,18 @@ function image_type_ordering($post) {
             <?php }
         }
         echo '</tbody></table>';
+    } else {
+        echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
+        foreach ($terms as $term ) {
+            if(has_Images($term->slug) && $term->slug !== "featured") { ?>
+                 <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
+                    <td>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
+                    </td>
+                </tr>
+            <?php }
+        }
+        echo '</tbody></table>';
     }
 }
 // ajax response to save order
@@ -374,19 +371,6 @@ function setProjectOrder() {
     $order = str_replace( array( '[', ']','"' ),'', $_GET['order'] );
     $postID = (isset($_GET['postID'])) ? $_GET['postID'] : 0;
     update_post_meta($postID, 'sub_nav_order', $order );
-}
-
-// create custom plugin settings menu
-add_action('admin_menu', 'add_portfolio_ordering');
-function add_portfolio_ordering() {
-    add_submenu_page(
-        'edit.php?post_type=portfolios',
-        'Order',
-        'Order',
-        'manage_options',
-        'portfolio-order',
-        'portfolio_order_page' 
-    );
 }
 // ajax response to save download track
 add_action('wp_ajax_assignAgent', 'assignAgentEmail');
@@ -465,13 +449,13 @@ function dynamic_save_postdata( $post_id ) {
                     'id' => getVideoIdFromUrl($yt_new),
                     'type' => 'youtube'
                 );
-            $comms = $old;
+            $comms = array_merge($commercials, $old);
         } elseif($commercials && $vimeo_new) {
             $old[] = array(
                     'id' => getVideoIdFromUrl($vimeo_new),
                     'type' => 'vimeo'
                 );
-            $comms = $old;
+            $comms = array_merge($commercials, $old);
         } elseif($yt_new) {
             $commercials[] = array(
                     'id' => getVideoIdFromUrl($yt_new),
@@ -505,13 +489,13 @@ function dynamic_save_postdata( $post_id ) {
                     'id' => getVideoIdFromUrl($yt_newMusic),
                     'type' => 'youtube'
                 );
-            $videos = $oldVideos;
+            $videos = array_merge($musicVideos, $oldVideos);
         } elseif($musicVideos && $vimeo_newMusic) {
             $oldVideos[] = array(
                     'id' => getVideoIdFromUrl($vimeo_newMusic),
                     'type' => 'vimeo'
                 );
-            $videos = $oldVideos;
+            $videos = array_merge($musicVideos, $oldVideos);
         } elseif($yt_newMusic) {
             $commercials[] = array(
                     'id' => getVideoIdFromUrl($yt_newMusic),

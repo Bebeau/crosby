@@ -30,24 +30,41 @@
     width: 100px;
     display: inline-block;
     margin: 0 0 0 -100px; }
+#commercials li, #MusicVideos li {
+  margin: 0;
+  padding: 0; }
+#commercials .ui-state-highlight, #MusicVideos .ui-state-highlight {
+  border: 1px dashed black;
+  display: inline-block;
+  width: 300px;
+  height: 166px;
+  margin: 0; }
 
 .videoWrap {
   display: block;
   margin-top: 10px; }
   .videoWrap .video {
+    height: 168px;
     width: 300px;
-    height: auto;
     display: inline-block;
-    position: relative; }
-    .videoWrap .video img {
-      max-width: 100%;
-      height: auto; }
+    position: relative;
+    overflow: hidden; }
     .videoWrap .video .button-remove {
       position: absolute;
       top: 5px;
       right: 5px;
       color: red;
-      font-weight: bold; }
+      font-weight: bold;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none; }
 
 .assignedAgent {
   width: 100%; }

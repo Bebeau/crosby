@@ -6,7 +6,8 @@ var init = {
 		init.removeVideo();
 		init.onSelectChange();
 		init.lockPhotos();
-		init.subOrder();
+		init.subCatOrdering();
+		init.videoOrdering();
 	},
 	saveVideo: function(postID) {
 	    jQuery.ajax({
@@ -39,9 +40,9 @@ var init = {
 	    });
 	    jQuery(".button-remove").click(function(e){
             e.preventDefault();
-            var postID = jQuery(this).parent().attr("data-post");
+            var postID = jQuery(this).parent().parent().attr("data-post");
+            var video_type = jQuery(this).parent().parent().attr("data-type");
             var key = jQuery(this).parent().attr("data-key");
-            var video_type = jQuery(this).parent().attr("data-type");
             init.removeVideo(postID, key, video_type);
             jQuery(this).parent().remove();
         });
@@ -78,7 +79,7 @@ var init = {
 	        jQuery('select.attachment-filters [value="uploaded"]').attr( 'selected', true ).parent().trigger('change');
 	    });
     },
-    saveOrder: function(order, postID) {
+    saveCatOrder: function(order, postID) {
         jQuery.ajax({
             url: ajaxurl,
             type: "GET",
@@ -90,7 +91,7 @@ var init = {
             dataType: 'JSON'
         });
     },
-    subOrder: function() {
+    subCatOrdering: function() {
 		jQuery( "#sortable" ).sortable({
 			placeholder: "ui-state-highlight",
 			// Do callback function on jquery ui drop
@@ -100,10 +101,42 @@ var init = {
 					order.push(jQuery(this).attr("data-order"));
 				});
 				var postID = jQuery('#sortable').attr("data-post");
-				init.saveOrder(order, postID);
+				init.saveCatOrder(order, postID);
 			}
 		});
 		jQuery( "#sortable" ).disableSelection();
+    },
+    saveVideoOrder: function(order, type, postID) {
+        jQuery.ajax({
+            url: ajaxurl,
+            type: "GET",
+            data: {
+            	type: type,
+            	order : order,
+            	postID: postID,
+                action: 'setVideoOrder'
+            },
+            dataType: 'JSON'
+        });
+    },
+    videoOrdering: function() {
+		jQuery( ".videoSort" ).sortable({
+			placeholder: "ui-state-highlight",
+			// Do callback function on jquery ui drop
+			update: function( event, ui ) {
+				var order = [];
+				jQuery(".videoSort li").each(function() {
+					order.push({
+						id: jQuery(this).attr("data-order"),
+						type: jQuery(this).attr("data-video")
+					});
+				});
+				var postID = jQuery('.videoSort').attr("data-post");
+				var videoType = jQuery('.videoSort').attr("data-type");
+				init.saveVideoOrder(order, videoType, postID);
+			}
+		});
+		jQuery( ".videoSort" ).disableSelection();
     }
 };
 

@@ -44,25 +44,43 @@ $linkedin:	#0077b5;
 			margin: 0 0 0 -100px;
 		}
 	}
+	li {
+		margin: 0;
+		padding: 0;
+	}
+	.ui-state-highlight {
+		border: 1px dashed black;
+		display: inline-block;
+		width: 300px;
+		height: 166px;
+		margin: 0;
+	}
 }
 .videoWrap {
 	display: block;
 	margin-top: 10px;
 	.video {
+		height: 168px;
 		width: 300px;
-		height: auto;
 		display: inline-block;
 		position: relative;
-		img {
-			max-width: 100%;
-			height: auto;
-		}
+		overflow: hidden;
 		.button-remove {
 			position: absolute;
 			top: 5px;
 			right: 5px;
 			color: red;
 			font-weight: bold;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			-o-border-radius: 50%;
+			border-radius: 50%;
+			background: white;
+			border: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			-o-box-shadow: none;
+			box-shadow: none;
 		}
 	}
 }

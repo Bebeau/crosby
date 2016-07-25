@@ -38,9 +38,9 @@ if ( function_exists('register_sidebar') ) {
 }
 
 // Register Navigation Menu Areas
-add_action( 'INiT', 'register_my_menus' );
+add_action( 'after_setup_theme', 'register_my_menu' );
 function register_my_menu() {
-  register_nav_menu( 'primary', 'Primary Menu' );
+  register_nav_menu( 'primary', 'Main Menu' );
 }
 
 // remove WordPress admin menu items

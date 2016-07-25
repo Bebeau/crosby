@@ -1795,12 +1795,18 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1 ); }
   header.sub {
     position: fixed;
-    background: #ebebeb; }
+    background: #ebebeb;
+    width: 300px;
+    -webkit-transition: all, 1s, ease-in-out;
+    -moz-transition: all, 1s, ease-in-out;
+    transition: all, 1s, ease-in-out; }
     header.sub.shrink {
-      width: 200px;
-      -webkit-transition: all, 0.5s, ease-in-out;
-      -moz-transition: all, 0.5s, ease-in-out;
-      transition: all, 0.5s, ease-in-out; }
+      width: 250px;
+      -webkit-transition: all, 1s, ease-in-out;
+      -moz-transition: all, 1s, ease-in-out;
+      transition: all, 1s, ease-in-out; }
+      header.sub.shrink #logo {
+        width: 100%; }
     header.sub .menu li {
       color: #00041e; }
       header.sub .menu li ul li.active a {
@@ -1930,6 +1936,17 @@ header {
       -webkit-transition: all, 0.75s, ease-in-out;
       -moz-transition: all, 0.75s, ease-in-out;
       transition: all, 0.75s, ease-in-out; }
+      header .menu li a {
+        position: relative; }
+        header .menu li a:after {
+          content: "//";
+          display: inline-block;
+          font-weight: 100;
+          color: #ffffff;
+          padding-left: 5px;
+          font-size: 14pt; }
+        header .menu li a:hover {
+          cursor: default; }
       header .menu li .slash {
         font-weight: normal; }
       header .menu li.slideIn {
@@ -1954,11 +1971,14 @@ header {
             transition: all, 0.3s, ease-in-out;
             color: #ffffff; }
             header .menu li ul li a:hover {
+              cursor: pointer;
               font-weight: bold;
               color: #ffffff;
               -webkit-transition: all, 0.75s, ease-in-out;
               -moz-transition: all, 0.75s, ease-in-out;
               transition: all, 0.75s, ease-in-out; }
+            header .menu li ul li a:after {
+              display: none; }
           header .menu li ul li.slideIn {
             left: 0;
             opacity: 1;
@@ -2007,6 +2027,11 @@ header {
   -webkit-transition: all, 1s, ease-in-out;
   -moz-transition: all, 1s, ease-in-out;
   transition: all, 1s, ease-in-out; }
+  #singlePortfolio.shrink {
+    margin-left: 275px;
+    -webkit-transition: all, 1s, ease-in-out;
+    -moz-transition: all, 1s, ease-in-out;
+    transition: all, 1s, ease-in-out; }
   #singlePortfolio.slideIn {
     opacity: 1;
     top: 0;

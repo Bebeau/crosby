@@ -53,9 +53,18 @@
 			    		echo '<h3 class="termName">// Commercials</h3>';
 				    	foreach($commercials as $video) {
 					    	echo '<div class="col-sm-4 single">';
-						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-video="'.$video.'" style="background:url(https://i1.ytimg.com/vi/'.$video.'/hqdefault.jpg) no-repeat scroll center / cover;">';
+					    	if($video['type'] === "youtube") {
+						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="youtube" data-video="'.$video['id'].'" style="background:url(https://i1.ytimg.com/vi/'.$video['id'].'/hqdefault.jpg) no-repeat scroll center / cover;">';
 						    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
 						    	echo '</a>';
+						    } elseif($video['type'] === 'vimeo') {
+						    	$imgid = $video['id'];
+			                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+			                    $thumb = $hash[0]['thumbnail_large'];
+						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="vimeo" data-video="'.$video['id'].'" style="background:url('.$thumb.') no-repeat scroll center / cover;">';
+						    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
+						    	echo '</a>';
+						    }
 					    	echo '</div>';
 					    }
 					echo '</div>';
@@ -67,9 +76,18 @@
 			    		echo '<h3 class="termName">// Music Videos</h3>';
 				    	foreach($music_videos as $video) {
 					    	echo '<div class="col-sm-4 single">';
-					    		echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-video="'.$video.'" style="background:url(https://i1.ytimg.com/vi/'.$video.'/hqdefault.jpg) no-repeat scroll center / cover;">';
-					    			echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
-					    		echo '</a>';
+					    		if($video['type'] === "youtube") {
+						    		echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="youtube" data-video="'.$video['id'].'" style="background:url(https://i1.ytimg.com/vi/'.$video['id'].'/hqdefault.jpg) no-repeat scroll center / cover;">';
+							    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
+							    	echo '</a>';
+							    } elseif($video['type'] === 'vimeo') {
+							    	$imgid = $video['id'];
+				                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+				                    $thumb = $hash[0]['thumbnail_large'];
+							    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="vimeo" data-video="'.$video['id'].'" style="background:url('.$thumb.') no-repeat scroll center / cover;">';
+							    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
+							    	echo '</a>';
+							    }
 					    	echo '</div>';
 					    }
 					echo '</div>';
@@ -87,7 +105,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<i class="fa fa-times-circle" data-dismiss="modal"></i>
-					<iframe class="videoFrame" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+					<iframe class="videoFrame" width="853" height="480" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>

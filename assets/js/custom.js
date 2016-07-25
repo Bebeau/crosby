@@ -10,25 +10,15 @@ var init = {
 		init.activeTab();
 		init.navSlideIn();
 		init.linkPatch();
-		init.shrinkLogo();
 		init.portfolioIn();
 		// init.pageAjax();
+		// init.stopClick();
 	},
 	shrinkLogo: function() {
-		// jQuery(window).scroll(function() {    
-		//     var scroll = jQuery(window).scrollTop();    
-		//     if (scroll >= 50) {
-		//         jQuery("#logo").addClass("down");
-		//     } else {
-		//     	jQuery("#logo").removeClass("down");
-		//     }
-		// });
-		
-		// setTimeout(
-		// 	function(){
-		// 		jQuery("header.sub").addClass("shrink");
-		// 	}, 1000
-		// );
+		if(jQuery('header').hasClass("sub") && !isMobile) {
+			jQuery('header').addClass("shrink");
+			jQuery('#singlePortfolio').addClass("shrink");
+		}
 	},
 	loaded: function() {
 		setTimeout(
@@ -69,9 +59,15 @@ var init = {
 			e.preventDefault();
 
 			var videoID = jQuery(this).attr("data-video");
-			var videoURL = 'https://www.youtube.com/embed/'+videoID+'?autoplay=1';
-
-			jQuery('.videoFrame').attr("src", videoURL);
+			var type = jQuery(this).attr("data-type");
+			
+			if(type === "youtube") {
+				var yt_URL = 'https://www.youtube.com/embed/'+videoID+'?autoplay=1';
+				jQuery('.videoFrame').attr("src", yt_URL);
+			} else {
+				var vimeo_URL = 'https://player.vimeo.com/video/'+videoID+'?autoplay=1';
+				jQuery('.videoFrame').attr("src", vimeo_URL);
+			}
 
 			jQuery('#videomodal').on('hidden.bs.modal', function() {
 		    	jQuery('.videoFrame').removeAttr('src');
@@ -122,9 +118,9 @@ var init = {
 	},
 	linkPatch: function() {
 		jQuery('header.home .menu ul li a').click(function(e){
-			init.navSlideOut();
 			e.preventDefault();
-			var url = jQuery(this).attr("data-link");
+			init.navSlideOut();
+			var url = jQuery(this).attr("href");
 			setTimeout(
 				function(){
 					jQuery(location).attr('href',url);
@@ -145,7 +141,13 @@ var init = {
 	    				jQuery(this).addClass("slideIn").dequeue();
 	    			});
 				});
+
 			}, 500
+		);
+		setTimeout(
+			function(){
+				init.shrinkLogo();
+			}, 1500
 		);
 	},
 	navSlideOut: function() {

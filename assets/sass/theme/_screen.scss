@@ -119,9 +119,14 @@ header {
 	&.sub {
 		position: fixed;
 		background: #ebebeb;
+		width: 300px;
+		@include transition(all, 1s, ease-in-out);
 		&.shrink {
-			width: 200px;
-			@include transition(all, 0.5s, ease-in-out);
+			width: 250px;
+			@include transition(all, 1s, ease-in-out);
+			#logo {
+				width: 100%;
+			}
 		}
 		.menu {
 			li {
@@ -247,6 +252,20 @@ header {
 			opacity: 0;
 			color: $white;
 			@include transition(all, 0.75s, ease-in-out);
+			a {
+				position: relative;
+				&:after {
+					content: "//";
+					display: inline-block;
+					font-weight: 100;
+					color: $white;
+					padding-left: 5px;
+					font-size: 14pt;
+				}
+				&:hover {
+					cursor: default;
+				}
+			}
 			.slash {
 				font-weight: normal;
 			}
@@ -267,9 +286,13 @@ header {
 						@include transition(all, 0.3s, ease-in-out);
 						color: $white;
 						&:hover {
+							cursor: pointer;
 							font-weight: bold;
 							color: $white;
 							@include transition(all, 0.75s, ease-in-out);
+						}
+						&:after { 
+							display: none;
 						}
 					}
 					&.slideIn {
@@ -317,6 +340,10 @@ header {
 	padding-right: 25px;
 	box-sizing: border-box;
 	@include transition(all, 1s, ease-in-out);
+	&.shrink {
+		margin-left: 275px;
+		@include transition(all, 1s, ease-in-out);
+	}
 	&.slideIn {
 		opacity: 1;
 		top: 0;

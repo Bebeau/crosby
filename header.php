@@ -105,40 +105,27 @@
 <?php if(is_front_page()) {
 	echo '<header class="home">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
-			$args = array(
-			    'hierarchical'	=> 1,
-			    'orderby'       => 'id',
-			    'order'         => 'ASC'
-			); 
-			$cats = get_categories($args);
-			echo '<ul class="menu">';
-				foreach($cats as $cat) {
-					$catID = $cat->term_id;
-					$catLink = get_category_link($catID);
-					echo '<li>'.$cat->name.' <span class="slash">//</span>';
-						$args = array(
-							'post_type' => 'portfolios',
-							'orderby'	=> 'title',
-							'order' 	=> 'ASC',
-							'cat'		=> array($catID)
-						);
-						$people = get_posts($args);
-					    foreach($people as $person) {
-					        $featured = get_featured($person->ID);
-					        $link = $person->guid;
-					        $title = get_the_title($person->ID);
-				         ?>
-					    	<ul>
-					    		<li><a class="person" href="#" data-link="<?php echo $link;?>" data-image="<?php echo $featured; ?>"><?php echo $title; ?></a></li>
-					    	</ul>
-					   <?php }
-					echo '</li>';
-				}
-				echo '<li>Agency //<ul>';
-					echo '<li><a href="#about" data-toggle="modal">About</a></li>';
-					echo '<li><a href="#contact" data-toggle="modal">Contact</a></li>';
-				echo '</ul></li>';
-			echo '</ul>';
+
+		$defaults = array(
+			'theme_location'  => 'primary',
+			'menu'            => 'Primary Menu',
+			'container'       => 'div',
+			'container_class' => '',
+			'container_id'    => '',
+			'menu_class'      => 'menu',
+			'menu_id'         => '',
+			'echo'            => true,
+			'fallback_cb'     => 'wp_page_menu',
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'items_wrap'      => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>',
+			'depth'           => 0,
+			'walker'          => ''
+		);
+		wp_nav_menu( $defaults );
+		
 	echo '</header>'; ?>
 
 <?php }
