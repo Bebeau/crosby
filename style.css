@@ -2238,8 +2238,16 @@ header {
 #singlePage {
   position: relative;
   z-index: 10; }
+  #singlePage.shrink {
+    margin-left: 275px;
+    -webkit-transition: all, 1s, ease-in-out;
+    -moz-transition: all, 1s, ease-in-out;
+    transition: all, 1s, ease-in-out; }
   #singlePage p {
     font-size: 14pt; }
+  #singlePage a {
+    color: #00041e;
+    font-weight: bold; }
 
 #bio {
   font-size: 14pt;

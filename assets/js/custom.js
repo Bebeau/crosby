@@ -18,6 +18,7 @@ var init = {
 		if(jQuery('header').hasClass("sub") && !isMobile) {
 			jQuery('header').addClass("shrink");
 			jQuery('#singlePortfolio').addClass("shrink");
+			jQuery('#singlePage').addClass("shrink");
 		}
 	},
 	loaded: function() {
@@ -60,7 +61,7 @@ var init = {
 
 			var videoID = jQuery(this).attr("data-video");
 			var type = jQuery(this).attr("data-type");
-			
+
 			if(type === "youtube") {
 				var yt_URL = 'https://www.youtube.com/embed/'+videoID+'?autoplay=1';
 				jQuery('.videoFrame').attr("src", yt_URL);

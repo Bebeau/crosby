@@ -517,8 +517,16 @@ header {
 #singlePage {
 	position: relative;
 	z-index: 10;
+	&.shrink {
+		margin-left: 275px;
+		@include transition(all, 1s, ease-in-out);
+	}
 	p {
 		font-size: 14pt;
+	}
+	a {
+		color: $blue;
+		font-weight: bold;
 	}
 }
 #bio {
