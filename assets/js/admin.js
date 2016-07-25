@@ -6,8 +6,19 @@ var init = {
 		init.removeVideo();
 		init.onSelectChange();
 		init.lockPhotos();
-		init.subCatOrdering();
-		init.videoOrdering();
+		if(init.getURLvar('post_type') === "portfolios") {
+			init.subCatOrdering();
+			init.videoOrdering();
+		}
+	},
+	getURLvar: function(variable) {
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+		       var pair = vars[i].split("=");
+		       if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
 	},
 	saveVideo: function(postID) {
 	    jQuery.ajax({
@@ -92,7 +103,7 @@ var init = {
         });
     },
     subCatOrdering: function() {
-		jQuery( "#sortable" ).sortable({
+    	jQuery( "#sortable" ).sortable({
 			placeholder: "ui-state-highlight",
 			// Do callback function on jquery ui drop
 			update: function( event, ui ) {
@@ -120,7 +131,7 @@ var init = {
         });
     },
     videoOrdering: function() {
-		jQuery( ".videoSort" ).sortable({
+    	jQuery( ".videoSort" ).sortable({
 			placeholder: "ui-state-highlight",
 			// Do callback function on jquery ui drop
 			update: function( event, ui ) {

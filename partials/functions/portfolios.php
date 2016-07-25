@@ -60,7 +60,7 @@ add_action( 'admin_enqueue_scripts', 'load_portfolios_admin' );
 function load_portfolios_admin() {
     global $typenow;
     if( $typenow == 'portfolios' ) {
-        wp_enqueue_style( 'recipe-styles', get_bloginfo( 'template_url' ) . '/assets/css/portfolios.css', false, '1.0.0' );
+        wp_enqueue_style( 'recipe-styles', get_template_directory_uri() . '/assets/css/portfolios.css', false, '1.0.0' );
         wp_localize_script( 'my-ajax-request', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_script('jquery_ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js', array('jquery'), null, true);
     }
