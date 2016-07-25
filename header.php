@@ -125,7 +125,7 @@
 			'walker'          => ''
 		);
 		wp_nav_menu( $defaults );
-		
+
 	echo '</header>'; ?>
 
 <?php }
@@ -145,7 +145,9 @@ if(is_singular()) {
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<ul class="menu"><li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';
-			echo '<li><a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio" class="info collapsed">Bio</a></li>';
+			if(is_single()) {
+				echo '<li><a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio" class="info collapsed">Bio</a></li>';
+			}
 			$args = array(
 				'post_parent' => $post->ID,
 			    'taxonomy' => 'image_type',
