@@ -195,14 +195,12 @@ function commercials($post) {
     $commercials = get_post_meta($post->ID,'commercials', true);
 
     echo '<h3>Upload Commercials</h3>';
-    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign commercials to this portfolio.</p>';
+    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and click "Add Video" to save. Once saved, videos will display below. Drag and drop the thumbnails to rearrange the order, and simply click the "x" to remove the video.</p>';
     echo '<section id="Commercials">';
         echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_commercial" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
         echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_commercial" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
     <?php if ( !empty($commercials) ) {
-        echo '<h3>Videos</h3>';
-        echo '<p>Below is a listing of commercials being displayed on the portfolio page. Drag and drop the thumbnails to order the videos or simply click the "x" to remove any video.</p>';
         echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="commercials">';
             $c = 0;
             foreach( $commercials as $commercial ) {
@@ -232,14 +230,12 @@ function music_videos($post) {
     $music_videos = get_post_meta($post->ID,'music_videos', true);
     
     echo '<h3>Upload Music Videos</h3>';
-    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and save/update to assign Music Videos to this portfolio.</p>';
+    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and click "Add Video" to save. Once saved, videos will display below. Drag and drop the thumbnails to rearrange the order, and simply click the "x" to remove the video.</p>';
     echo '<section id="MusicVideos">';
         echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_musicVideo" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
         echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_musicVideo" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
     <?php if ( !empty($music_videos) ) {
-        echo '<h3>Videos</h3>';
-        echo '<p>Below is a listing of Music Videos being displayed on the portfolio page. Drag and drop the thumbnails to order the videos or simply click the "x" to remove any video.</p>';
         echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="music_videos">';
             $c = 0;
             foreach( $music_videos as $video ) {
@@ -556,7 +552,7 @@ function removeYouTubeVideo() {
 
     $videos = get_post_meta($postID, $video_type, true );
     unset($videos[$key]);
-
+    
     update_post_meta($postID, $video_type, $videos);
 }
 // check to see if image_type exists

@@ -6,10 +6,8 @@ var init = {
 		init.removeVideo();
 		init.onSelectChange();
 		init.lockPhotos();
-		if(init.getURLvar('post_type') === "portfolios") {
-			init.subCatOrdering();
-			init.videoOrdering();
-		}
+		init.subCatOrdering();
+		init.videoOrdering();
 	},
 	getURLvar: function(variable) {
 		var query = window.location.search.substring(1);
