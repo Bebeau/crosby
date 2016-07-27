@@ -1,36 +1,41 @@
 @media (max-width: 768px) {
 	h1 {
-		font-size: 18pt;
+		font-size: 16pt;
 		margin: 0;
 		text-align: center;
+		line-height: 40px;
+		white-space: nowrap;
+	}
+	h3 {
+		font-size: 10pt;
 	}
 	header {
 		position: relative;
 		z-index: 11;
 		overflow: scroll;
 		width: 100%;
+		min-height: auto;
 		.logoWrap {
 			width: auto;
 			display: block;
 			margin: 0 auto;
 		}
 		.logo-sub {
-			background: $blue;
 			margin-bottom: 0;
 		}
 		&.sub {
 			position: relative;
 			height: auto;
+			width: auto;
 			overflow: visible;
 			background: none;
 			text-align: center;
 		}
 		.dropdown {
-			border: 1px solid $white;
-			border-top: none;
-			color: $white;
-			width: 250px;
-			margin: 0 auto;
+			border: 2px solid $lightblue;
+			color: $lightblue;
+			width: 283px;
+			margin: 15px auto 0;
 			position: relative;
 			top: -3px;
 			button {
@@ -52,14 +57,16 @@
 			margin: 0;
 			padding: 0;
 			width: 101%;
-			background: $white;
-			border: 1px solid $white;
+			background: $lightblue;
+			border: 1px solid $lightblue;
 			margin: 0 -1px;
 			li {
 				a {
 					font-size: 14pt;
-					color: $blue;
-					text-transform: capitalize;
+					color: $white;
+					text-transform: uppercase;
+					padding: 0 10px;
+					line-height: 35px;
 				}
 			}
 		}
@@ -78,7 +85,7 @@
 		}
 	}
 	#singlePortfolio {
-		margin: 0;
+		margin: 0 0 15px;
 		padding: 0 15px;
 		.pane {
 			overflow: hidden;
@@ -102,14 +109,27 @@
 				padding: 0;
 			}
 			.col-sm-8 {
-				padding: 15px;
+				padding: 15px 0;
 			}
 		}
 		.single {
-			padding: 0 15px;
+			padding: 0;
 			margin: 1px 0;
 			.singlevideo {
 				height: 160px;
+			}
+		}
+		.info {
+			.plus {
+				top: -1px;
+				margin-right: 5px;
+				width: 15px;
+				height: 15px;
+				&:after {
+				}
+				&:before {
+					height: 15px;
+				}
 			}
 		}
 	}
