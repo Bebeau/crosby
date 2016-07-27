@@ -2006,6 +2006,13 @@ header {
               -webkit-transition: all, 0.3s, ease-in-out;
               -moz-transition: all, 0.3s, ease-in-out;
               transition: all, 0.3s, ease-in-out; }
+  header .legal {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    font-size: 12pt;
+    color: #999;
+    font-weight: lighter; }
 
 .tab-content {
   position: relative;
@@ -2312,7 +2319,7 @@ header {
     top: -15px;
     right: -15px;
     color: #ffffff;
-    background: #00041e;
+    background: #000b51;
     font-size: 24pt;
     width: 35px;
     height: 35px;

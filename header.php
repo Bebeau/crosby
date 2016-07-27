@@ -176,11 +176,7 @@ if(is_singular()) {
 		echo '</li>';
 		echo '</ul>';
 
-		$agentID = get_post_meta($post->ID, 'agentID', true);
-
-		if(!empty($agentID)) {
-			echo '<hr>';
-		}
+		echo '<hr>';
 
 		$fb_url = get_post_meta($post->ID, 'artist_fb_url', true);
 		$ig_url = get_post_meta($post->ID, 'artist_ig_url', true);
@@ -203,6 +199,8 @@ if(is_singular()) {
 				}
 			echo '</div>';
 		}
+
+		$agentID = get_post_meta($post->ID, 'agentID', true);
 		
 		if(!empty($agentID)) {
 			$userInfo = get_userdata($agentID);
@@ -216,6 +214,7 @@ if(is_singular()) {
 				echo '<a class="contact-btn" href="mailto:'.$agentEmail.'?&subject='.get_the_title().'- Website Inquiry">Contact Agent</a>';
 			}
 		}
+		echo '<span class="legal">&copy; '.date("Y").' '.get_bloginfo("name").' <br />All Rights Reserved.</span>';
 
 	echo '</header>';
 
