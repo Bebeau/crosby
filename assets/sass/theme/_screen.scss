@@ -1,6 +1,7 @@
 $white: #ffffff;
 $black: #000000;
 $blue: #00041e;
+$lightblue: lighten($blue, 10%);
 
 $youtube: 	#bb0000;
 $vimeo: 	#1ab7ea;
@@ -43,6 +44,8 @@ body,html{
 body {
 	position: relative;
 	font-family: 'Neutra';
+	overflow: scroll;
+	height: 100%;
 	&.page {
 		.dropdown {
 			display: none;
@@ -63,7 +66,7 @@ a {
 h1 {
 	position: relative;
     margin: 20px auto 0;
-    color: $blue;
+    color: $lightblue;
     font-size: 48px;
     line-height: 62px;
     font-weight: 600;
@@ -81,7 +84,7 @@ img {
 }
 p {
 	margin: 0 0 25px;
-	color: $blue;
+	color: $lightblue;
 	font-family: 'Neutra';
 }
 .home_bg {
@@ -103,9 +106,9 @@ header {
 	display: inline-block;
 	padding: 15px;
 	font-family: "Neutra", sans-serif;
-	height: 100vh;
-	position: fixed;
-	overflow-y: scroll;
+	position: relative;
+	overflow: hidden;
+	min-height: 100vh;
 	z-index: 2;
 	box-sizing: border-box;
 	background: $blue;
@@ -130,21 +133,29 @@ header {
 		}
 		.menu {
 			li {
-				color: $blue;
+				color: $lightblue;
+				&.cat_title {
+					margin-top: 15px;
+					font-size: 10pt;
+					color: #999;
+					font-weight: lighter;
+					letter-spacing: 2px;
+					line-height: normal;
+				}
 				ul {
 					li {
 						&.active {
 							a {
-								color: $blue;
+								color: $lightblue;
 								&:hover {
-									color: $blue;
+									color: $lightblue;
 								}
 							}
 						}
 						a {
-							color: $blue;
+							color: $lightblue;
 							&:hover {
-								color: $blue;
+								color: $lightblue;
 							}
 						}
 					}
@@ -156,8 +167,8 @@ header {
 			text-align: center;
 			text-transform: uppercase;
 			letter-spacing: 3px;
-			color: $blue;
-			border: 2px solid $blue;
+			color: $lightblue;
+			border: 2px solid $lightblue;
 			line-height: 40px;
 		}
 		hr {
@@ -175,7 +186,7 @@ header {
 				@include border-bottom-radius(50%);
 				margin: 0 5px;
 				&.facebook {
-					background: url('assets/images/admin/facebook.svg') no-repeat scroll center $blue;
+					background: url('assets/images/admin/facebook.svg') no-repeat scroll center $lightblue;
 					background-size: 50% 50%;
 					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
@@ -184,7 +195,7 @@ header {
 					}
 				}
 				&.twitter {
-					background: url('assets/images/admin/twitter.svg') no-repeat scroll center $blue;
+					background: url('assets/images/admin/twitter.svg') no-repeat scroll center $lightblue;
 					background-size: 50% 50%;
 					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
@@ -193,7 +204,7 @@ header {
 					}
 				}
 				&.instagram {
-					background: url('assets/images/admin/instagram.svg') no-repeat scroll center $blue;
+					background: url('assets/images/admin/instagram.svg') no-repeat scroll center $lightblue;
 					background-size: 50% 50%;
 					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
@@ -202,7 +213,7 @@ header {
 					}
 				}
 				&.linkedin {
-					background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $blue;
+					background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $lightblue;
 					background-size: 50% 50%;
 					@include transition(all, 0.3s, ease-in-out);
 					&:hover {
@@ -260,7 +271,8 @@ header {
 					font-weight: 100;
 					color: $white;
 					padding-left: 5px;
-					font-size: 14pt;
+					font-size: 12pt;
+					position: relative;
 				}
 				&:hover {
 					cursor: default;
@@ -355,7 +367,7 @@ header {
 			width: 25px;
 			height: 25px;
 			display: inline-block;
-			top: -2px;
+			top: -4px;
 			margin: 0 15px 0 0;
 			&:after {
 				content:"";
@@ -363,7 +375,7 @@ header {
 				top: 50%;
 				width: 100%;
 				height: 5px;
-				background: $blue;
+				background: $lightblue;
 				margin: -2.5px 0 0 0;
 			}
 			&:before {
@@ -372,7 +384,7 @@ header {
 				left: 50%;
 				height: 25px;
 				width: 5px;
-				background: $blue;
+				background: $lightblue;
 				margin: 0 0 0 -2.5px;
 			}
 			@include transform(rotate(45deg));
@@ -427,7 +439,7 @@ header {
 		}
 	}
 	.playwrap {
-		background: $blue;
+		background: $lightblue;
 		position: absolute;
 		top: 50%;
 		left: 50%;

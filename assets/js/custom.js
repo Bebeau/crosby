@@ -105,11 +105,15 @@ var init = {
 				jQuery('.tab-content').removeClass("in");
 				setTimeout(
 					function(){
+						jQuery('#bio').collapse('hide');
 						jQuery('.pane').removeClass("active");
 						jQuery(tab).addClass("active");
-						jQuery('#bio').collapse('hide');
-						jQuery('.tab-content').addClass("in");
 					}, 500
+				);
+				setTimeout(
+					function(){
+						jQuery('.tab-content').addClass("in");
+					}, 800
 				);
 			}
 		});

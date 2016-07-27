@@ -1724,7 +1724,9 @@ body, html {
 
 body {
   position: relative;
-  font-family: 'Neutra'; }
+  font-family: 'Neutra';
+  overflow: scroll;
+  height: 100%; }
   body.page .dropdown {
     display: none; }
   body.home {
@@ -1740,7 +1742,7 @@ a {
 h1 {
   position: relative;
   margin: 20px auto 0;
-  color: #00041e;
+  color: #000b51;
   font-size: 48px;
   line-height: 62px;
   font-weight: 600;
@@ -1758,7 +1760,7 @@ img {
 
 p {
   margin: 0 0 25px;
-  color: #00041e;
+  color: #000b51;
   font-family: 'Neutra'; }
 
 .home_bg {
@@ -1780,9 +1782,9 @@ header {
   display: inline-block;
   padding: 15px;
   font-family: "Neutra", sans-serif;
-  height: 100vh;
-  position: fixed;
-  overflow-y: scroll;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
   z-index: 2;
   box-sizing: border-box;
   background: #00041e;
@@ -1808,22 +1810,29 @@ header {
       header.sub.shrink #logo {
         width: 100%; }
     header.sub .menu li {
-      color: #00041e; }
+      color: #000b51; }
+      header.sub .menu li.cat_title {
+        margin-top: 15px;
+        font-size: 10pt;
+        color: #999;
+        font-weight: lighter;
+        letter-spacing: 2px;
+        line-height: normal; }
       header.sub .menu li ul li.active a {
-        color: #00041e; }
+        color: #000b51; }
         header.sub .menu li ul li.active a:hover {
-          color: #00041e; }
+          color: #000b51; }
       header.sub .menu li ul li a {
-        color: #00041e; }
+        color: #000b51; }
         header.sub .menu li ul li a:hover {
-          color: #00041e; }
+          color: #000b51; }
     header.sub .contact-btn {
       display: block;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #00041e;
-      border: 2px solid #00041e;
+      color: #000b51;
+      border: 2px solid #000b51;
       line-height: 40px; }
     header.sub hr {
       border-top: 1px solid #d9d9d9; }
@@ -1841,7 +1850,7 @@ header {
         border-bottom-right-radius: 50%;
         margin: 0 5px; }
         header.sub #artistSocial i.facebook {
-          background: url("assets/images/admin/facebook.svg") no-repeat scroll center #00041e;
+          background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000b51;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1852,7 +1861,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.twitter {
-          background: url("assets/images/admin/twitter.svg") no-repeat scroll center #00041e;
+          background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000b51;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1863,7 +1872,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.instagram {
-          background: url("assets/images/admin/instagram.svg") no-repeat scroll center #00041e;
+          background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000b51;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1874,7 +1883,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.linkedin {
-          background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #00041e;
+          background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000b51;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1944,7 +1953,8 @@ header {
           font-weight: 100;
           color: #ffffff;
           padding-left: 5px;
-          font-size: 14pt; }
+          font-size: 12pt;
+          position: relative; }
         header .menu li a:hover {
           cursor: default; }
       header .menu li .slash {
@@ -2043,7 +2053,7 @@ header {
     width: 25px;
     height: 25px;
     display: inline-block;
-    top: -2px;
+    top: -4px;
     margin: 0 15px 0 0;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -2059,7 +2069,7 @@ header {
       top: 50%;
       width: 100%;
       height: 5px;
-      background: #00041e;
+      background: #000b51;
       margin: -2.5px 0 0 0; }
     #singlePortfolio .info .plus:before {
       content: "";
@@ -2067,7 +2077,7 @@ header {
       left: 50%;
       height: 25px;
       width: 5px;
-      background: #00041e;
+      background: #000b51;
       margin: 0 0 0 -2.5px; }
   #singlePortfolio .info.collapsed .plus {
     -webkit-transform: rotate(0deg);
@@ -2118,7 +2128,7 @@ header {
         width: 100% !important;
         height: auto !important; }
   #singlePortfolio .playwrap {
-    background: #00041e;
+    background: #000b51;
     position: absolute;
     top: 50%;
     left: 50%;

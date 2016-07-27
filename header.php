@@ -143,7 +143,12 @@ if(is_singular()) {
 
 	echo '<header class="sub hidden-xs">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
-		echo '<ul class="menu"><li>'.get_the_title().' <span class="slash">//</span>';
+		echo '<ul class="menu">';
+		$category = get_the_category();
+		if($category) {
+			echo '<li class="cat_title">'.$category[0]->name.'</li>';
+		}
+		echo '<li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';
 			if(is_single()) {
 				echo '<li><a role="button" data-toggle="collapse" href="#bio" aria-expanded="false" aria-controls="bio" class="info collapsed">Bio</a></li>';
