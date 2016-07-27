@@ -493,17 +493,17 @@ function dynamic_save_postdata( $post_id ) {
                 );
             $videos = array_merge($musicVideos, $oldVideos);
         } elseif($yt_newMusic) {
-            $commercials[] = array(
+            $musicvideos[] = array(
                     'id' => getVideoIdFromUrl($yt_newMusic),
                     'type' => 'youtube'
                 );
-            $videos = $commercials;
+            $videos = $musicvideos;
         } elseif($vimeo_newMusic) {
-            $commercials[] = array(
+            $musicvideos[] = array(
                     'id' => getVideoIdFromUrl($vimeo_newMusic),
                     'type' => 'vimeo'
                 );
-            $videos = $commercials;
+            $videos = $musicvideos;
         }
 
         update_post_meta($post_id,'music_videos',$videos);
