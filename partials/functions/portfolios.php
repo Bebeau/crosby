@@ -240,7 +240,7 @@ function music_videos($post) {
             $c = 0;
             foreach( $music_videos as $video ) {
                 if($video['type'] === "youtube") { ?>
-                    <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $music_videos['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
+                    <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $video['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
                         <span class="button button-remove">X</span>
                     </li>
                 <?php } elseif($video['type'] === "vimeo") {
@@ -248,7 +248,7 @@ function music_videos($post) {
                     $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
                     $thumb = $hash[0]['thumbnail_large'];
                 ?>
-                <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $music_videos['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">
+                <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $video['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">
                     <span class="button button-remove">X</span>
                 </li>
                 <?php } $c++;
