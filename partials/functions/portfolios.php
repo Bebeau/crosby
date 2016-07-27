@@ -469,6 +469,8 @@ function dynamic_save_postdata( $post_id ) {
         update_post_meta($post_id,'commercials',$comms);
     }
 
+    update_post_meta($post_id,'music_videos',"");
+
     // check for music video nonce
     if ( !isset( $_POST['music_videos_noncename'] ) || !wp_verify_nonce( $_POST['music_videos_noncename'], 'music_videos' ) )
         return;
