@@ -144,7 +144,7 @@ if(is_singular()) {
 		echo '<ul class="menu">';
 		$category = get_the_category();
 		if($category) {
-			echo '<li class="cat_title">'.$category[0]->name.'</li>';
+			echo '<li class="cat_title">'.$category[0]->name.' //</li>';
 		}
 		echo '<li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';

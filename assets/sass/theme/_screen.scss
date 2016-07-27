@@ -143,7 +143,9 @@ header {
 					line-height: normal;
 				}
 				ul {
+					margin: 10px 0 5px;
 					li {
+						line-height: normal;
 						&.active {
 							a {
 								color: $lightblue;
@@ -153,6 +155,7 @@ header {
 							}
 						}
 						a {
+							line-height: normal;
 							color: $lightblue;
 							&:hover {
 								color: $lightblue;
