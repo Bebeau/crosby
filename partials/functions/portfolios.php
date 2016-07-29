@@ -645,4 +645,32 @@ function add_feature_image( $atts, $item, $args ) {
     return $atts;
 }
 
+add_filter('parse_query', 'media_posts_filter');
+add_action('restrict_manage_posts', 'artist_dropdown_filter');
+function media_posts_filter($wp_query) {
+
+    if (is_admin() && isset($_GET['post_id']) && $_GET['post_id'] != '') {
+        $original_query = $wp_query;
+        $wp_query->set('post_parent', $_GET['post_id']);
+        $wp_query = $original_query;
+        wp_reset_postdata();
+    }
+
+}
+function artist_dropdown_filter() {
+
+    global $wpdb;
+    $get_posts = $wpdb->get_results("SELECT ID, post_title FROM $wpdb->posts WHERE $wpdb->posts.post_type IN ('portfolios', 'individual', 'download') ORDER BY $wpdb->posts.post_title ASC");
+    echo '<select name="post_id">';
+    echo '<option value="">Filter By Artist</option>';
+
+    $current   = isset($_GET['post_id']) ? $_GET['post_id'] : '';
+
+    foreach($get_posts as $get_post) {
+        $select = null;
+        if($current == $get_post->ID) { $select = ' selected="selected"'; }
+        echo '<option value="' . $get_post->ID . '" ' . $select . '>' . $get_post->post_title . '</option>';
+    }
+}
+
 ?>
