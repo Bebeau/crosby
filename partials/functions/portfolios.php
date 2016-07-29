@@ -49,11 +49,11 @@ function add_phone( $contactmethods ) {
     return $contactmethods;
 }
 // hide website field
+add_action( 'admin_head-user-edit.php', 'remove_website_input' );
+add_action( 'admin_head-profile.php',   'remove_website_input' );
 function remove_website_input() {
     echo '<style>tr.user-url-wrap{ display: none; }</style>';
 }
-add_action( 'admin_head-user-edit.php', 'remove_website_input' );
-add_action( 'admin_head-profile.php',   'remove_website_input' );
 
 // Add admin styles for portfolios
 add_action( 'admin_enqueue_scripts', 'load_portfolios_admin' );
@@ -324,14 +324,14 @@ function image_type_ordering($post) {
         'orderby' => 'include',
         'include' => $order
     );
-    $savedTerms = get_terms( $args );
+    $savedTerms = get_terms( $args);
     if($savedTerms && $order) {
         echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
         foreach ($savedTerms as $term ) {
             if(has_Images($term->slug) && $term->slug !== "featured") { ?>
                 <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
-                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?>
                     </td>
                 </tr>
            <?php }
@@ -340,7 +340,7 @@ function image_type_ordering($post) {
             if(!in_array($term->term_id, $order) && has_Images($term->slug) && $term->slug !== "featured") { ?>
                  <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
-                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?>
                     </td>
                 </tr>
             <?php }
@@ -352,7 +352,7 @@ function image_type_ordering($post) {
             if(has_Images($term->slug) && $term->slug !== "featured") { ?>
                  <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
-                        <span class="bars"><i></i></span> <?php echo $term->name; ?> <?php echo '('.$term->count.')'; ?>
+                        <span class="bars"><i></i></span> <?php echo $term->name; ?>
                     </td>
                 </tr>
             <?php }
@@ -610,28 +610,6 @@ function list_Images($cat, $name) {
     }
     wp_reset_query();
 }
-// get featured photo link for portfolio
-function get_featured($id) {
-    $args = array(
-        'post_parent' => $id,
-        'post_type' => 'attachment',
-        'posts_per_page' => 1,
-        'post_status' => 'inherit',
-        'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'image_type',
-                'field' => 'slug',
-                'terms' => 'featured'
-            )
-        )
-    );
-    $featured = get_posts($args);
-    foreach($featured as $image) {
-        return $image->guid;
-    }
-}
-
 // add featured image to menu item in data-image attribute
 add_filter( 'nav_menu_link_attributes', 'add_feature_image', 10, 4 );
 function add_feature_image( $atts, $item, $args ) {

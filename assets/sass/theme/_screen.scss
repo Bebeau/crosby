@@ -194,6 +194,7 @@ header {
 			@include transition(all, 1s, ease-in-out);
 			#logo {
 				width: 100%;
+				@include transition(all, 0.3s, ease-in-out);
 			}
 		}
 		.portfolio-menu {
@@ -367,7 +368,7 @@ header {
 		text-align: center;
 		display: block;
 		margin-top: 15px;
-		font-size: 12pt;
+		font-size: 10pt;
 		color: #999;
 		font-weight: lighter;
 	}

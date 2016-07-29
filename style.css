@@ -1885,7 +1885,10 @@ header {
       -moz-transition: all, 1s, ease-in-out;
       transition: all, 1s, ease-in-out; }
       header.sub.shrink #logo {
-        width: 100%; }
+        width: 100%;
+        -webkit-transition: all, 0.3s, ease-in-out;
+        -moz-transition: all, 0.3s, ease-in-out;
+        transition: all, 0.3s, ease-in-out; }
     header.sub .portfolio-menu li {
       color: #000e6b; }
       header.sub .portfolio-menu li.cat_title {
@@ -2046,7 +2049,7 @@ header {
     text-align: center;
     display: block;
     margin-top: 15px;
-    font-size: 12pt;
+    font-size: 10pt;
     color: #999;
     font-weight: lighter; }
 
