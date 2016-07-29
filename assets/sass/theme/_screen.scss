@@ -101,6 +101,64 @@ p {
 .ibg-bg {
 	position: absolute;
 }
+.contact-btn {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: $lightblue;
+	border: 2px solid $lightblue;
+	line-height: 40px;
+}
+#artistSocial {
+	display: block;
+	text-align: center;
+	margin: 15px 0;
+	i {
+		display: inline-block;
+		width: 35px;
+		height: 35px;
+		@include border-top-radius(50%);
+		@include border-bottom-radius(50%);
+		margin: 0 5px;
+		&.facebook {
+			background: url('assets/images/admin/facebook.svg') no-repeat scroll center $lightblue;
+			background-size: 50% 50%;
+			@include transition(all, 0.3s, ease-in-out);
+			&:hover {
+				background-color: $facebook;
+				@include transition(all, 0.3s, ease-in-out);
+			}
+		}
+		&.twitter {
+			background: url('assets/images/admin/twitter.svg') no-repeat scroll center $lightblue;
+			background-size: 50% 50%;
+			@include transition(all, 0.3s, ease-in-out);
+			&:hover {
+				background-color: $twitter;
+				@include transition(all, 0.3s, ease-in-out);
+			}
+		}
+		&.instagram {
+			background: url('assets/images/admin/instagram.svg') no-repeat scroll center $lightblue;
+			background-size: 50% 50%;
+			@include transition(all, 0.3s, ease-in-out);
+			&:hover {
+				background-color: $instagram;
+				@include transition(all, 0.3s, ease-in-out);
+			}
+		}
+		&.linkedin {
+			background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $lightblue;
+			background-size: 50% 50%;
+			@include transition(all, 0.3s, ease-in-out);
+			&:hover {
+				background-color: $linkedin;
+				@include transition(all, 0.3s, ease-in-out);
+			}
+		}
+	}
+}
 header {
 	z-index: 9999;
 	display: inline-block;
@@ -165,66 +223,8 @@ header {
 				}
 			}
 		}
-		.contact-btn {
-			display: block;
-			text-align: center;
-			text-transform: uppercase;
-			letter-spacing: 3px;
-			color: $lightblue;
-			border: 2px solid $lightblue;
-			line-height: 40px;
-		}
 		hr {
 			border-top: 1px solid darken($white, 15%);
-		}
-		#artistSocial {
-			display: block;
-			text-align: center;
-			margin: 15px 0;
-			i {
-				display: inline-block;
-				width: 35px;
-				height: 35px;
-				@include border-top-radius(50%);
-				@include border-bottom-radius(50%);
-				margin: 0 5px;
-				&.facebook {
-					background: url('assets/images/admin/facebook.svg') no-repeat scroll center $lightblue;
-					background-size: 50% 50%;
-					@include transition(all, 0.3s, ease-in-out);
-					&:hover {
-						background-color: $facebook;
-						@include transition(all, 0.3s, ease-in-out);
-					}
-				}
-				&.twitter {
-					background: url('assets/images/admin/twitter.svg') no-repeat scroll center $lightblue;
-					background-size: 50% 50%;
-					@include transition(all, 0.3s, ease-in-out);
-					&:hover {
-						background-color: $twitter;
-						@include transition(all, 0.3s, ease-in-out);
-					}
-				}
-				&.instagram {
-					background: url('assets/images/admin/instagram.svg') no-repeat scroll center $lightblue;
-					background-size: 50% 50%;
-					@include transition(all, 0.3s, ease-in-out);
-					&:hover {
-						background-color: $instagram;
-						@include transition(all, 0.3s, ease-in-out);
-					}
-				}
-				&.linkedin {
-					background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $lightblue;
-					background-size: 50% 50%;
-					@include transition(all, 0.3s, ease-in-out);
-					&:hover {
-						background-color: $linkedin;
-						@include transition(all, 0.3s, ease-in-out);
-					}
-				}
-			}
 		}
 	}
 	#logo {

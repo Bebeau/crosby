@@ -1777,6 +1777,73 @@ p {
 .ibg-bg {
   position: absolute; }
 
+.contact-btn {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #000e6b;
+  border: 2px solid #000e6b;
+  line-height: 40px; }
+
+#artistSocial {
+  display: block;
+  text-align: center;
+  margin: 15px 0; }
+  #artistSocial i {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    margin: 0 5px; }
+    #artistSocial i.facebook {
+      background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000e6b;
+      background-size: 50% 50%;
+      -webkit-transition: all, 0.3s, ease-in-out;
+      -moz-transition: all, 0.3s, ease-in-out;
+      transition: all, 0.3s, ease-in-out; }
+      #artistSocial i.facebook:hover {
+        background-color: #3b5998;
+        -webkit-transition: all, 0.3s, ease-in-out;
+        -moz-transition: all, 0.3s, ease-in-out;
+        transition: all, 0.3s, ease-in-out; }
+    #artistSocial i.twitter {
+      background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000e6b;
+      background-size: 50% 50%;
+      -webkit-transition: all, 0.3s, ease-in-out;
+      -moz-transition: all, 0.3s, ease-in-out;
+      transition: all, 0.3s, ease-in-out; }
+      #artistSocial i.twitter:hover {
+        background-color: #00aced;
+        -webkit-transition: all, 0.3s, ease-in-out;
+        -moz-transition: all, 0.3s, ease-in-out;
+        transition: all, 0.3s, ease-in-out; }
+    #artistSocial i.instagram {
+      background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000e6b;
+      background-size: 50% 50%;
+      -webkit-transition: all, 0.3s, ease-in-out;
+      -moz-transition: all, 0.3s, ease-in-out;
+      transition: all, 0.3s, ease-in-out; }
+      #artistSocial i.instagram:hover {
+        background-color: #517fa4;
+        -webkit-transition: all, 0.3s, ease-in-out;
+        -moz-transition: all, 0.3s, ease-in-out;
+        transition: all, 0.3s, ease-in-out; }
+    #artistSocial i.linkedin {
+      background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000e6b;
+      background-size: 50% 50%;
+      -webkit-transition: all, 0.3s, ease-in-out;
+      -moz-transition: all, 0.3s, ease-in-out;
+      transition: all, 0.3s, ease-in-out; }
+      #artistSocial i.linkedin:hover {
+        background-color: #0077b5;
+        -webkit-transition: all, 0.3s, ease-in-out;
+        -moz-transition: all, 0.3s, ease-in-out;
+        transition: all, 0.3s, ease-in-out; }
+
 header {
   z-index: 9999;
   display: inline-block;
@@ -1831,73 +1898,8 @@ header {
             color: #000e6b; }
             header.sub .menu li ul li a:hover {
               color: #000e6b; }
-    header.sub .contact-btn {
-      display: block;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #000e6b;
-      border: 2px solid #000e6b;
-      line-height: 40px; }
     header.sub hr {
       border-top: 1px solid #d9d9d9; }
-    header.sub #artistSocial {
-      display: block;
-      text-align: center;
-      margin: 15px 0; }
-      header.sub #artistSocial i {
-        display: inline-block;
-        width: 35px;
-        height: 35px;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-        margin: 0 5px; }
-        header.sub #artistSocial i.facebook {
-          background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000e6b;
-          background-size: 50% 50%;
-          -webkit-transition: all, 0.3s, ease-in-out;
-          -moz-transition: all, 0.3s, ease-in-out;
-          transition: all, 0.3s, ease-in-out; }
-          header.sub #artistSocial i.facebook:hover {
-            background-color: #3b5998;
-            -webkit-transition: all, 0.3s, ease-in-out;
-            -moz-transition: all, 0.3s, ease-in-out;
-            transition: all, 0.3s, ease-in-out; }
-        header.sub #artistSocial i.twitter {
-          background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000e6b;
-          background-size: 50% 50%;
-          -webkit-transition: all, 0.3s, ease-in-out;
-          -moz-transition: all, 0.3s, ease-in-out;
-          transition: all, 0.3s, ease-in-out; }
-          header.sub #artistSocial i.twitter:hover {
-            background-color: #00aced;
-            -webkit-transition: all, 0.3s, ease-in-out;
-            -moz-transition: all, 0.3s, ease-in-out;
-            transition: all, 0.3s, ease-in-out; }
-        header.sub #artistSocial i.instagram {
-          background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000e6b;
-          background-size: 50% 50%;
-          -webkit-transition: all, 0.3s, ease-in-out;
-          -moz-transition: all, 0.3s, ease-in-out;
-          transition: all, 0.3s, ease-in-out; }
-          header.sub #artistSocial i.instagram:hover {
-            background-color: #517fa4;
-            -webkit-transition: all, 0.3s, ease-in-out;
-            -moz-transition: all, 0.3s, ease-in-out;
-            transition: all, 0.3s, ease-in-out; }
-        header.sub #artistSocial i.linkedin {
-          background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000e6b;
-          background-size: 50% 50%;
-          -webkit-transition: all, 0.3s, ease-in-out;
-          -moz-transition: all, 0.3s, ease-in-out;
-          transition: all, 0.3s, ease-in-out; }
-          header.sub #artistSocial i.linkedin:hover {
-            background-color: #0077b5;
-            -webkit-transition: all, 0.3s, ease-in-out;
-            -moz-transition: all, 0.3s, ease-in-out;
-            transition: all, 0.3s, ease-in-out; }
   header #logo {
     display: block;
     margin-bottom: 5px;
@@ -2367,6 +2369,8 @@ header {
     overflow: scroll;
     width: 100%;
     min-height: auto; }
+    header #logo {
+      width: 100%; }
     header .logoWrap {
       width: auto;
       display: block;
@@ -2460,4 +2464,12 @@ header {
         height: 15px; }
 
   .modal .modal-dialog {
-    margin: 15px; } }
+    margin: 15px; }
+
+  footer .contact-btn {
+    width: 300px;
+    display: block;
+    margin: 0 auto; }
+  footer .legal {
+    text-align: center;
+    margin: 15px 0; } }

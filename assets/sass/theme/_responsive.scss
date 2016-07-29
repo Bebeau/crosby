@@ -15,6 +15,9 @@
 		overflow: scroll;
 		width: 100%;
 		min-height: auto;
+		#logo {
+			width: 100%;
+		}
 		.logoWrap {
 			width: auto;
 			display: block;
@@ -136,6 +139,17 @@
 	.modal {
 		.modal-dialog { 
 			margin: 15px;
+		}
+	}
+	footer {
+		.contact-btn {
+			width: 300px;
+			display: block;
+			margin: 0 auto;
+		}
+		.legal {
+			text-align: center;
+			margin: 15px 0;
 		}
 	}
 }

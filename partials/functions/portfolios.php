@@ -63,15 +63,15 @@ function load_portfolios_admin() {
         wp_enqueue_style( 'recipe-styles', get_template_directory_uri() . '/assets/css/portfolios.css', false, '1.0.0' );
         wp_localize_script( 'my-ajax-request', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         wp_enqueue_script('jquery_ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js', array('jquery'), null, true);
+        // Registers and enqueues the required javascript.
+        wp_register_script( 'meta-box-image-upload', get_template_directory_uri() . '/assets/js/admin.js', array( 'jquery' ) );
+        wp_localize_script( 'meta-box-image-upload', 'meta_image',
+            array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            )
+        );
+        wp_enqueue_script( 'meta-box-image-upload' );
     }
-    // Registers and enqueues the required javascript.
-    wp_register_script( 'meta-box-image-upload', get_template_directory_uri() . '/assets/js/admin.js', array( 'jquery' ) );
-    wp_localize_script( 'meta-box-image-upload', 'meta_image',
-        array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' )
-        )
-    );
-    wp_enqueue_script( 'meta-box-image-upload' );
 }
 
 // Create custom post type for recipes

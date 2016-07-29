@@ -56,10 +56,10 @@
 		} ?>">
 		<!-- Twitter Cards -->
 		<meta property="twitter:card" content="summary"> 
-		<meta property="twitter:site" content="@sophieuliano"> 
+		<meta property="twitter:site" content="@CrosbyC"> 
 		<meta property="twitter:title" content="<?php single_post_title(''); ?>"> 
 		<meta property="twitter:description" content="<?php echo strip_tags(get_the_excerpt()); ?>"> 
-		<meta property="twitter:creator" content="@sophieuliano"> 
+		<meta property="twitter:creator" content="@CrosbyC"> 
 		<meta property="twitter:image" content="<?php if (function_exists('wp_get_attachment_thumb_url')) {
 			echo wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium', false );
 		} ?>">
@@ -77,10 +77,10 @@
 		<meta itemprop="image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/default_google.jpg">
 		<!-- Twitter Cards -->
 		<meta property="twitter:card" content="summary"> 
-		<meta property="twitter:site" content="@sophieuliano"> 
+		<meta property="twitter:site" content="@CrosbyC"> 
 		<meta property="twitter:title" content="<?php bloginfo('name'); ?>"> 
 		<meta property="twitter:description" content="<?php bloginfo('description'); ?>"> 
-		<meta property="twitter:creator" content="@sophieuliano"> 
+		<meta property="twitter:creator" content="@CrosbyC"> 
 		<meta property="twitter:image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/default_twitter.jpg">
 		<meta property="twitter:url" content="<?php the_permalink() ?>" />
 		<meta property="twitter:domain" content="<?php echo site_url(); ?>">
