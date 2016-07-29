@@ -1783,8 +1783,18 @@ p {
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #000e6b;
+  background: white;
   border: 2px solid #000e6b;
-  line-height: 40px; }
+  line-height: 40px;
+  -webkit-transition: all, 0.3s, ease-in-out;
+  -moz-transition: all, 0.3s, ease-in-out;
+  transition: all, 0.3s, ease-in-out; }
+  .contact-btn:hover {
+    background: white;
+    color: #000e6b;
+    -webkit-transition: all, 0.3s, ease-in-out;
+    -moz-transition: all, 0.3s, ease-in-out;
+    transition: all, 0.3s, ease-in-out; }
 
 #artistSocial {
   display: block;
@@ -1876,30 +1886,49 @@ header {
       transition: all, 1s, ease-in-out; }
       header.sub.shrink #logo {
         width: 100%; }
-    header.sub .menu li {
+    header.sub .portfolio-menu li {
       color: #000e6b; }
-      header.sub .menu li.cat_title {
+      header.sub .portfolio-menu li.cat_title {
         margin-top: 15px;
         font-size: 10pt;
         color: #999;
         font-weight: lighter;
         letter-spacing: 2px;
         line-height: normal; }
-      header.sub .menu li ul {
+      header.sub .portfolio-menu li ul {
         margin: 10px 0 5px; }
-        header.sub .menu li ul li {
+        header.sub .portfolio-menu li ul li {
           line-height: normal; }
-          header.sub .menu li ul li.active a {
+          header.sub .portfolio-menu li ul li.active a {
             color: #000e6b; }
-            header.sub .menu li ul li.active a:hover {
+            header.sub .portfolio-menu li ul li.active a:hover {
               color: #000e6b; }
-          header.sub .menu li ul li a {
+          header.sub .portfolio-menu li ul li a {
             line-height: normal;
             color: #000e6b; }
-            header.sub .menu li ul li a:hover {
+            header.sub .portfolio-menu li ul li a:hover {
               color: #000e6b; }
     header.sub hr {
       border-top: 1px solid #d9d9d9; }
+    header.sub #menu-main li {
+      color: #000e6b;
+      -webkit-transition: all, 0.3s, ease-in-out;
+      -moz-transition: all, 0.3s, ease-in-out;
+      transition: all, 0.3s, ease-in-out; }
+      header.sub #menu-main li a {
+        color: #000e6b;
+        display: block; }
+        header.sub #menu-main li a:hover {
+          cursor: pointer; }
+        header.sub #menu-main li a:after {
+          display: none; }
+      header.sub #menu-main li ul {
+        display: none; }
+        header.sub #menu-main li ul li a {
+          color: #000e6b;
+          display: block; }
+        header.sub #menu-main li ul li:hover {
+          padding: 0 10px; }
   header #logo {
     display: block;
     margin-bottom: 5px;
@@ -2262,12 +2291,31 @@ header {
 
 #singlePage {
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  position: relative;
+  z-index: 10;
+  top: 50vh;
+  opacity: 0;
+  margin-left: 325px;
+  padding-right: 25px;
+  box-sizing: border-box;
+  -webkit-transition: all, 1s, ease-in-out;
+  -moz-transition: all, 1s, ease-in-out;
+  transition: all, 1s, ease-in-out; }
   #singlePage.shrink {
     margin-left: 275px;
     -webkit-transition: all, 1s, ease-in-out;
     -moz-transition: all, 1s, ease-in-out;
     transition: all, 1s, ease-in-out; }
+  #singlePage.slideIn {
+    opacity: 1;
+    top: 0;
+    -webkit-transition: all, 1s, ease-in-out;
+    -moz-transition: all, 1s, ease-in-out;
+    transition: all, 1s, ease-in-out; }
+  #singlePage h1 {
+    margin: 0;
+    padding: 20px 0; }
   #singlePage p {
     font-size: 14pt; }
   #singlePage a {

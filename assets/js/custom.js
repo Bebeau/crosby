@@ -10,9 +10,21 @@ var init = {
 		init.activeTab();
 		init.navSlideIn();
 		init.linkPatch();
-		init.portfolioIn();
+		init.pageIn();
 		// init.pageAjax();
 		// init.stopClick();
+		init.subNavCollapse();
+	},
+	subNavCollapse: function() {
+		jQuery('.single-portfolios .menu-item').hover(function(){
+			jQuery(this).find("ul").stop().slideToggle("slow");
+		});
+		jQuery('.page .menu-item').hover(function(){
+			jQuery(this).find("ul").stop().slideToggle("slow");
+		});
+		jQuery('.page .menu-item a').click(function(e){
+			e.preventDefault();
+		});
 	},
 	shrinkLogo: function() {
 		if(jQuery('header').hasClass("sub") && !isMobile) {
@@ -92,13 +104,13 @@ var init = {
 		});
 	},
 	activeTab: function() {
-		jQuery('.single .menu ul li:nth-child(2) a').tab('show');
+		jQuery('.single .portfolio-menu ul li:nth-child(2) .tab').tab('show');
 		jQuery('.tab-content').addClass("in");
-		jQuery('.menu ul li a').click(function(e){
+		jQuery('.portfolio-menu ul li a').click(function(e){
 			e.preventDefault();
 
 			var tab = jQuery(this).attr("href");
-			jQuery('.menu ul li').removeClass("active");
+			jQuery('.portfolio-menu ul li').removeClass("active");
 			jQuery(this).parent().addClass("active");
 
 			if(!jQuery(this).hasClass("info")) {
@@ -118,11 +130,11 @@ var init = {
 			}
 		});
 	},
-	portfolioIn: function() {
-		jQuery('#singlePortfolio').addClass("slideIn");
+	pageIn: function() {
+		jQuery('.contentwrap').addClass("slideIn");
 	},
 	linkPatch: function() {
-		jQuery('header.home .menu ul li a').click(function(e){
+		jQuery('.sub-menu li a').click(function(e){
 			e.preventDefault();
 			init.navSlideOut();
 			var url = jQuery(this).attr("href");

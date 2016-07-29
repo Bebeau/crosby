@@ -7,7 +7,7 @@
 	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
 	
 ?>
-	<div id="singlePortfolio">
+	<div id="singlePortfolio" class="contentwrap">
 
 		<?php if (have_posts()) : while (have_posts()) : the_post();
 		    

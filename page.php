@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div class="col-md-offset-3 col-lg-offset-2 col-sm-offset-3 col-sm-9 col-md-9" id="singlePage">
+	<div id="singlePage" class="contentwrap">
 
 		<?php if (have_posts()) : while (have_posts()) : the_post();
 			the_title('<h1>','</h1>');

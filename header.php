@@ -98,36 +98,36 @@
 		<div id="load"></div>
 	</div>
 
-<?php 
-	if(is_front_page()) {
+<?php
+
+	$menu_args = array(
+		'theme_location'  => 'primary',
+		'menu'            => 'Primary Menu',
+		'container'       => 'div',
+		'container_class' => '',
+		'container_id'    => '',
+		'menu_class'      => 'menu',
+		'menu_id'         => '',
+		'echo'            => true,
+		'fallback_cb'     => 'wp_page_menu',
+		'before'          => '',
+		'after'           => '',
+		'link_before'     => '',
+		'link_after'      => '',
+		'items_wrap'      => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>',
+		'depth'           => 0,
+		'walker'          => ''
+	);
+
+if(is_front_page()) {
 	echo '<div class="home_bg"></div>';
 	echo '<header class="home">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
-
-		$menu_args = array(
-			'theme_location'  => 'primary',
-			'menu'            => 'Primary Menu',
-			'container'       => 'div',
-			'container_class' => '',
-			'container_id'    => '',
-			'menu_class'      => 'menu',
-			'menu_id'         => '',
-			'echo'            => true,
-			'fallback_cb'     => 'wp_page_menu',
-			'before'          => '',
-			'after'           => '',
-			'link_before'     => '',
-			'link_after'      => '',
-			'items_wrap'      => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>',
-			'depth'           => 0,
-			'walker'          => ''
-		);
-
 		wp_nav_menu( $menu_args );
-
 	echo '</header>'; ?>
 
-<?php }
+	<?php 
+}
 
 if(is_singular()) {
 	// get current user id
@@ -142,10 +142,13 @@ if(is_singular()) {
 
 	echo '<header class="sub hidden-xs">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
-		echo '<ul class="menu">';
+		
+		echo '<ul class="menu portfolio-menu">';
 		$category = get_the_category();
 		if($category) {
 			echo '<li class="cat_title">'.$category[0]->name.' //</li>';
+		} else {
+			echo '<li class="cat_title">Agency //</li>';
 		}
 		echo '<li>'.get_the_title().' <span class="slash">//</span>';
 			echo '<ul>';
@@ -192,7 +195,7 @@ if(is_singular()) {
 				if(!empty($twit_url)) {
 					echo '<a href="'.$twit_url.'"><i class="twitter"></i></a>';
 				}
-				if(!empty($in_url)) {
+				if(!empty($ig_url)) {
 					echo '<a href="'.$ig_url.'"><i class="instagram"></i></a>';
 				}
 				if(!empty($in_url)) {
@@ -215,6 +218,15 @@ if(is_singular()) {
 				echo '<a class="contact-btn" href="mailto:'.$agentEmail.'?&subject='.get_the_title().'- Website Inquiry">Contact Agent</a>';
 			}
 		}
+
+		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url) || !empty($in_url) || !empty($agentID)) {
+			echo '<hr>';
+		}
+
+		wp_nav_menu( $menu_args );
+
+		echo '<hr>';
+
 		echo '<span class="legal">&copy; '.date("Y").' '.get_bloginfo("name").' <br />All Rights Reserved.</span>';
 
 	echo '</header>';

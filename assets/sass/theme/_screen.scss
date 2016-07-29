@@ -107,8 +107,15 @@ p {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	color: $lightblue;
+	background: white;
 	border: 2px solid $lightblue;
 	line-height: 40px;
+	@include transition(all, 0.3s, ease-in-out);
+	&:hover {
+		background: white;
+		color: $lightblue;
+		@include transition(all, 0.3s, ease-in-out);
+	}
 }
 #artistSocial {
 	display: block;
@@ -189,7 +196,7 @@ header {
 				width: 100%;
 			}
 		}
-		.menu {
+		.portfolio-menu {
 			li {
 				color: $lightblue;
 				&.cat_title {
@@ -225,6 +232,34 @@ header {
 		}
 		hr {
 			border-top: 1px solid darken($white, 15%);
+		}
+		#menu-main {
+			li {
+				color: $lightblue;
+				@include transition(all, 0.3s, ease-in-out);
+				a {
+					color: $lightblue;
+					display: block;
+					&:hover {
+						cursor: pointer;
+					}
+					&:after {
+						display: none;
+					}
+				}
+				ul {
+					display: none;
+					li {
+						a {
+							color: $lightblue;
+							display: block;
+						}
+						&:hover {
+							padding: 0 10px;
+						}
+					}
+				}
+			}
 		}
 	}
 	#logo {
@@ -541,9 +576,26 @@ header {
 #singlePage {
 	position: relative;
 	z-index: 10;
+	position: relative;
+	z-index: 10;
+	top: 50vh;
+	opacity: 0;
+	margin-left: 325px;
+	padding-right: 25px;
+	box-sizing: border-box;
+	@include transition(all, 1s, ease-in-out);
 	&.shrink {
 		margin-left: 275px;
 		@include transition(all, 1s, ease-in-out);
+	}
+	&.slideIn {
+		opacity: 1;
+		top: 0;
+		@include transition(all, 1s, ease-in-out);
+	}
+	h1 {
+		margin: 0;
+		padding: 20px 0;
 	}
 	p {
 		font-size: 14pt;
