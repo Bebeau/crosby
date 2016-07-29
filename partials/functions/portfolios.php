@@ -71,6 +71,16 @@ function load_portfolios_admin() {
             )
         );
         wp_enqueue_script( 'meta-box-image-upload' );
+        // Overrides code styling to accommodate for a third dropdown filter
+        add_action( 'admin_footer', function(){ ?>
+            <style>
+                .media-modal-content .media-frame select.attachment-filters {
+                    max-width: -webkit-calc(33% - 12px);
+                    max-width: calc(33% - 12px);
+                }
+            </style>
+            <?php
+        });
     }
 }
 
