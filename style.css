@@ -1786,6 +1786,13 @@ p {
   background: white;
   border: 2px solid #000e6b;
   line-height: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   -webkit-transition: all, 0.3s, ease-in-out;
   -moz-transition: all, 0.3s, ease-in-out;
   transition: all, 0.3s, ease-in-out; }
@@ -1812,6 +1819,13 @@ p {
     #artistSocial i.facebook {
       background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.3s, ease-in-out;
       -moz-transition: all, 0.3s, ease-in-out;
       transition: all, 0.3s, ease-in-out; }
@@ -1823,6 +1837,13 @@ p {
     #artistSocial i.twitter {
       background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.3s, ease-in-out;
       -moz-transition: all, 0.3s, ease-in-out;
       transition: all, 0.3s, ease-in-out; }
@@ -1834,6 +1855,13 @@ p {
     #artistSocial i.instagram {
       background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.3s, ease-in-out;
       -moz-transition: all, 0.3s, ease-in-out;
       transition: all, 0.3s, ease-in-out; }
@@ -1845,6 +1873,13 @@ p {
     #artistSocial i.linkedin {
       background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.3s, ease-in-out;
       -moz-transition: all, 0.3s, ease-in-out;
       transition: all, 0.3s, ease-in-out; }
@@ -1876,6 +1911,13 @@ header {
     position: fixed;
     background: #ebebeb;
     width: 300px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     -webkit-transition: all, 1s, ease-in-out;
     -moz-transition: all, 1s, ease-in-out;
     transition: all, 1s, ease-in-out; }
@@ -1886,6 +1928,13 @@ header {
       transition: all, 1s, ease-in-out; }
       header.sub.shrink #logo {
         width: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
         -webkit-transition: all, 0.3s, ease-in-out;
         -moz-transition: all, 0.3s, ease-in-out;
         transition: all, 0.3s, ease-in-out; }
@@ -1915,6 +1964,13 @@ header {
       border-top: 1px solid #d9d9d9; }
     header.sub #menu-main li {
       color: #000e6b;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.3s, ease-in-out;
       -moz-transition: all, 0.3s, ease-in-out;
       transition: all, 0.3s, ease-in-out; }
@@ -1940,6 +1996,13 @@ header {
     position: relative;
     top: -150px;
     opacity: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     -webkit-transition: all, 1s, ease-in-out;
     -moz-transition: all, 1s, ease-in-out;
     transition: all, 1s, ease-in-out; }
@@ -1952,6 +2015,13 @@ header {
     header #logo img {
       max-width: 100%; }
     header #logo .logo-sub {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transform: scale(1);
       -moz-transform: scale(1);
       -ms-transform: scale(1);
@@ -1981,6 +2051,13 @@ header {
       left: -100%;
       opacity: 0;
       color: #ffffff;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transition: all, 0.75s, ease-in-out;
       -moz-transition: all, 0.75s, ease-in-out;
       transition: all, 0.75s, ease-in-out; }
@@ -2009,12 +2086,26 @@ header {
         header .menu li ul li {
           left: -100%;
           opacity: 0;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transform: translate3d(0, 0, 0);
+          -moz-transform: translate3d(0, 0, 0);
+          -ms-transform: translate3d(0, 0, 0);
+          -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
           -webkit-transition: all, 1s, ease-in-out;
           -moz-transition: all, 1s, ease-in-out;
           transition: all, 1s, ease-in-out; }
           header .menu li ul li a {
             font-weight: 300;
             font-size: 16px;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
             -webkit-transition: all, 0.3s, ease-in-out;
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out;
@@ -2057,6 +2148,13 @@ header {
   position: relative;
   top: 50px;
   opacity: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   -webkit-transition: all, 0.5s, ease-in-out;
   -moz-transition: all, 0.5s, ease-in-out;
   transition: all, 0.5s, ease-in-out; }
@@ -2080,6 +2178,13 @@ header {
   margin-left: 325px;
   padding-right: 25px;
   box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   -webkit-transition: all, 1s, ease-in-out;
   -moz-transition: all, 1s, ease-in-out;
   transition: all, 1s, ease-in-out; }
@@ -2101,6 +2206,13 @@ header {
     display: inline-block;
     top: -4px;
     margin: 0 15px 0 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -2187,6 +2299,13 @@ header {
     border-bottom-left-radius: 50%;
     border-top-left-radius: 50%;
     border: 5px solid #fff;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
@@ -2235,6 +2354,13 @@ header {
     #singlePortfolio .single .singlevideo {
       display: block;
       height: 360px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transform: scale(1);
       -moz-transform: scale(1);
       -ms-transform: scale(1);
@@ -2265,6 +2391,13 @@ header {
     #singlePortfolio .single .singlephoto {
       margin: 1px;
       display: block;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-transform: scale(1);
       -moz-transform: scale(1);
       -ms-transform: scale(1);
@@ -2302,6 +2435,13 @@ header {
   margin-left: 325px;
   padding-right: 25px;
   box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   -webkit-transition: all, 1s, ease-in-out;
   -moz-transition: all, 1s, ease-in-out;
   transition: all, 1s, ease-in-out; }
@@ -2336,6 +2476,13 @@ header {
 .modal {
   text-align: center;
   top: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   -webkit-transform: scale(0.5);
   -moz-transform: scale(0.5);
   -ms-transform: scale(0.5);

@@ -52,7 +52,7 @@
 			    	echo '<div class="video-pane pane" id="commercial">';
 			    		echo '<h3 class="termName">// Commercials</h3>';
 				    	foreach($commercials as $video) {
-					    	echo '<div class="col-sm-4 single">';
+					    	echo '<div class="col-sm-4 single hidden-xs">';
 					    	if($video['type'] === "youtube") {
 						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="youtube" data-video="'.$video['id'].'" style="background:url(https://i1.ytimg.com/vi/'.$video['id'].'/hqdefault.jpg) no-repeat scroll center / cover;">';
 						    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
@@ -64,6 +64,14 @@
 						    	echo '<a href="#videomodal" data-toggle="modal" class="singlevideo" data-type="vimeo" data-video="'.$video['id'].'" style="background:url('.$thumb.') no-repeat scroll center / cover;">';
 						    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
 						    	echo '</a>';
+						    }
+					    	echo '</div>';
+
+					    	echo '<div class="col-sm-4 single visible-xs">';
+					    	if($video['type'] === "youtube") {
+						    	echo '<iframe src="https://www.youtube.com/embed/'.$video['id'].'" class="videoFrame" width="100%" frameborder="0" allowfullscreen></iframe>';
+						    } elseif($video['type'] === 'vimeo') {
+						    	echo '<iframe src="https://player.vimeo.com/video/'.$video['id'].'" class="videoFrame" width="100%" frameborder="0" allowfullscreen></iframe>';
 						    }
 					    	echo '</div>';
 					    }
@@ -88,6 +96,14 @@
 							    		echo '<div class="playwrap"><i class="fa fa-play"></i></div>';
 							    	echo '</a>';
 							    }
+					    	echo '</div>';
+
+					    	echo '<div class="col-sm-4 single visible-xs">';
+					    	if($video['type'] === "youtube") {
+						    	echo '<iframe src="https://www.youtube.com/embed/'.$video['id'].'" class="videoFrame" width="100%" frameborder="0" allowfullscreen></iframe>';
+						    } elseif($video['type'] === 'vimeo') {
+						    	echo '<iframe src="https://player.vimeo.com/video/'.$video['id'].'" class="videoFrame" width="100%" frameborder="0" allowfullscreen></iframe>';
+						    }
 					    	echo '</div>';
 					    }
 					echo '</div>';
