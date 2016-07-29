@@ -36,16 +36,16 @@ var init = {
 	navHover: function() {
 		var original = jQuery('.home_bg').css('background-image');
     		bg_url 	 = /^url\((['"]?)(.*)\1\)$/.exec(original);
-	    jQuery('.person').hover(function(){
-	    	var img = jQuery(this).attr('data-image');
-	    	if(img != "") {
+	    jQuery('.sub-menu a').hover(function(){
+	    	if(jQuery(this)[0].hasAttribute("data-image")) {
+	    		var img = jQuery(this).attr('data-image');
 	    		jQuery('.home_bg').fadeOut('fast', function () {
 	    			jQuery('.home_bg').css('background-image','url('+img+')');
 	    			jQuery('.home_bg').fadeIn();
 	    		});
 	    	}
 	    }, function(){
-	    	if(img != "") {
+	    	if(jQuery(this)[0].hasAttribute("data-image")) {
 		    	jQuery('.home_bg').fadeOut('fast', function () {
 			    	jQuery('.home_bg').css('background-image','url('+bg_url[2]+')');
 			    	jQuery('.home_bg').fadeIn();

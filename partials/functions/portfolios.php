@@ -632,4 +632,29 @@ function get_featured($id) {
     }
 }
 
+// add featured image to menu item in data-image attribute
+add_filter( 'nav_menu_link_attributes', 'add_feature_image', 10, 4 );
+function add_feature_image( $atts, $item, $args ) {
+    $post_id = get_post_meta( $item->ID, '_menu_item_object_id', true );
+    $args = array(
+        'post_parent' => $post_id,
+        'post_type' => 'attachment',
+        'posts_per_page' => 1,
+        'post_status' => 'inherit',
+        'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'image_type',
+                'field' => 'slug',
+                'terms' => 'featured'
+            )
+        )
+    );
+    $featured = get_posts($args);
+    foreach($featured as $image) {
+        $atts['data-image'] = $image->guid;
+    }
+    return $atts;
+}
+
 ?>

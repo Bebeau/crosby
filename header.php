@@ -99,28 +99,29 @@
 	</div>
 
 <?php 
-	$menu_args = array(
-		'theme_location'  => 'primary',
-		'menu'            => 'Primary Menu',
-		'container'       => 'div',
-		'container_class' => '',
-		'container_id'    => '',
-		'menu_class'      => 'menu',
-		'menu_id'         => '',
-		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>',
-		'depth'           => 0,
-		'walker'          => ''
-	);
-if(is_front_page()) {
+	if(is_front_page()) {
 	echo '<div class="home_bg"></div>';
 	echo '<header class="home">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
+
+		$menu_args = array(
+			'theme_location'  => 'primary',
+			'menu'            => 'Primary Menu',
+			'container'       => 'div',
+			'container_class' => '',
+			'container_id'    => '',
+			'menu_class'      => 'menu',
+			'menu_id'         => '',
+			'echo'            => true,
+			'fallback_cb'     => 'wp_page_menu',
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'items_wrap'      => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>',
+			'depth'           => 0,
+			'walker'          => ''
+		);
 
 		wp_nav_menu( $menu_args );
 
