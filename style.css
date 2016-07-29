@@ -1742,7 +1742,7 @@ a {
 h1 {
   position: relative;
   margin: 20px auto 0;
-  color: #000b51;
+  color: #000e6b;
   font-size: 48px;
   line-height: 62px;
   font-weight: 600;
@@ -1760,7 +1760,7 @@ img {
 
 p {
   margin: 0 0 25px;
-  color: #000b51;
+  color: #000e6b;
   font-family: 'Neutra'; }
 
 .home_bg {
@@ -1810,7 +1810,7 @@ header {
       header.sub.shrink #logo {
         width: 100%; }
     header.sub .menu li {
-      color: #000b51; }
+      color: #000e6b; }
       header.sub .menu li.cat_title {
         margin-top: 15px;
         font-size: 10pt;
@@ -1823,21 +1823,21 @@ header {
         header.sub .menu li ul li {
           line-height: normal; }
           header.sub .menu li ul li.active a {
-            color: #000b51; }
+            color: #000e6b; }
             header.sub .menu li ul li.active a:hover {
-              color: #000b51; }
+              color: #000e6b; }
           header.sub .menu li ul li a {
             line-height: normal;
-            color: #000b51; }
+            color: #000e6b; }
             header.sub .menu li ul li a:hover {
-              color: #000b51; }
+              color: #000e6b; }
     header.sub .contact-btn {
       display: block;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #000b51;
-      border: 2px solid #000b51;
+      color: #000e6b;
+      border: 2px solid #000e6b;
       line-height: 40px; }
     header.sub hr {
       border-top: 1px solid #d9d9d9; }
@@ -1855,7 +1855,7 @@ header {
         border-bottom-right-radius: 50%;
         margin: 0 5px; }
         header.sub #artistSocial i.facebook {
-          background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000b51;
+          background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000e6b;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1866,7 +1866,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.twitter {
-          background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000b51;
+          background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000e6b;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1877,7 +1877,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.instagram {
-          background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000b51;
+          background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000e6b;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -1888,7 +1888,7 @@ header {
             -moz-transition: all, 0.3s, ease-in-out;
             transition: all, 0.3s, ease-in-out; }
         header.sub #artistSocial i.linkedin {
-          background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000b51;
+          background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000e6b;
           background-size: 50% 50%;
           -webkit-transition: all, 0.3s, ease-in-out;
           -moz-transition: all, 0.3s, ease-in-out;
@@ -2082,7 +2082,7 @@ header {
       left: 0;
       width: 100%;
       height: 5px;
-      background: #000b51;
+      background: #000e6b;
       margin: -2.5px 0 0 0; }
     #singlePortfolio .info .plus:before {
       content: "";
@@ -2090,7 +2090,7 @@ header {
       left: 50%;
       height: 25px;
       width: 5px;
-      background: #000b51;
+      background: #000e6b;
       margin: 0 0 0 -2.5px; }
   #singlePortfolio .info.collapsed .plus {
     -webkit-transform: rotate(0deg);
@@ -2141,7 +2141,7 @@ header {
         width: 100% !important;
         height: auto !important; }
   #singlePortfolio .playwrap {
-    background: #000b51;
+    background: #000e6b;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2324,7 +2324,7 @@ header {
     top: -15px;
     right: -15px;
     color: #ffffff;
-    background: #000b51;
+    background: #000e6b;
     font-size: 24pt;
     width: 35px;
     height: 35px;
@@ -2381,8 +2381,8 @@ header {
       background: none;
       text-align: center; }
     header .dropdown {
-      border: 2px solid #000b51;
-      color: #000b51;
+      border: 2px solid #000e6b;
+      color: #000e6b;
       width: 283px;
       margin: 15px auto 0;
       position: relative;
@@ -2408,8 +2408,8 @@ header {
       margin: 0;
       padding: 0;
       width: 101%;
-      background: #000b51;
-      border: 1px solid #000b51;
+      background: #000e6b;
+      border: 1px solid #000e6b;
       margin: 0 -1px; }
       header .dropdown-menu li a {
         font-size: 14pt;
