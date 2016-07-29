@@ -1880,7 +1880,7 @@ header {
     -moz-transition: all, 1s, ease-in-out;
     transition: all, 1s, ease-in-out; }
     header.sub.shrink {
-      width: 250px;
+      width: 248px;
       -webkit-transition: all, 1s, ease-in-out;
       -moz-transition: all, 1s, ease-in-out;
       transition: all, 1s, ease-in-out; }

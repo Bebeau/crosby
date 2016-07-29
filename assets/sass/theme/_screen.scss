@@ -190,7 +190,7 @@ header {
 		width: 300px;
 		@include transition(all, 1s, ease-in-out);
 		&.shrink {
-			width: 250px;
+			width: 248px;
 			@include transition(all, 1s, ease-in-out);
 			#logo {
 				width: 100%;
