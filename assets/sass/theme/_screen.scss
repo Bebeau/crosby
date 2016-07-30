@@ -110,11 +110,13 @@ p {
 	background: white;
 	border: 2px solid $lightblue;
 	line-height: 40px;
-	@include transition(all, 0.3s, ease-in-out);
+	@include backface-visibility(hidden);
+	@include transform(translateZ(0));
+	@include transform(translate3d(0,0,0));
+	@include transform-style(preserve-3d);
+	@include transition(all 0.3s ease-in-out);
 	&:hover {
-		background: white;
 		color: $lightblue;
-		@include transition(all, 0.3s, ease-in-out);
 	}
 }
 #artistSocial {
@@ -131,37 +133,53 @@ p {
 		&.facebook {
 			background: url('assets/images/admin/facebook.svg') no-repeat scroll center $lightblue;
 			background-size: 50% 50%;
-			@include transition(all, 0.3s, ease-in-out);
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
+			@include transition(all 0.3s ease-in-out);
 			&:hover {
 				background-color: $facebook;
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 		&.twitter {
 			background: url('assets/images/admin/twitter.svg') no-repeat scroll center $lightblue;
 			background-size: 50% 50%;
-			@include transition(all, 0.3s, ease-in-out);
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
+			@include transition(all 0.3s ease-in-out);
 			&:hover {
 				background-color: $twitter;
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 		&.instagram {
 			background: url('assets/images/admin/instagram.svg') no-repeat scroll center $lightblue;
 			background-size: 50% 50%;
-			@include transition(all, 0.3s, ease-in-out);
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
+			@include transition(all 0.3s ease-in-out);
 			&:hover {
 				background-color: $instagram;
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 		&.linkedin {
 			background: url('assets/images/admin/linkedin.svg') no-repeat scroll center $lightblue;
 			background-size: 50% 50%;
-			@include transition(all, 0.3s, ease-in-out);
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
+			@include transition(all 0.3s ease-in-out);
 			&:hover {
 				background-color: $linkedin;
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 	}
@@ -188,13 +206,21 @@ header {
 		position: fixed;
 		background: #ebebeb;
 		width: 300px;
-		@include transition(all, 1s, ease-in-out);
+		@include backface-visibility(hidden);
+		@include transform(translateZ(0));
+		@include transform(translate3d(0,0,0));
+		@include transform-style(preserve-3d);
+		@include transition(all 1s ease-in-out);
 		&.shrink {
 			width: 248px;
-			@include transition(all, 1s, ease-in-out);
+			@include transition(all 1s ease-in-out);
 			#logo {
 				width: 100%;
-				@include transition(all, 0.3s, ease-in-out);
+				@include backface-visibility(hidden);
+				@include transform(translateZ(0));
+				@include transform(translate3d(0,0,0));
+				@include transform-style(preserve-3d);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 		.portfolio-menu {
@@ -237,7 +263,11 @@ header {
 		#menu-main {
 			li {
 				color: $lightblue;
-				@include transition(all, 0.3s, ease-in-out);
+				@include backface-visibility(hidden);
+				@include transform(translateZ(0));
+				@include transform(translate3d(0,0,0));
+				@include transform-style(preserve-3d);
+				@include transition(all 0.3s ease-in-out);
 				a {
 					color: $lightblue;
 					display: block;
@@ -269,24 +299,32 @@ header {
 		width: 275px;
 		height: auto;
 		position: relative;
-		top: -150px;
+		margin-top: -150px;
 		opacity: 0;
-		@include transition(all, 1s, ease-in-out);
+		@include backface-visibility(hidden);
+		@include transform(translateZ(0));
+		@include transform(translate3d(0,0,0));
+		@include transform-style(preserve-3d);
+		@include transition(all 1s ease-in-out);
 		&.slideIn {
-			top: 0;
+			margin-top: 0;
 			opacity: 1;
-			@include transition(all, 1s, ease-in-out);
+			@include transition(all 1s ease-in-out);
 		}
 		img {
 			max-width: 100%;
 		}
 		.logo-sub {
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
 			@include transform(scale(1));
-			@include transition(all, 0.3s, ease-in-out);
+			@include transition(all 0.3s ease-in-out);
 		}
 		&.down {
 			@include transform(scale(0.8));
-			@include transition(all, 0.3s, ease-in-out);
+			@include transition(all 0.3s ease-in-out);
 		}
 	}
 	.menu {
@@ -301,7 +339,11 @@ header {
 			left: -100%;
 			opacity: 0;
 			color: $white;
-			@include transition(all, 0.75s, ease-in-out);
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
+			@include transition(all 0.75s ease-in-out);
 			a {
 				position: relative;
 				&:after {
@@ -323,24 +365,32 @@ header {
 			&.slideIn {
 				left: 0;
 				opacity: 1;
-				@include transition(all, 0.75s, ease-in-out);
+				@include transition(all 0.75s ease-in-out);
 			}
 			ul {
 				margin-left: 5px;
 				li {
 					left: -100%;
 					opacity: 0;
-					@include transition(all, 1s, ease-in-out);
+					@include backface-visibility(hidden);
+					@include transform(translateZ(0));
+					@include transform(translate3d(0,0,0));
+					@include transform-style(preserve-3d);
+					@include transition(all 1s ease-in-out);
 					a {
 						font-weight: 300;
 						font-size: 16px;
-						@include transition(all, 0.3s, ease-in-out);
+						@include backface-visibility(hidden);
+						@include transform(translateZ(0));
+						@include transform(translate3d(0,0,0));
+						@include transform-style(preserve-3d);
+						@include transition(all 0.3s ease-in-out);
 						color: $white;
 						&:hover {
 							cursor: pointer;
 							font-weight: bold;
 							color: $white;
-							@include transition(all, 0.75s, ease-in-out);
+							@include transition(all 0.75s ease-in-out);
 						}
 						&:after { 
 							display: none;
@@ -349,15 +399,15 @@ header {
 					&.slideIn {
 						left: 0;
 						opacity: 1;
-						@include transition(all, 1s, ease-in-out);
+						@include transition(all 1s ease-in-out);
 					}
 					&.active {
 						margin-left: 5px;
-						@include transition(all, 1s, ease-in-out);
+						@include transition(all 1s ease-in-out);
 						a {
 							font-weight: bold;
 							color: $white;
-							@include transition(all, 0.3s, ease-in-out);
+							@include transition(all 0.3s ease-in-out);
 						}
 					}
 				}
@@ -377,11 +427,15 @@ header {
 	position: relative;
 	top: 50px;
 	opacity: 0;
-	@include transition(all, 0.5s, ease-in-out);
+	@include backface-visibility(hidden);
+	@include transform(translateZ(0));
+	@include transform(translate3d(0,0,0));
+	@include transform-style(preserve-3d);
+	@include transition(all 0.5s ease-in-out);
 	&.in {
 		top: 0;
 		opacity: 1;
-		@include transition(all, 0.5s, ease-in-out);
+		@include transition(all 0.5s ease-in-out);
 	}
 }
 .pane {
@@ -398,15 +452,19 @@ header {
 	margin-left: 325px;
 	padding-right: 25px;
 	box-sizing: border-box;
-	@include transition(all, 1s, ease-in-out);
+	@include backface-visibility(hidden);
+	@include transform(translateZ(0));
+	@include transform(translate3d(0,0,0));
+	@include transform-style(preserve-3d);
+	@include transition(all 1s ease-in-out);
 	&.shrink {
 		margin-left: 275px;
-		@include transition(all, 1s, ease-in-out);
+		@include transition(all 1s ease-in-out);
 	}
 	&.slideIn {
 		opacity: 1;
 		top: 0;
-		@include transition(all, 1s, ease-in-out);
+		@include transition(all 1s ease-in-out);
 	}
 	.info {
 		.plus {
@@ -435,13 +493,17 @@ header {
 				background: $lightblue;
 				margin: 0 0 0 -2.5px;
 			}
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
 			@include transform(rotate(45deg));
-			@include transition(all, 0.3s, ease-in-out);
+			@include transition(all 0.3s ease-in-out);
 		}
 		&.collapsed {
 			.plus {
 				@include transform(rotate(0deg));
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 			}
 		}
 	}
@@ -477,7 +539,7 @@ header {
 			&:hover {
 				.playwrap {
 					@include transform(scale(0.5));
-					@include transition(all, 0.25s, ease-out);
+					@include transition(all 0.25s ease-out);
 				}
 			}
 			img {
@@ -497,8 +559,12 @@ header {
 		@include border-right-radius(50%);
 		@include border-left-radius(50%);
 		border: 5px solid #fff;
+		@include backface-visibility(hidden);
+		@include transform(translateZ(0));
+		@include transform(translate3d(0,0,0));
+		@include transform-style(preserve-3d);
 		@include transform(scale(0));
-		@include transition(all, 0.25s, ease-out);
+		@include transition(all 0.25s ease-out);
 		i {
 			text-align: center;
 			font-size: 48px;
@@ -546,29 +612,37 @@ header {
 		.singlevideo {
 			display: block;
 			height: 360px;
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
 			@include transform(scale(1));
-			@include transition(all, 0.25s, ease-out);
+			@include transition(all 0.25s ease-out);
 			background-size: 135% 135% !important;
 			&:hover {
 				@include transform(scale(1.1));
-				@include transition(all, 0.25s, ease-out);
+				@include transition(all 0.25s ease-out);
 				.playwrap {
 					@include transform(scale(0.5));
-					@include transition(all, 0.25s, ease-out);
+					@include transition(all 0.25s ease-out);
 				}
 			}
 		}
 		.singlephoto {
 			margin: 1px;
 			display: block;
+			@include backface-visibility(hidden);
+			@include transform(translateZ(0));
+			@include transform(translate3d(0,0,0));
+			@include transform-style(preserve-3d);
 			@include transform(scale(1));
-			@include transition(all, 0.25s, ease-out);
+			@include transition(all 0.25s ease-out);
 			&:hover {
 				@include transform(scale(1.1));
-				@include transition(all, 0.25s, ease-out);
+				@include transition(all 0.25s ease-out);
 				.playwrap {
 					@include transform(scale(0.5));
-					@include transition(all, 0.25s, ease-out);
+					@include transition(all 0.25s ease-out);
 				}
 			}
 		}
@@ -584,15 +658,19 @@ header {
 	margin-left: 325px;
 	padding-right: 25px;
 	box-sizing: border-box;
-	@include transition(all, 1s, ease-in-out);
+	@include backface-visibility(hidden);
+	@include transform(translateZ(0));
+	@include transform(translate3d(0,0,0));
+	@include transform-style(preserve-3d);
+	@include transition(all 1s ease-in-out);
 	&.shrink {
 		margin-left: 275px;
-		@include transition(all, 1s, ease-in-out);
+		@include transition(all 1s ease-in-out);
 	}
 	&.slideIn {
 		opacity: 1;
 		top: 0;
-		@include transition(all, 1s, ease-in-out);
+		@include transition(all 1s ease-in-out);
 	}
 	h1 {
 		margin: 0;
@@ -618,8 +696,12 @@ header {
 .modal {
 	text-align: center;
 	top: -100%;
+	@include backface-visibility(hidden);
+	@include transform(translateZ(0));
+	@include transform(translate3d(0,0,0));
+	@include transform-style(preserve-3d);
 	@include transform(scale(0.5));
-	@include transition(all, 0.5s, ease-in-out);
+	@include transition(all 0.5s ease-in-out);
 	&#about, &#contact {
 		.modal-body {
 			text-align: left;
@@ -637,7 +719,7 @@ header {
 	&.in {
 		top: 0;
 		@include transform(scale(1));
-		@include transition(all, 0.5s, ease-in-out);
+		@include transition(all 0.5s ease-in-out);
 	}
 	.modal-dialog {
 		display: inline-block;
