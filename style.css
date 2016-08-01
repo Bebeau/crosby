@@ -1857,6 +1857,15 @@ p {
     top: 50%;
     left: 0; }
 
+.error404 {
+  text-align: center; }
+  .error404 h1 {
+    text-align: center; }
+  .error404 .contact-btn {
+    width: 300px;
+    margin: 25px auto;
+    display: block; }
+
 .agent {
   margin: 25px 0;
   height: 200px;
