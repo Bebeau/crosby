@@ -1749,6 +1749,10 @@ h1 {
   text-transform: uppercase;
   font-family: 'Neutra'; }
 
+h1, h2, h3, h4, h5 {
+  color: #000e6b;
+  text-transform: uppercase; }
+
 ul, ol {
   list-style: none;
   margin: 0;
@@ -1762,6 +1766,32 @@ p {
   margin: 0 0 25px;
   color: #000e6b;
   font-family: 'Neutra'; }
+
+.outer {
+  /* W3C */
+  display: inline-flex !important;
+  box-pack: center !important;
+  box-align: center !important;
+  /* Safari, Opera, and Chrome */
+  display: -webkit-inline-flex !important;
+  -webkit-box-pack: center !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  /* Firefox */
+  display: -moz-inline-flexbox !important;
+  -moz-box-pack: center !important;
+  -moz-box-align: center !important;
+  -moz-align-items: center !important;
+  height: 100vh;
+  width: 100%;
+  align-items: center !important;
+  position: relative;
+  z-index: 2; }
+  .outer .inner {
+    margin: auto 0;
+    width: 100%;
+    position: relative;
+    z-index: 3; }
 
 .home_bg {
   height: auto !important;
@@ -1808,6 +1838,58 @@ p {
   transition: all 0.3s ease-in-out; }
   .contact-btn:hover {
     color: #000e6b; }
+
+.contact .agentwrap {
+  text-align: center;
+  position: relative; }
+  .contact .agentwrap h2 {
+    display: inline-block;
+    background: white;
+    padding: 0 10px;
+    margin: 0;
+    position: relative;
+    z-index: 999; }
+  .contact .agentwrap span {
+    width: 100%;
+    height: 1px;
+    background: #000e6b;
+    position: absolute;
+    top: 50%;
+    left: 0; }
+
+.agent {
+  margin: 25px 0;
+  height: 200px;
+  overflow: hidden; }
+  .agent .agent-info {
+    height: 200px; }
+    .agent .agent-info .outer {
+      height: 200px; }
+  .agent .agent-image {
+    padding: 0;
+    height: 200px; }
+  .agent h3 {
+    font-size: 14pt;
+    margin: 0;
+    text-transform: uppercase;
+    color: #000e6b; }
+  .agent .social {
+    display: block;
+    margin: 15px 0; }
+    .agent .social a {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      text-align: center;
+      background: #000e6b;
+      margin: 0 1px;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%; }
+      .agent .social a i {
+        color: white; }
 
 #artistSocial {
   display: block;
@@ -2866,6 +2948,22 @@ header {
       height: 15px; }
       #singlePortfolio .info .plus:before {
         height: 15px; }
+
+  #singlePage {
+    margin: 0;
+    padding: 0 15px;
+    text-align: center; }
+    #singlePage h1 {
+      margin: 0 0 15px;
+      padding: 0;
+      font-size: 21pt; }
+    #singlePage h2 {
+      font-size: 16pt; }
+    #singlePage .agent {
+      margin: 15px 0; }
+    #singlePage .agent-info {
+      background: #ebebeb;
+      text-align: left; }
 
   .modal .modal-dialog {
     margin: 15px; }

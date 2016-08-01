@@ -73,6 +73,10 @@ h1 {
     text-transform: uppercase;
     font-family: 'Neutra';
 }
+h1,h2,h3,h4,h5 {
+	color: $lightblue;
+	text-transform: uppercase;
+}
 ul,ol {
 	list-style: none;
 	margin: 0;
@@ -86,6 +90,33 @@ p {
 	margin: 0 0 25px;
 	color: $lightblue;
 	font-family: 'Neutra';
+}
+.outer {
+	/* W3C */
+	display: inline-flex !important;
+    box-pack: center !important;
+    box-align: center !important;
+	/* Safari, Opera, and Chrome */
+	display: -webkit-inline-flex !important;
+	-webkit-box-pack: center !important;
+	-webkit-box-align: center !important;
+	-webkit-align-items: center !important;
+	 /* Firefox */
+	display: -moz-inline-flexbox !important;
+	-moz-box-pack: center !important;
+	-moz-box-align: center !important;
+	-moz-align-items: center !important;
+	height: 100vh;
+	width: 100%;
+	align-items: center !important;
+	position: relative;
+	z-index: 2;
+	.inner {
+		margin: auto 0;
+		width: 100%;
+		position: relative;
+		z-index: 3;
+	}
 }
 .home_bg {
 	height: auto !important;
@@ -117,6 +148,67 @@ p {
 	@include transition(all 0.3s ease-in-out);
 	&:hover {
 		color: $lightblue;
+	}
+}
+.contact {
+	.agentwrap {
+		text-align: center;
+		position: relative;
+		h2 {
+			display: inline-block;
+			background: white;
+			padding: 0 10px;
+			margin: 0;
+			position: relative;
+			z-index: 999;
+		}
+		span {
+			width: 100%;
+			height: 1px;
+			background: $lightblue;
+			position: absolute;
+			top: 50%;
+			left: 0;
+		}
+	}
+}
+.agent {
+	margin: 25px 0;
+	height: 200px;
+	overflow: hidden;
+	.agent-info {
+		height: 200px;
+		.outer {
+			height: 200px;
+		}
+	}
+	.agent-image {
+		padding: 0;
+		height: 200px;
+	}
+	h3 {
+		font-size: 14pt;
+		margin: 0;
+		text-transform: uppercase;
+		color: $lightblue;
+	}
+	.social {
+		display: block;
+		margin: 15px 0;
+		a {
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			display: inline-block;
+			text-align: center;
+			background: $lightblue;
+			margin: 0 1px;
+			@include border-top-radius(50%);
+			@include border-bottom-radius(50%);
+			i {
+				color: white;
+			}
+		}
 	}
 }
 #artistSocial {

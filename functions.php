@@ -57,3 +57,70 @@ function remove_menus(){
 add_action( 'admin_menu', 'remove_menus' );
 
 include(TEMPLATEPATH.'/partials/functions/portfolios.php');
+include(TEMPLATEPATH.'/partials/functions/agents.php');
+
+add_filter('admin_init', 'my_general_settings_register_fields');
+ 
+function my_general_settings_register_fields() {
+    register_setting(
+    	'general', 
+    	'crosby_address', 
+    	'esc_attr'
+	);
+    add_settings_field(
+    	'crosby_address', 
+    	'<label for="crosby_address">'.__('Address' , 'crosby_address' ).'</label>' , 
+    	'crosby_address', 
+    	'general'
+	);
+	register_setting(
+    	'general', 
+    	'crosby_address2', 
+    	'esc_attr'
+	);
+    add_settings_field(
+    	'crosby_address2', 
+    	'<label for="crosby_address2">'.__('City/State/Zip' , 'crosby_address2' ).'</label>' , 
+    	'crosby_address2', 
+    	'general'
+	);
+	register_setting(
+    	'general', 
+    	'crosby_phone', 
+    	'esc_attr'
+	);
+    add_settings_field(
+    	'crosby_phone', 
+    	'<label for="crosby_phone">'.__('Phone' , 'crosby_phone' ).'</label>' , 
+    	'crosby_phone', 
+    	'general'
+	);
+	register_setting(
+    	'general', 
+    	'crosby_fax', 
+    	'esc_attr'
+	);
+    add_settings_field(
+    	'crosby_fax', 
+    	'<label for="crosby_fax">'.__('Fax' , 'crosby_fax' ).'</label>' , 
+    	'crosby_fax', 
+    	'general'
+	);
+}
+ 
+function crosby_address() {
+    $address = get_option( 'crosby_address', '' );
+    echo '<input type="text" class="regular-text ltr" id="crosby_address" name="crosby_address" value="' . $address . '" placeholder="address" />';
+}
+function crosby_address2() {
+    $address2 = get_option( 'crosby_address2', '' );
+    echo '<input type="text" class="regular-text ltr" id="crosby_address2" name="crosby_address2" value="' . $address2 . '" placeholder="city/state/zip" />';
+}
+function crosby_phone() {
+    $phone = get_option( 'crosby_phone', '' );
+    echo '<input type="text" id="crosby_phone" name="crosby_phone" value="' . $phone . '" placeholder="555-555-5555"/>';
+}
+function crosby_fax() {
+    $fax = get_option( 'crosby_fax', '' );
+    echo '<input type="text" id="crosby_fax" name="crosby_fax" value="' . $fax . '" placeholder="555-555-5555" />';
+}
