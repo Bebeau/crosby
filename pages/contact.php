@@ -9,15 +9,6 @@ get_header(); ?>
 	<div id="singlePage" class="contentwrap contact">
 		<div class="row">
 
-			<div class="col-md-6 hidden-xs">
-				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-				<div style='overflow:hidden;margin-left: -25px;'>
-					<div id='gmap_canvas' style='height:100vh;width:100%;'></div>
-				</div>
-				<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-				<script type='text/javascript'>function init_map(){var myOptions = {zoom:13,center:new google.maps.LatLng(34.0819562,-118.32343149999997),mapTypeId: google.maps.MapTypeId.TERRAIN};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(34.0819562,-118.32343149999997)});infowindow = new google.maps.InfoWindow({content:'<strong>Crosby Carter Management</strong><br>606 N. Larchmont Blvd. #306 Los Angeles, CA 90004<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
-			</div>
-
 			<div class="col-md-6">
 				<?php
 
@@ -29,7 +20,7 @@ get_header(); ?>
 					echo '<h1>'.get_the_title().'</h1>';
 
 					echo '<address><p><strong>'.get_bloginfo("name").'</strong><br />'.$address.'<br />'.$address2.'</p></address>';
-					echo '<p>tel: <strong>'.$phone.'</strong><br />';
+					echo '<p>tel: <strong class="hidden-xs">'.$phone.'</strong><strong class="visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></strong><br />';
 					echo 'fax: <strong>'.$fax.'</strong></p>';
 
 					echo '<div class="agentwrap">';
@@ -46,7 +37,7 @@ get_header(); ?>
 						'meta_compare' => '',
 						'meta_query'   => array(),
 						'date_query'   => array(),        
-						'include'      => array(),
+						'include'      => array(6,5,4),
 						'exclude'      => array(),
 						'orderby'      => 'login',
 						'order'        => 'ASC',
@@ -65,7 +56,6 @@ get_header(); ?>
 						$facebook = get_user_meta($userID, "agent_fb_url", true);
 						$twitter = get_user_meta($userID, "agent_twit_url", true);
 						$instagram = get_user_meta($userID, "agent_ig_url", true);
-						$linkedin = get_user_meta($userID, "agent_in_url", true);
 
 						$phone = get_user_meta($userID, "phone", true);
 
@@ -74,6 +64,10 @@ get_header(); ?>
 							echo '<div class="col-xs-6 agent-info">';
 								echo '<div class="outer"><div class="inner">';
 									echo '<h3>'.$agent->display_name.'</h3>';
+									if(!empty($phone)) {
+										echo '<div class="phone hidden-xs">'.$phone.'</div>';
+										echo '<div class="phone visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></div>';
+									}
 									echo '<div class="social">';
 										if(!empty($facebook)) {
 											echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';
@@ -84,23 +78,11 @@ get_header(); ?>
 										if(!empty($instagram)) {
 											echo '<a href="'.$instagram.'"><i class="fa fa-instagram"></i></a>';
 										}
-										if(!empty($linkedin)) {
-											echo '<a href="'.$linkedin.'"><i class="fa fa-linkedin"></i></a>';
-										}
 									echo '</div>';
 									echo '<div class="info">';
-										echo '<div class="visible-xs">';
-											if(!empty($phone)) {
-												echo '<a class="contact-btn" href="tel:'.$phone.'">Call</a>';
-											} else {
-												echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
-											}
-										echo '</div>';
-										echo '<div class="hidden-xs">';
-											if(!empty($email)) {
-												echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
-											}
-										echo '</div>';
+										if(!empty($email)) {
+											echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
+										}
 									echo '</div>';
 								echo '</div></div>';
 							echo '</div>';

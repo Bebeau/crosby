@@ -124,3 +124,114 @@ function crosby_fax() {
     $fax = get_option( 'crosby_fax', '' );
     echo '<input type="text" id="crosby_fax" name="crosby_fax" value="' . $fax . '" placeholder="555-555-5555" />';
 }
+
+// add artist filter to media listing
+add_filter('parse_query', 'node_admin_posts_filter');
+add_action('restrict_manage_posts', 'filter_by_artist');
+function node_admin_posts_filter($wp_query) {
+    if (is_admin() && isset($_GET['post_id']) && $_GET['post_id'] != '') {
+        $original_query = $wp_query;
+        $wp_query->set('post_parent', $_GET['post_id']);
+        $wp_query = $original_query;
+        wp_reset_postdata();
+    }
+}
+function filter_by_artist() {
+    global $wpdb;
+    $get_posts = $wpdb->get_results("SELECT ID, post_title FROM $wpdb->posts WHERE $wpdb->posts.post_type IN ('portfolios') ORDER BY $wpdb->posts.post_title ASC");
+    echo '<select name="post_id">';
+    echo '<option value="">All Artists</option>';
+    $current   = isset($_GET['post_id']) ? $_GET['post_id'] : '';
+    foreach($get_posts as $get_post) {
+        $select = null;
+        if($current == $get_post->ID) { $select = ' selected="selected"'; }
+        echo '<option value="' . $get_post->ID . '" ' . $select . '>' . $get_post->post_title . '</option>';
+    }
+}
+
+// create custom plugin settings menu
+add_action('admin_menu', 'add_project_ordering');
+function add_project_ordering() {
+    add_submenu_page(
+        'themes.php',
+        'Background',
+        'Background',
+        'manage_options',
+        'theme-setup',
+        'theme_background_page' 
+    );
+}
+function theme_background_page() {
+
+    save_custom_theme_options();
+
+    settings_fields( 'theme_setup_options' );
+    do_settings_sections( 'theme_setup_options' );
+
+    $background = get_option('custom_bg');
+    $video = get_option('videos');
+
+    echo '<div class="wrap">';
+
+        echo "<h1>Background</h1>";
+
+        echo '<section id="bgUpload" data-input="custom_bg">';
+            echo '<h2>Set Background Image</h2>';
+            echo '<p>Suggested image size is 2880px by 1800px</p>';
+            echo '<div class="image-placeholder background">';
+                echo '<img src="'.$background.'" alt="" />';
+            echo '</div>';
+            if ( !empty($background) ) {
+                echo '<button class="remove-background button button-large">Remove</button>';
+            } else {
+                echo '<button class="add button button-large upload-background" id="upload-bg" style="text-align:center;" data-input="custom_bg">Upload/Set Background</button>';
+            }
+            echo '<input type="hidden" name="custom_bg" id="custom_bg" value="'.$background.'" />';
+        echo '</section>';
+
+    echo '</div>';
+}
+function custom_user_can_save( $action, $nonce ) {
+    $is_nonce_set   = isset( $_POST[ $nonce ] );
+    $is_valid_nonce = false;
+    if ( $is_nonce_set ) {
+        $is_valid_nonce = wp_verify_nonce( $_POST[ $nonce ], $action );
+    }
+    return ( $is_nonce_set && $is_valid_nonce );
+}
+function save_custom_theme_options() {
+
+    $action = 'theme_setup_options_save';
+    $nonce  = 'theme_setup_options_save_nonce';
+
+    if ( !custom_user_can_save( $action, $nonce ) ) {
+        return;
+    }
+
+    if (isset($_POST["update_settings"])) {
+
+        if ( isset( $_POST['custom_bg'] ) ) {
+            update_option('custom_bg', $_POST['custom_bg']);
+        }
+
+        echo '<div id="message" class="updated">Settings saved</div>';
+
+    }
+}
+// ajax response to save download track
+add_action('wp_ajax_setBackgroundImage', 'setBackground');
+add_action('wp_ajax_nopriv_setBackgroundImage', 'setBackground');
+function setBackground() {
+
+    $imageField = (isset($_GET['imageField'])) ? $_GET['imageField'] : 0;
+    $imageURL = (isset($_GET['fieldVal'])) ? $_GET['fieldVal'] : 0;
+
+    var_dump($imageURL);
+
+    if($imageURL !== "") {
+        update_option( 'custom_bg', $imageURL);
+    } else {
+        update_option( 'custom_bg', "");
+    }
+}
+?>

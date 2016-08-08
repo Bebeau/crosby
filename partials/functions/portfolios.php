@@ -296,7 +296,7 @@ function image_type_ordering($post) {
     if($savedTerms && $order) {
         echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
         foreach ($savedTerms as $term ) {
-            if(has_Images($term->slug) && $term->slug !== "featured") { ?>
+            if(has_Images($term->slug) && $term->slug !== "flasher") { ?>
                 <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
                         <span class="bars"><i></i></span> <?php echo $term->name; ?>
@@ -305,7 +305,7 @@ function image_type_ordering($post) {
            <?php }
         }
         foreach ($terms as $term ) {
-            if(!in_array($term->term_id, $order) && has_Images($term->slug) && $term->slug !== "featured") { ?>
+            if(!in_array($term->term_id, $order) && has_Images($term->slug) && $term->slug !== "flasher") { ?>
                  <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
                         <span class="bars"><i></i></span> <?php echo $term->name; ?>
@@ -317,7 +317,7 @@ function image_type_ordering($post) {
     } else {
         echo '<table class="wp-list-table widefat fixed striped pages"><tbody id="sortable" data-post="'.$post->ID.'">';
         foreach ($terms as $term ) {
-            if(has_Images($term->slug) && $term->slug !== "featured") { ?>
+            if(has_Images($term->slug) && $term->slug !== "flasher") { ?>
                  <tr data-order="<?php echo $term->term_id; ?>" class="ui-state-default" >
                     <td>
                         <span class="bars"><i></i></span> <?php echo $term->name; ?>
@@ -351,13 +351,11 @@ function social($post) {
     $fb_url     = get_post_meta($post->ID,'artist_fb_url',true);
     $twit_url   = get_post_meta($post->ID,'artist_twit_url',true);
     $ig_url     = get_post_meta($post->ID,'artist_ig_url',true);
-    $in_url     = get_post_meta($post->ID,'artist_in_url',true);
 
     echo '<p>Assign social media links to artists portfolios using the fields below</p>';
     echo '<span class="field"><i class="facebook"></i><input type="text" name="artist_fb_url" placeholder="https://facebook.com/USER" value="'.$fb_url.'" /></span>';
     echo '<span class="field"><i class="instagram"></i><input type="text" name="artist_ig_url" placeholder="https://instagram.com/USER" value="'.$ig_url.'" /></span>';
     echo '<span class="field"><i class="twitter"></i><input type="text" name="artist_twit_url" placeholder="https://twitter.com/USER" value="'.$twit_url.'" /></span>';
-    echo '<span class="field"><i class="linkedin"></i><input type="text" name="artist_in_url" placeholder="https://linkedin.com/in/USER" value="'.$in_url.'" /></span>';
 }
 /* When the post is saved, saves our custom data */
 add_action( 'save_post', 'dynamic_save_postdata' );
@@ -374,7 +372,6 @@ function dynamic_save_postdata( $post_id ) {
     $fb_url     = $_POST['artist_fb_url'];
     $twit_url   = $_POST['artist_twit_url'];
     $ig_url     = $_POST['artist_ig_url'];
-    $in_url     = $_POST['artist_in_url'];
 
     if(isset($fb_url)) {
         update_post_meta($post_id,'artist_fb_url',$fb_url);
@@ -390,11 +387,6 @@ function dynamic_save_postdata( $post_id ) {
         update_post_meta($post_id,'artist_ig_url',$ig_url);
     } else {
         update_post_meta($post_id,'artist_ig_url',"");
-    }
-    if(isset($in_url)) {
-        update_post_meta($post_id,'artist_in_url',$in_url);
-    } else {
-        update_post_meta($post_id,'artist_in_url',"");
     }
 
     // check for commercial nonce
@@ -592,7 +584,7 @@ function add_feature_image( $atts, $item, $args ) {
             array(
                 'taxonomy' => 'image_type',
                 'field' => 'slug',
-                'terms' => 'featured'
+                'terms' => 'flasher'
             )
         )
     );

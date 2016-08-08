@@ -120,7 +120,12 @@
 	);
 
 if(is_front_page()) {
-	echo '<div class="home_bg"></div>';
+	$background = get_option('custom_bg');
+	if(!empty($background)) {
+		echo '<div class="home_bg" style="background:url('.$background.') no-repeat scroll top left / cover;"></div>';
+	} else {
+		echo '<div class="home_bg"></div>';
+	}
 	echo '<header class="home">';
 		echo '<a id="logo" href="'.get_site_url().'"><img class="logo" src="'.get_bloginfo('template_directory').'/assets/images/logo.png" alt="" /></a>';
 		wp_nav_menu( $menu_args );
@@ -165,7 +170,7 @@ if(is_singular()) {
 			$terms = get_terms($args);
 			if($terms) {
 				foreach ($terms  as $term ) {
-					if(has_Images($term->slug) && $term->name != "featured") {
+					if(has_Images($term->slug) && $term->name != "flasher") {
 						echo '<li><a class="tab" href="#'.$term->slug.'">'.$term->name.'</a></li>';
 					}
 				}
@@ -185,9 +190,8 @@ if(is_singular()) {
 		$fb_url = get_post_meta($post->ID, 'artist_fb_url', true);
 		$ig_url = get_post_meta($post->ID, 'artist_ig_url', true);
 		$twit_url = get_post_meta($post->ID, 'artist_twit_url', true);
-		$in_url = get_post_meta($post->ID, 'artist_in_url', true);
 
-		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url) || !empty($in_url)) {
+		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url)) {
 			echo '<div id="artistSocial">';
 				if(!empty($fb_url)) {
 					echo '<a href="'.$fb_url.'"><i class="facebook"></i></a>';
@@ -197,9 +201,6 @@ if(is_singular()) {
 				}
 				if(!empty($ig_url)) {
 					echo '<a href="'.$ig_url.'"><i class="instagram"></i></a>';
-				}
-				if(!empty($in_url)) {
-					echo '<a href="'.$in_url.'"><i class="linkedin"></i></a>';
 				}
 			echo '</div>';
 		}
@@ -219,7 +220,7 @@ if(is_singular()) {
 			}
 		}
 
-		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url) || !empty($in_url) || !empty($agentID)) {
+		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url) || !empty($agentID)) {
 			echo '<hr>';
 		}
 
@@ -247,7 +248,7 @@ if(is_singular()) {
 			) );
 			if($terms) {
 				foreach ($terms  as $term ) {
-					if(has_Images($term->slug) && $term->name != "featured") {
+					if(has_Images($term->slug) && $term->name != "flasher") {
 						echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
 					}
 				}

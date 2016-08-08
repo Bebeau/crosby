@@ -67,7 +67,6 @@ function modify_contact_methods($profile_fields) {
 	$profile_fields['agent_fb_url'] = 'Facebook URL';
 	$profile_fields['agent_twit_url'] = 'Twitter URL';
 	$profile_fields['agent_ig_url'] = 'Instagram URL';
-	$profile_fields['agent_in_url'] = 'LinkedIn URL';
 	return $profile_fields;
 }
 // add upload logo

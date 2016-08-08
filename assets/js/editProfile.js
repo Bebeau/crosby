@@ -3,7 +3,9 @@ var ajaxurl = meta_image.ajaxurl;
 var user = {
 	onReady: function() {
 		user.imageUploader();
+		user.backgroundUploader();
 		user.removeImage();
+		user.removeBackgroundImage();
 		user.imageDrop();
 	},
 	imageUploader: function() {
@@ -85,6 +87,79 @@ var user = {
             }
         }); 
     },
+    backgroundUploader: function() {
+		var meta_image_frame;
+     	// Runs when the image button is clicked.
+	    jQuery('.upload-background').click(function(e){
+
+	    	// Prevents the default action from occuring.
+	        e.preventDefault();
+	        var button = jQuery(this);
+	        var elem = jQuery(this).parent();
+	    	var val = elem.attr("data-input");
+	    	var input = jQuery('#'+val);
+	    	var img = jQuery('.background');
+
+	        // Sets up the media library frame
+	        meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
+	            title: meta_image.title,
+	            button: { text:  meta_image.button },
+	            library: { type: 'image' },
+	            multiple: false
+	        });
+
+	        // Runs when an image is selected.
+	        meta_image_frame.on('select', function(){
+
+	            // Grabs the attachment selection and creates a JSON representation of the model.
+	            var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
+	            // Sends the attachment URL to our custom image input field.
+	            img.find("img").remove();
+	            img.append('<img src="'+media_attachment.url+'" alt="" />' );
+	            input.val(media_attachment.url);
+	            elem.append('<button class="remove-background button button-large">Remove</button>');
+	            button.remove();
+	            user.saveBackgroundImage( val, media_attachment.url );
+	            user.removeBackgroundImage();
+	        });
+
+	        // Opens the media library frame.
+	        meta_image_frame.open();
+	    });
+	},
+    saveBackgroundImage: function(field, image) {
+        jQuery.ajax({
+            url: ajaxurl,
+            type: "GET",
+            data: {
+                imageField: field,
+                fieldVal: image,
+                action: 'setBackgroundImage'
+            },
+            dataType: 'html',
+            error : function(jqXHR, textStatus, errorThrown) {
+                window.alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+            }
+        }); 
+    },
+    removeBackgroundImage: function() {
+		jQuery('.remove-background').click(function(e){
+			e.preventDefault();
+
+			var val = jQuery(this).parent().attr("data-input");
+
+			jQuery(this).parent().find("input").val("");
+			jQuery(this).parent().find("img").remove();
+
+			user.saveBackgroundImage(val,"");
+
+			jQuery(this).parent().append('<button class="add button button-large upload-background" style="text-align:center;" data-input="custom_bg" data-img="bg">Upload/Set Background</button>');
+			jQuery(this).remove();
+
+			user.backgroundUploader();
+
+		});
+	},
     dropImage: function(field, userID, image, elem) {
         jQuery.ajax({
             url: ajaxurl,
