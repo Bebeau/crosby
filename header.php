@@ -170,7 +170,7 @@ if(is_singular()) {
 			$terms = get_terms($args);
 			if($terms) {
 				foreach ($terms  as $term ) {
-					if(has_Images($term->slug) && $term->name != "flasher") {
+					if(has_Images($term->slug) && $term->name != "Flasher") {
 						echo '<li><a class="tab" href="#'.$term->slug.'">'.$term->name.'</a></li>';
 					}
 				}

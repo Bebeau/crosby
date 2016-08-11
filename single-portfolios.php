@@ -26,7 +26,7 @@
 		    	echo '<div class="collapse clearfix" id="bio">';
 			    	if(has_post_thumbnail()) {
 			    		echo '<div class="col-sm-4">';
-			    			the_post_thumbnail();
+			    			the_post_thumbnail('large');
 			    		echo '</div>';
 			    	}
 		    		echo '<div class="col-sm-8">';
@@ -40,8 +40,8 @@
 				    'exclude' => 22
 				) );
 				if($terms) {
-					foreach ($terms  as $term ) {
-						if(has_Images($term->slug)) {
+					foreach ($terms as $term ) {
+						if(has_Images($term->slug) && $term->name != "Flasher") {
 							list_Images($term->slug, $term->name);
 						}
 					}
