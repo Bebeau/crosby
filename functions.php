@@ -218,7 +218,7 @@ function save_custom_theme_options() {
 
     }
 }
-// ajax response to save download track
+// ajax response to save background image
 add_action('wp_ajax_setBackgroundImage', 'setBackground');
 add_action('wp_ajax_nopriv_setBackgroundImage', 'setBackground');
 function setBackground() {
