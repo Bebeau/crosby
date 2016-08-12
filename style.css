@@ -1732,7 +1732,12 @@ body {
   body.home {
     background: #00041e; }
   body.single {
-    background: #ffffff; }
+    background: #ffffff;
+    height: auto; }
+  body:after {
+    content: "";
+    clear: both;
+    float: none; }
 
 a {
   text-decoration: none;

@@ -56,6 +56,12 @@ body {
 	}
 	&.single {
 		background: $white;
+		height: auto;
+	}
+	&:after {
+		content:"";
+		clear: both;
+		float: none;
 	}
 }
 a {
