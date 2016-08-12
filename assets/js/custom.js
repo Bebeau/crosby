@@ -10,12 +10,13 @@ var init = {
 		init.activeTab();
 		init.navSlideIn();
 		init.linkPatch();
-		init.pageIn();
 		// init.pageAjax();
 		// init.stopClick();
 		init.subNavCollapse();
 		if(isMobile) {
 			init.mobileHoverFix();
+		} else {
+			init.pageIn();
 		}
 	},
 	mobileHoverFix: function() {

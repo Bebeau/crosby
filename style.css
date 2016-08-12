@@ -2863,7 +2863,8 @@ header {
     z-index: 11;
     overflow: scroll;
     width: 100%;
-    min-height: auto; }
+    min-height: auto;
+    height: auto; }
     header #logo {
       width: 100%; }
     header .logoWrap {
@@ -2924,6 +2925,8 @@ header {
           font-size: 14pt; }
 
   #singlePortfolio {
+    top: 0;
+    opacity: 1;
     margin: 0 0 15px;
     padding: 0 15px; }
     #singlePortfolio .pane {
