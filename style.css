@@ -2930,8 +2930,8 @@ header {
           font-size: 14pt; }
 
   #singlePortfolio {
-    top: 0;
-    opacity: 1;
+    top: 0 !important;
+    opacity: 1 !important;
     margin: 0 0 15px;
     padding: 0 15px; }
     #singlePortfolio .pane {
