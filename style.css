@@ -2850,6 +2850,9 @@ header {
  *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
  * <![endif]--> */
 @media (max-width: 768px) {
+  body, html {
+    background: #ffffff; }
+
   h1 {
     font-size: 16pt;
     margin: 0;

@@ -1,4 +1,7 @@
 @media (max-width: 768px) {
+	body,html {
+		background: $white;
+	}
 	h1 {
 		font-size: 16pt;
 		margin: 0;
