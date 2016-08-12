@@ -1720,7 +1720,7 @@ body, html {
   padding: 0;
   height: 100%;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
-  background-color: #ffffff; }
+  background: #00041e; }
 
 body {
   position: relative;
@@ -1731,6 +1731,8 @@ body {
     display: none; }
   body.home {
     background: #00041e; }
+  body.single {
+    background: #ffffff; }
 
 a {
   text-decoration: none;

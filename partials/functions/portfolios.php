@@ -561,7 +561,7 @@ function list_Images($cat, $name) {
                 while ($query->have_posts()) {
                     $query->the_post();
                     echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
-                        if(is_mobile()) {
+                        if(wp_is_mobile()) {
                             echo '<img src="'.wp_get_attachment_image_src($post->id, 'medium')[0].'" alt="" />';
                         } else {
                             echo '<img src="'.wp_get_attachment_image_src($post->id, 'large')[0].'" alt="" />';
