@@ -63,12 +63,11 @@
 		.dropdown-menu {
 			@include border-top-radius(0);
 			@include border-bottom-radius(0);
-			margin: 0;
 			padding: 0;
-			width: 101%;
+			width: 100%;
 			background: $lightblue;
 			border: 1px solid $lightblue;
-			margin: 0 -1px;
+			margin: 0;
 			li {
 				a {
 					font-size: 14pt;
@@ -97,18 +96,27 @@
 		top: 0;
 		opacity: 1;
 		margin: 0 0 15px;
-		padding: 0 15px;
+		padding: 0;
 		.pane {
 			overflow: hidden;
 		}
 		.imageWrap {
 			line-height: 0;
 			-webkit-column-count: 2;
-			-webkit-column-gap: 0px;
+			-webkit-column-gap: 1px;
 			-moz-column-count: 2;
-			-moz-column-gap: 0px;
+			-moz-column-gap: 1px;
 			column-count: 2;
-			column-gap: 0px;
+			column-gap: 1px;
+			a {
+				display: block;
+				line-height: 0px;
+				img {
+					min-width: 100%;
+					height: auto;
+					line-height: 0px;
+				}
+			}
 		}
 		#bio {
 			padding: 0;

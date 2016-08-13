@@ -232,7 +232,7 @@ if(is_singular()) {
 
 	echo '</header>';
 
-	echo '<header class="sub hidden-xs">';
+	echo '<header class="sub visible-xs">';
 		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 		echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
