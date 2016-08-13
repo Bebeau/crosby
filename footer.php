@@ -16,7 +16,7 @@
 						if(!empty($twit_url)) {
 							echo '<a href="'.$twit_url.'"><i class="twitter"></i></a>';
 						}
-						if(!empty($in_url)) {
+						if(!empty($ig_url)) {
 							echo '<a href="'.$ig_url.'"><i class="instagram"></i></a>';
 						}
 					echo '</div>';
