@@ -39,7 +39,6 @@ body,html{
 	padding: 0;
 	height: 100%;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.04);
-	background: $blue;
 }
 body {
 	position: relative;
@@ -559,7 +558,7 @@ header {
 #singlePortfolio {
 	position: relative;
 	z-index: 10;
-	top: 50vh;
+	top: 0;
 	opacity: 0;
 	margin-left: 325px;
 	padding-right: 25px;

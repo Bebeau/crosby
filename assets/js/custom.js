@@ -140,6 +140,9 @@ var init = {
 		jQuery('.portfolio-menu ul li a').click(function(e){
 			e.preventDefault();
 
+			// scroll to top of page
+			jQuery("html, body").animate({ scrollTop: 0 }, "slow");
+
 			var tab = jQuery(this).attr("href");
 			jQuery('.portfolio-menu ul li').removeClass("active");
 			jQuery(this).parent().addClass("active");
