@@ -2857,7 +2857,8 @@ header {
     overflow: scroll;
     width: 100%;
     min-height: auto;
-    height: auto; }
+    height: auto;
+    display: none; }
     header #logo {
       width: 100%; }
     header .logoWrap {
@@ -2918,10 +2919,10 @@ header {
           font-size: 14pt; }
 
   #singlePortfolio {
-    top: 0 !important;
-    opacity: 1 !important;
-    margin: 0 0 15px !important;
-    padding: 0 15px !important; }
+    top: 0;
+    opacity: 1;
+    margin: 0 0 15px;
+    padding: 0 15px; }
     #singlePortfolio .pane {
       overflow: hidden; }
     #singlePortfolio .imageWrap {
