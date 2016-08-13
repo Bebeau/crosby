@@ -2867,6 +2867,7 @@ header {
     header.sub {
       position: relative;
       height: 230px;
+      min-height: auto;
       width: auto;
       overflow: scroll;
       background: none;
