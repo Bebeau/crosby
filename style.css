@@ -2934,7 +2934,12 @@ header {
       column-count: 2;
       column-gap: 1px; }
       #singlePortfolio .imageWrap a {
-        display: block; }
+        display: block;
+        line-height: 0px; }
+        #singlePortfolio .imageWrap a img {
+          min-width: 100%;
+          height: auto;
+          line-height: 0px; }
     #singlePortfolio #bio {
       padding: 0;
       font-size: 12pt; }
