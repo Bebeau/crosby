@@ -37,7 +37,7 @@ get_header(); ?>
 						'meta_compare' => '',
 						'meta_query'   => array(),
 						'date_query'   => array(),        
-						'include'      => array(6,5,4),
+						'include'      => array(4,2,3),
 						'exclude'      => array(),
 						'orderby'      => 'login',
 						'order'        => 'ASC',
