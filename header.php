@@ -232,34 +232,34 @@ if(is_singular()) {
 
 	echo '</header>';
 
-	echo '<header class="sub visible-xs">';
-		// echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
-		// echo '<div class="dropdown">';
-		// 	echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-		// 		echo 'Filter';
-		// 	    echo ' <i class="fa fa-angle-down"></i>';
-		// 	echo '</button>';
-		// 	echo '<ul role="tablist" class="dropdown-menu" aria-labelledby="dLabel">';
-		// 		$terms = get_terms( array(
-		// 			'post_parent' => $post->ID,
-		// 		    'taxonomy' => 'image_type',
-		// 		    'hide_empty' => true,
-		// 		    'exclude' => '22'
-		// 		) );
-		// 		if($terms) {
-		// 			foreach ($terms  as $term ) {
-		// 				if(has_Images($term->slug) && $term->name != "Flasher") {
-		// 					echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
-		// 				}
-		// 			}
-		// 		}  
-		// 		if(!empty($commercials)) {
-		// 			echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
-		// 		}
-		// 		if(!empty($music_videos)) {
-		// 			echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
-		// 		}
-		// 	echo '</ul>';
-		// echo '</div>';
-	echo '</header>';
+	echo '<div class="sub visible-xs">';
+		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
+		echo '<div class="dropdown">';
+			echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+				echo 'Filter';
+			    echo ' <i class="fa fa-angle-down"></i>';
+			echo '</button>';
+			echo '<ul role="tablist" class="dropdown-menu" aria-labelledby="dLabel">';
+				$terms = get_terms( array(
+					'post_parent' => $post->ID,
+				    'taxonomy' => 'image_type',
+				    'hide_empty' => true,
+				    'exclude' => '22'
+				) );
+				if($terms) {
+					foreach ($terms  as $term ) {
+						if(has_Images($term->slug) && $term->name != "Flasher") {
+							echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
+						}
+					}
+				}  
+				if(!empty($commercials)) {
+					echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
+				}
+				if(!empty($music_videos)) {
+					echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
+				}
+			echo '</ul>';
+		echo '</div>';
+	echo '</div>';
 } ?>
