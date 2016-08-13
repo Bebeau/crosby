@@ -40,7 +40,7 @@ get_header(); ?>
 						'include'      => array(4,2,3),
 						'exclude'      => array(),
 						'orderby'      => 'login',
-						'order'        => 'ASC',
+						'order'        => 'include',
 						'offset'       => '',
 						'search'       => '',
 						'number'       => '',
