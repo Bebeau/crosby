@@ -13,13 +13,15 @@
 	h3 {
 		font-size: 10pt;
 	}
-	header {
+	.sub {
 		position: relative;
 		z-index: 11;
-		overflow: scroll;
 		width: 100%;
+		min-height: auto;
 		height: 230px;
-		min-height: auto !important;
+		overflow: scroll;
+		background: none;
+		text-align: center;
 		#logo {
 			width: 100%;
 		}
@@ -30,15 +32,6 @@
 		}
 		.logo-sub {
 			margin-bottom: 0;
-		}
-		&.sub {
-			position: relative;
-			height: 230px;
-			min-height: auto;
-			width: auto;
-			overflow: scroll;
-			background: none;
-			text-align: center;
 		}
 		.dropdown {
 			border: 2px solid $lightblue;

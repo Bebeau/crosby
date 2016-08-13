@@ -2851,37 +2851,31 @@ header {
   h3 {
     font-size: 10pt; }
 
-  header {
+  .sub {
     position: relative;
     z-index: 11;
-    overflow: scroll;
     width: 100%;
+    min-height: auto;
     height: 230px;
-    min-height: auto !important; }
-    header #logo {
+    overflow: scroll;
+    background: none;
+    text-align: center; }
+    .sub #logo {
       width: 100%; }
-    header .logoWrap {
+    .sub .logoWrap {
       width: auto;
       display: block;
       margin: 0 auto; }
-    header .logo-sub {
+    .sub .logo-sub {
       margin-bottom: 0; }
-    header.sub {
-      position: relative;
-      height: 230px;
-      min-height: auto;
-      width: auto;
-      overflow: scroll;
-      background: none;
-      text-align: center; }
-    header .dropdown {
+    .sub .dropdown {
       border: 2px solid #000e6b;
       color: #000e6b;
       width: 283px;
       margin: 15px auto 0;
       position: relative;
       top: -3px; }
-      header .dropdown button {
+      .sub .dropdown button {
         text-transform: uppercase;
         background: none;
         border-top-left-radius: 0;
@@ -2894,7 +2888,7 @@ header {
         font-size: 12pt;
         letter-spacing: 3px;
         line-height: 30px; }
-    header .dropdown-menu {
+    .sub .dropdown-menu {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-bottom-left-radius: 0;
@@ -2904,17 +2898,17 @@ header {
       background: #000e6b;
       border: 1px solid #000e6b;
       margin: 0; }
-      header .dropdown-menu li a {
+      .sub .dropdown-menu li a {
         font-size: 14pt;
         color: #ffffff;
         text-transform: uppercase;
         padding: 0 10px;
         line-height: 35px; }
-    header .menu li {
+    .sub .menu li {
       font-size: 14pt; }
-      header .menu li ul li {
+      .sub .menu li ul li {
         padding: 0 5px; }
-        header .menu li ul li a {
+        .sub .menu li ul li a {
           font-size: 14pt; }
 
   #singlePortfolio {
