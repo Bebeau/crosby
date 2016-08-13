@@ -95,16 +95,18 @@
 			overflow: hidden;
 		}
 		.imageWrap {
-			line-height: 0;
-			-webkit-column-count: 3;
-			-webkit-column-gap: 1px;
-			-moz-column-count: 3;
-			-moz-column-gap: 1px;
-			column-count: 3;
-			column-gap: 1px;
+			-webkit-column-count: 2;
+			-webkit-column-gap: 0;
+			-moz-column-count: 2;
+			-moz-column-gap: 0;
+			column-count: 2;
+			column-gap: 0;
 			a {
 				display: block;
 				line-height: 0px;
+				.playwrap {
+					display: none;
+				}
 				img {
 					min-width: 100%;
 					height: auto;
