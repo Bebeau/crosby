@@ -2920,8 +2920,8 @@ header {
   #singlePortfolio {
     top: 0 !important;
     opacity: 1 !important;
-    margin: 0 0 15px;
-    padding: 0 15px; }
+    margin: 0 0 15px !important;
+    padding: 0 15px !important; }
     #singlePortfolio .pane {
       overflow: hidden; }
     #singlePortfolio .imageWrap {
