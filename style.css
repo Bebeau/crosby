@@ -2858,7 +2858,7 @@ header {
     width: 100%;
     min-height: auto;
     height: auto;
-    display: none !important; }
+    display: none; }
     header #logo {
       width: 100%; }
     header .logoWrap {
@@ -2928,11 +2928,13 @@ header {
     #singlePortfolio .imageWrap {
       line-height: 0;
       -webkit-column-count: 2;
-      -webkit-column-gap: 0px;
+      -webkit-column-gap: 1px;
       -moz-column-count: 2;
-      -moz-column-gap: 0px;
+      -moz-column-gap: 1px;
       column-count: 2;
-      column-gap: 0px; }
+      column-gap: 1px; }
+      #singlePortfolio .imageWrap a {
+        display: block; }
     #singlePortfolio #bio {
       padding: 0;
       font-size: 12pt; }
