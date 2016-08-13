@@ -2927,14 +2927,15 @@ header {
       column-count: 2;
       column-gap: 0; }
       #singlePortfolio .imageWrap a {
-        display: block;
+        display: inline-block;
         line-height: 0px; }
         #singlePortfolio .imageWrap a .playwrap {
           display: none; }
         #singlePortfolio .imageWrap a img {
           min-width: 100%;
           height: auto;
-          line-height: 0px; }
+          line-height: 0px;
+          display: block; }
     #singlePortfolio #bio {
       padding: 0;
       font-size: 12pt; }
