@@ -2858,7 +2858,8 @@ header {
     width: 100%;
     min-height: auto;
     height: auto;
-    display: none; }
+    display: none;
+    height: 230px; }
     header #logo {
       width: 100%; }
     header .logoWrap {
