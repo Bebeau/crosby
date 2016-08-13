@@ -560,9 +560,11 @@ function list_Images($cat, $name) {
                     $query->the_post();
                     echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
                         if(wp_is_mobile()) {
-                            echo '<img src="'.wp_get_attachment_image_src($post->id, 'medium')[0].'" alt="" />';
+                            $image_url = wp_get_attachment_image_src($post->id, 'medium');
+                            echo '<img src="'.$image_url[0].'" alt="" />';
                         } else {
-                            echo '<img src="'.wp_get_attachment_image_src($post->id, 'large')[0].'" alt="" />';
+                            $image_url = wp_get_attachment_image_src($post->id, 'large');
+                            echo '<img src="'.$image_url[0].'" alt="" />';
                         }
                         echo '<div class="playwrap"><span class="plus"></span></div>';
                     echo '</a>';
@@ -592,7 +594,8 @@ function add_feature_image( $atts, $item, $args ) {
     );
     $featured = get_posts($args);
     foreach($featured as $image) {
-        $atts['data-image'] = wp_get_attachment_image_src($image->ID, 'large')[0];
+        $image_url = wp_get_attachment_image_src($image->ID, 'large');
+        $atts['data-image'] = $image_url[0];
     }
     return $atts;
 }
