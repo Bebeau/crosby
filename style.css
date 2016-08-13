@@ -2855,11 +2855,7 @@ header {
     position: relative;
     z-index: 11;
     overflow: scroll;
-    width: 100%;
-    min-height: auto;
-    height: auto;
-    display: none;
-    height: 230px; }
+    width: 100%; }
     header #logo {
       width: 100%; }
     header .logoWrap {
@@ -2870,9 +2866,9 @@ header {
       margin-bottom: 0; }
     header.sub {
       position: relative;
-      height: auto;
+      height: 230px;
       width: auto;
-      overflow: visible;
+      overflow: scroll;
       background: none;
       text-align: center; }
     header .dropdown {
