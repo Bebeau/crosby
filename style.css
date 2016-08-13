@@ -2920,11 +2920,11 @@ header {
     #singlePortfolio .pane {
       overflow: hidden; }
     #singlePortfolio .imageWrap {
-      -webkit-column-count: 2;
+      -webkit-column-count: 1;
       -webkit-column-gap: 0;
-      -moz-column-count: 2;
+      -moz-column-count: 1;
       -moz-column-gap: 0;
-      column-count: 2;
+      column-count: 1;
       column-gap: 0; }
       #singlePortfolio .imageWrap a {
         line-height: 0px; }
