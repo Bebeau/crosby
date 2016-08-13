@@ -29,7 +29,7 @@
 					$agentEmail = $userInfo->user_email;
 					$cc_emails = get_post_meta($post->ID, 'cc_emails', true);
 					$emails = array_filter($cc_emails);
-					if(!empty($emails)) {
+					if(!empty($emails) && !empty($cc_emails)) {
 						$email_string = implode(",",$emails);
 						echo '<a class="contact-btn" href="mailto:'.$agentEmail.'?&subject='.get_the_title().'- Website Inquiry&cc='.$email_string.'">Contact Agent</a>';
 					} else {

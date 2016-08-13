@@ -169,8 +169,11 @@ function commercials($post) {
         echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_commercial" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
     <?php if ( !empty($commercials) ) {
+        echo '<pre>';
+        var_dump($commercials);
+        echo '</pre>';
         echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="commercials">';
-            $c = 0;
+            $c = 1;
             foreach( $commercials as $commercial ) {
                 if($commercial['type'] === "youtube") { ?>
                     <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $commercial['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $commercial['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
@@ -205,7 +208,7 @@ function music_videos($post) {
     echo '</section>'; ?>
     <?php if ( !empty($music_videos) ) {
         echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="music_videos">';
-            $c = 0;
+            $c = 1;
             foreach( $music_videos as $video ) {
                 if($video['type'] === "youtube") { ?>
                     <li class="video ui-state-default" data-key="<?php echo $c; ?>" data-order="<?php echo $video['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $video['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
