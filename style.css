@@ -2859,7 +2859,8 @@ header {
     height: 230px;
     overflow: scroll;
     background: none;
-    text-align: center; }
+    text-align: center;
+    padding: 15px 15px 0; }
     .sub #logo {
       width: 100%; }
     .sub .logoWrap {
@@ -2915,7 +2916,7 @@ header {
     top: 0;
     opacity: 1;
     margin: 0 0 15px;
-    padding: 0; }
+    padding: 0 15px; }
     #singlePortfolio .pane {
       overflow: hidden; }
     #singlePortfolio .imageWrap {
