@@ -552,7 +552,7 @@ header {
 .pane {
 	display: none;
 	&.active {
-		display: block;
+		display: block !important;
 	}
 }
 #singlePortfolio {

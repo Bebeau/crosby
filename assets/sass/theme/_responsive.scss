@@ -92,6 +92,12 @@
 		padding: 0 15px;
 		.pane {
 			overflow: hidden;
+			display: block;
+			visibility: hidden;
+			&.active {
+				visibility: visible;
+				display: block;
+			}
 		}
 		.imageWrap {
 			-webkit-column-count: auto;

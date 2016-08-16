@@ -17,7 +17,7 @@ var init = {
 		init.subNavCollapse();
 		if(isMobile) {
 			init.mobileHoverFix();
-			jQuery('.imageWrap').columnize({columns: 2 });
+			init.mobileFilter();
 		} else {
 			init.pageIn();
 		}
@@ -165,6 +165,23 @@ var init = {
 					}, 800
 				);
 			}
+		});
+	},
+	mobileFilter: function() {
+		jQuery('.imageWrap').each(function(){
+			jQuery(this).columnize({columns: 2 });
+		});
+		jQuery('.pane').css("display", "none");
+		jQuery('.active.pane').css("display", "block");
+		jQuery('.dropdown-menu a').click(function(){
+			var id = jQuery(this).attr('href');
+			jQuery('.dropdown-menu li').removeClass("active");
+			setTimeout(
+				function(){
+					jQuery('.pane').css("display", "none");
+					jQuery('.active.pane').css("display", "block");
+				}, 250
+			);
 		});
 	},
 	pageIn: function() {

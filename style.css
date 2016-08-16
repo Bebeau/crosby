@@ -2401,7 +2401,7 @@ header {
 .pane {
   display: none; }
   .pane.active {
-    display: block; }
+    display: block !important; }
 
 #singlePortfolio {
   position: relative;
@@ -2917,7 +2917,12 @@ header {
     margin: 0 0 15px;
     padding: 0 15px; }
     #singlePortfolio .pane {
-      overflow: hidden; }
+      overflow: hidden;
+      display: block;
+      visibility: hidden; }
+      #singlePortfolio .pane.active {
+        visibility: visible;
+        display: block; }
     #singlePortfolio .imageWrap {
       -webkit-column-count: auto;
       -webkit-column-gap: 0;
