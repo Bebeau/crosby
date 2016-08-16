@@ -68,6 +68,7 @@ get_header(); ?>
 										echo '<div class="phone hidden-xs">'.$phone.'</div>';
 										echo '<div class="phone visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></div>';
 									}
+									if(!empty($facebook)) {
 									echo '<div class="social">';
 										if(!empty($facebook)) {
 											echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';

@@ -114,17 +114,9 @@ add_action( 'init', 'init_image_type' );
 add_action( 'add_meta_boxes', 'portfolio_meta_box', 1 );
 function portfolio_meta_box( $post ) {
     add_meta_box(
-        'commercials', 
-        'Commercials', 
-        'commercials',
-        'portfolios', 
-        'normal', 
-        'low'
-    );
-    add_meta_box(
-        'music_videos', 
-        'Music Videos', 
-        'music_videos',
+        'videos', 
+        'Videos', 
+        'videos',
         'portfolios', 
         'normal', 
         'low'
@@ -154,57 +146,23 @@ function portfolio_meta_box( $post ) {
         'high'
     );
 }
-// commercials meta box
-function commercials($post) { 
+// videos meta box
+function videos($post) { 
     // Use nonce for verification
-    wp_nonce_field( 'commercial_links', 'commercials_noncename' );
+    wp_nonce_field( 'videos_links', 'videos_noncename' );
 
     //get the saved meta as an arry
-    $commercials = get_post_meta($post->ID,'commercials', true);
+    $videos = get_post_meta($post->ID,'videos', true);
 
-    echo '<h3>Upload Commercials</h3>';
+    echo '<h3>Upload Videos</h3>';
     echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and click "Add Video" to save. Once saved, videos will display below. Drag and drop the thumbnails to rearrange the order, and simply click the "x" to remove the video.</p>';
-    echo '<section id="Commercials">';
-        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_commercial" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
-        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_commercial" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
+    echo '<section id="Videos">';
+        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_video" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
+        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_video" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
     echo '</section>'; ?>
-    <?php if ( !empty($commercials) ) {
-        echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="commercials">';
-            foreach( $commercials as $key => $commercial ) {
-                if($commercial['type'] === "youtube") { ?>
-                    <li class="video ui-state-default" data-key="<?php echo $key; ?>" data-order="<?php echo $commercial['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $commercial['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $commercial['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
-                        <span class="button button-remove">X</span>
-                    </li>
-                <?php } elseif($commercial['type'] === "vimeo") {
-                    $imgid = $commercial['id'];
-                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
-                    $thumb = $hash[0]['thumbnail_large'];
-                ?>
-                <li class="video ui-state-default" data-key="<?php echo $key; ?>" data-order="<?php echo $commercial['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $commercial['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">
-                    <span class="button button-remove">X</span>
-                </li>
-                <?php }
-            }
-        echo '</ul>';
-    }
-}
-// music videos meta box
-function music_videos($post) { 
-    // Use nonce for verification
-    wp_nonce_field( 'music_videos', 'music_videos_noncename' );
-
-    //get the saved meta as an arry
-    $music_videos = get_post_meta($post->ID,'music_videos', true);
-    
-    echo '<h3>Upload Music Videos</h3>';
-    echo '<p>Copy &amp; paste <a href="https://youtube.com/" alt="YouTube" target="_BLANK">YouTube</a> or <a href="https://vimeo.com/" alt="Vimeo" target="_BLANK">Vimeo</a> video links below and click "Add Video" to save. Once saved, videos will display below. Drag and drop the thumbnails to rearrange the order, and simply click the "x" to remove the video.</p>';
-    echo '<section id="MusicVideos">';
-        echo '<article class="link"> <i class="youtube"></i><input type="text" name="yt_musicVideo" value="" placeholder="https://www.youtube.com/watch?v=VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
-        echo '<article class="link"> <i class="vimeo"></i><input type="text" name="vimeo_musicVideo" value="" placeholder="https://www.vimeo.com/VIDEOID"/><button type="submit" class="button button-large">+ Add Video</button></article>';
-    echo '</section>'; ?>
-    <?php if ( !empty($music_videos) ) {
-        echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="music_videos">';
-            foreach( $music_videos as $key => $video ) {
+    <?php if ( !empty($videos) ) {
+        echo '<ul class="videoWrap videoSort" data-post="'.$post->ID.'" data-type="videos">';
+            foreach( $videos as $key => $video ) {
                 if($video['type'] === "youtube") { ?>
                     <li class="video ui-state-default" data-key="<?php echo $key; ?>" data-order="<?php echo $video['id'];?>" data-video="youtube" data-link="https://www.youtube.com/watch?v=<?php echo $video['id']; ?>" style="background: url('https://i1.ytimg.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg') no-repeat scroll center / cover;">
                         <span class="button button-remove">X</span>
@@ -219,7 +177,7 @@ function music_videos($post) {
                 </li>
                 <?php }
             }
-        echo '</section>';
+        echo '</ul>';
     }
 }
 // ajax response to save order
@@ -387,87 +345,47 @@ function dynamic_save_postdata( $post_id ) {
         update_post_meta($post_id,'artist_ig_url',"");
     }
 
-    // check for commercial nonce
-    if ( !isset( $_POST['commercials_noncename'] ) || !wp_verify_nonce( $_POST['commercials_noncename'], 'commercial_links' ) )
+    // check for video nonce
+    if ( !isset( $_POST['videos_noncename'] ) || !wp_verify_nonce( $_POST['videos_noncename'], 'videos_links' ) )
         return;
 
-    // save commercials
-    $commercials  = get_post_meta($post_id,'commercials', true);
-    $yt_new  = $_POST['yt_commercial'];
-    $vimeo_new  = $_POST['vimeo_commercial'];
+    // save videos
+    $videos  = get_post_meta($post_id,'videos', true);
+    $yt_new  = $_POST['yt_video'];
+    $vimeo_new  = $_POST['vimeo_video'];
 
     if(!empty($yt_new) || !empty($vimeo_new) ) {
         
-        if($commercials && $yt_new) {
+        if($videos && $yt_new) {
             $old[] = array(
                     'id' => getVideoIdFromUrl($yt_new),
                     'type' => 'youtube'
                 );
-            $comms = array_merge($commercials, $old);
-        } elseif($commercials && $vimeo_new) {
+            $comms = array_merge($videos, $old);
+        } elseif($videos && $vimeo_new) {
             $old[] = array(
                     'id' => getVideoIdFromUrl($vimeo_new),
                     'type' => 'vimeo'
                 );
-            $comms = array_merge($commercials, $old);
+            $comms = array_merge($videos, $old);
         } elseif($yt_new) {
-            $commercials[] = array(
+            $videos[] = array(
                     'id' => getVideoIdFromUrl($yt_new),
                     'type' => 'youtube'
                 );
-            $comms = $commercials;
+            $comms = $videos;
         } elseif($vimeo_new) {
-            $commercials[] = array(
+            $videos[] = array(
                     'id' => getVideoIdFromUrl($vimeo_new),
                     'type' => 'vimeo'
                 );
-            $comms = $commercials;
+            $comms = $videos;
         }
 
-        update_post_meta($post_id,'commercials',$comms);
+        update_post_meta($post_id,'videos',$comms);
     }
 
-    // check for music video nonce
-    if ( !isset( $_POST['music_videos_noncename'] ) || !wp_verify_nonce( $_POST['music_videos_noncename'], 'music_videos' ) )
-        return;
-
-    // save music video
-    $musicVideos  = get_post_meta($post_id,'music_videos', true);
-    $yt_newMusic  = $_POST['yt_musicVideo'];
-    $vimeo_newMusic  = $_POST['vimeo_musicVideo'];
-
-    if(!empty($yt_newMusic) || !empty($vimeo_newMusic) ) {
-        
-        if($musicVideos && $yt_newMusic) {
-            $oldVideos[] = array(
-                    'id' => getVideoIdFromUrl($yt_newMusic),
-                    'type' => 'youtube'
-                );
-            $videos = array_merge($musicVideos, $oldVideos);
-        } elseif($musicVideos && $vimeo_newMusic) {
-            $oldVideos[] = array(
-                    'id' => getVideoIdFromUrl($vimeo_newMusic),
-                    'type' => 'vimeo'
-                );
-            $videos = array_merge($musicVideos, $oldVideos);
-        } elseif($yt_newMusic) {
-            $musicvideos[] = array(
-                    'id' => getVideoIdFromUrl($yt_newMusic),
-                    'type' => 'youtube'
-                );
-            $videos = $musicvideos;
-        } elseif($vimeo_newMusic) {
-            $musicvideos[] = array(
-                    'id' => getVideoIdFromUrl($vimeo_newMusic),
-                    'type' => 'vimeo'
-                );
-            $videos = $musicvideos;
-        }
-
-        update_post_meta($post_id,'music_videos',$videos);
-    }
-
-    // check for music video nonce
+    // check for agent nonce
     if ( !isset( $_POST['agent_noncename'] ) || !wp_verify_nonce( $_POST['agent_noncename'], 'agent_email' ) )
         return;
     

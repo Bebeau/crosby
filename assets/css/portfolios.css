@@ -1,19 +1,19 @@
-#commercials .link, #MusicVideos .link {
+#Videos .link {
   margin: 10px auto; }
-  #commercials .link i, #MusicVideos .link i {
+  #Videos .link i {
     width: 40px;
     height: 40px;
     display: inline-block;
     vertical-align: top;
     position: relative;
     z-index: 10; }
-    #commercials .link i.youtube, #MusicVideos .link i.youtube {
+    #Videos .link i.youtube {
       background: url("../images/admin/youtube.svg") no-repeat scroll center #bb0000;
       background-size: 70% 70%; }
-    #commercials .link i.vimeo, #MusicVideos .link i.vimeo {
+    #Videos .link i.vimeo {
       background: url("../images/admin/vimeo.svg") no-repeat scroll center #1ab7ea;
       background-size: 70% 70%; }
-  #commercials .link input, #MusicVideos .link input {
+  #Videos .link input {
     line-height: 40px;
     height: 40px;
     display: inline-block;
@@ -24,16 +24,17 @@
     padding-right: 105px;
     margin-left: -40px;
     vertical-align: top; }
-  #commercials .link button, #MusicVideos .link button {
+  #Videos .link button {
     line-height: 40px;
     height: 40px;
     width: 100px;
     display: inline-block;
     margin: 0 0 0 -100px; }
-#commercials li, #MusicVideos li {
+#Videos li {
   margin: 0;
   padding: 0; }
-#commercials .ui-state-highlight, #MusicVideos .ui-state-highlight {
+
+.ui-state-highlight {
   border: 1px dashed black;
   display: inline-block;
   width: 300px;

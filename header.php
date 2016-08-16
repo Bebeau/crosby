@@ -138,8 +138,7 @@ if(is_singular()) {
 	// get current user id
 	global $post;
 
-	$commercials 	= get_post_meta($post->ID, 'commercials', true);
-	$music_videos 	= get_post_meta($post->ID, 'music_videos', true);
+	$videos 		= get_post_meta($post->ID, 'videos', true);
 	$order 			= get_post_meta($post->ID, 'sub_nav_order', true);
 	$attachments 	= get_children( array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image') );
 
@@ -175,11 +174,8 @@ if(is_singular()) {
 					}
 				}
 			}  
-			if(!empty($commercials)) {
-				echo '<li><a class="tab" href="#commercial">Commercials</a></li>';
-			}
-			if(!empty($music_videos)) {
-				echo '<li><a class="tab" href="#music">Music Videos</a></li>';
+			if(!empty($videos)) {
+				echo '<li><a class="tab" href="#videos">Videos</a></li>';
 			}
 			echo '</ul>';
 		echo '</li>';
