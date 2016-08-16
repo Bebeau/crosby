@@ -2923,6 +2923,10 @@ header {
       -webkit-column-gap: 0;
       -moz-column-count: 2;
       -moz-column-gap: 0;
+      -o-column-count: 2;
+      -o-column-gap: 0;
+      -ms-column-count: 2;
+      -ms-column-gap: 0;
       column-count: 2;
       column-gap: 0; }
       #singlePortfolio .imageWrap a {
