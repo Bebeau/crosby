@@ -20,7 +20,9 @@ get_header(); ?>
 					echo '<h1>'.get_the_title().'</h1>';
 
 					echo '<address><p><strong>'.get_bloginfo("name").'</strong><br />'.$address.'<br />'.$address2.'</p></address>';
-					echo '<p>tel: <strong class="hidden-xs">'.$phone.'</strong><strong class="visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></strong><br />';
+					echo '<p class="hidden-xs">tel: <strong>'.$phone.'</strong><br />';
+					echo '<p class="visible-xs">tel: <strong><a href="tel:'.$phone.'">'.$phone.'</a></strong><br />';
+
 					echo 'fax: <strong>'.$fax.'</strong></p>';
 
 					echo '<div class="agentwrap">';
@@ -48,8 +50,11 @@ get_header(); ?>
 						'fields'       => 'all',
 						'who'          => ''
 					); 
-					$agents = get_users( $args );
+					
+					$agents = get_users($args);
+
 					foreach($agents as $agent) {
+
 						$userID = $agent->ID;
 						$email = $agent->user_email;
 
@@ -61,31 +66,33 @@ get_header(); ?>
 
 						echo '<div class="row agent">';
 							echo '<div class="col-xs-6 agent-image" style="background:url('.$agent->agent_image.')no-repeat scroll top center / cover" ></div>';
-							echo '<div class="col-xs-6 agent-info">';
-								echo '<div class="outer"><div class="inner">';
-									echo '<h3>'.$agent->display_name.'</h3>';
-									if(!empty($phone)) {
-										echo '<div class="phone hidden-xs">'.$phone.'</div>';
-										echo '<div class="phone visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></div>';
-									}
-									if(!empty($facebook)) {
-									echo '<div class="social">';
+								echo '<div class="col-xs-6 agent-info">';
+									echo '<div class="outer"><div class="inner">';
+										echo '<h3>'.$agent->display_name.'</h3>';
+										if(!empty($phone)) {
+											echo '<div class="phone hidden-xs">'.$phone.'</div>';
+											echo '<div class="phone visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></div>';
+										}
 										if(!empty($facebook)) {
-											echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';
+											echo '<div class="social">';
+												if(!empty($facebook)) {
+													echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';
+												}
+												if(!empty($twitter)) {
+													echo '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>';
+												}
+												if(!empty($instagram)) {
+													echo '<a href="'.$instagram.'"><i class="fa fa-instagram"></i></a>';
+												}
+											echo '</div>';
+											echo '<div class="info">';
+												if(!empty($email)) {
+													echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
+												}
+											echo '</div>';
 										}
-										if(!empty($twitter)) {
-											echo '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>';
-										}
-										if(!empty($instagram)) {
-											echo '<a href="'.$instagram.'"><i class="fa fa-instagram"></i></a>';
-										}
-									echo '</div>';
-									echo '<div class="info">';
-										if(!empty($email)) {
-											echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
-										}
-									echo '</div>';
-								echo '</div></div>';
+									echo '</div></div>';
+								echo '</div>';
 							echo '</div>';
 						echo '</div>';
 					}
