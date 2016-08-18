@@ -471,26 +471,35 @@ function list_Images($cat, $name) {
     );
     $query = new WP_Query($args);
     if($query->have_posts()) {
-        echo '<div class="pane" id="'.$cat.'">';
-        echo '<h3 class="termName">// '.$name.'</h3>';
+        echo '<div class="pane active" id="'.$cat.'">';
+            echo '<h3 class="termName">// '.$name.'</h3>';
             echo '<div class="imageWrap">';
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
-                        if(wp_is_mobile()) {
-                            $image_url = wp_get_attachment_image_src($post->id, 'medium');
-                            echo '<img src="'.$image_url[0].'" alt="" />';
-                        } else {
-                            $image_url = wp_get_attachment_image_src($post->id, 'large');
-                            echo '<img src="'.$image_url[0].'" alt="" />';
-                        }
-                        echo '<div class="playwrap"><span class="plus"></span></div>';
-                    echo '</a>';
-                }
+            while ($query->have_posts()) {
+                $query->the_post();
+                echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
+                    if(wp_is_mobile()) {
+                        $image_url = wp_get_attachment_image_src($post->id, 'medium');
+                        echo '<img src="'.$image_url[0].'" alt="" />';
+                    } else {
+                        $image_url = wp_get_attachment_image_src($post->id, 'large');
+                        echo '<img src="'.$image_url[0].'" alt="" />';
+                    }
+                    echo '<div class="playwrap"><span class="plus"></span></div>';
+                echo '</a>';
+            }
             echo '</div>';
         echo '</div>';
     }
     wp_reset_query();
+}
+// ajax response to save download track
+add_action('wp_ajax_getImages', 'listImages');
+add_action('wp_ajax_nopriv_getImages', 'listImages');
+function listImages() {
+    $name = (isset($_GET['name'])) ? $_GET['name'] : 0;
+    $slug = (isset($_GET['slug'])) ? $_GET['slug'] : 0;
+
+    list_Images($slug, $name);
 }
 // add featured image to menu item in data-image attribute
 add_filter( 'nav_menu_link_attributes', 'add_feature_image', 10, 4 );

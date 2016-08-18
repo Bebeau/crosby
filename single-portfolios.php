@@ -37,11 +37,13 @@
 				    'taxonomy' => 'image_type',
 				    'hide_empty' => true,
 				    'exclude' => 22
-				) );
+				));
+
 				if($terms) {
 					foreach ($terms as $term ) {
-						if(has_Images($term->slug) && $term->name != "Flasher") {
+						if(has_Images($term->slug) && $term->name !== "Flasher") {
 							list_Images($term->slug, $term->name);
+							break;
 						}
 					}
 				}

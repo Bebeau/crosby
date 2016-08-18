@@ -3,6 +3,8 @@
 // check to make sure it is not loaded on mobile device
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
+var ajaxurl = meta_image.ajaxurl;
+
 var init = {
 	onReady: function() {
 		init.loaded();
@@ -137,6 +139,28 @@ var init = {
 
 		});
 	},
+	getImages: function(slug,name) {
+		jQuery.ajax({
+            url: ajaxurl,
+            type: "GET",
+            data: {
+                name: name,
+                slug: slug,
+                action: 'getImages'
+            },
+            dataType: 'html',
+            success : function(data){
+                var $data = jQuery(data);
+                if($data.length && !jQuery('.pane#'+slug).length ) {
+                    // add data to #blog-listing #content
+                    jQuery(".tab-content").append($data);
+                }
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                window.alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+            }
+        });
+	},
 	activeTab: function() {
 		jQuery('.single .portfolio-menu ul li:nth-child(2) .tab').tab('show');
 		jQuery('.tab-content').addClass("in");
@@ -147,11 +171,15 @@ var init = {
 			jQuery("html, body").animate({ scrollTop: 0 }, "slow");
 
 			var tab = jQuery(this).attr("href");
+			var slug = jQuery(this).attr("href").replace("#", "");
+			var name = jQuery(this).text();
+
 			jQuery('.portfolio-menu ul li').removeClass("active");
 			jQuery(this).parent().addClass("active");
 
 			if(!jQuery(this).hasClass("info")) {
 				jQuery('.tab-content').removeClass("in");
+				init.getImages(slug,name);
 				setTimeout(
 					function(){
 						jQuery('#bio').collapse('hide');
