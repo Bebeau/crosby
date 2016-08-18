@@ -235,7 +235,7 @@ if(is_singular()) {
 				echo 'Filter';
 			    echo ' <i class="fa fa-angle-down"></i>';
 			echo '</button>';
-			echo '<ul role="tablist" class="dropdown-menu" aria-labelledby="dLabel">';
+			echo '<ul role="tablist" class="portfolio-menu dropdown-menu" aria-labelledby="dLabel">';
 				$terms = get_terms( array(
 					'post_parent' => $post->ID,
 				    'taxonomy' => 'image_type',

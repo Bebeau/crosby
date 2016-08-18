@@ -165,7 +165,7 @@ var init = {
 	activeTab: function() {
 		jQuery('.single .portfolio-menu ul li:nth-child(2) .tab').tab('show');
 		jQuery('.tab-content').addClass("in");
-		jQuery('.portfolio-menu ul li a').click(function(e){
+		jQuery('.portfolio-menu a').click(function(e){
 			e.preventDefault();
 
 			// scroll to top of page
