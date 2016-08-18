@@ -3,7 +3,8 @@
 	// get current user id
 	global $post;
 
-	$videos 	= get_post_meta($post->ID, 'videos', true);
+	$videos = get_post_meta($post->ID, 'videos', true);
+	$order = get_post_meta($post->ID, 'sub_nav_order', true);
 	
 ?>
 	<div id="singlePortfolio" class="contentwrap">
@@ -36,13 +37,15 @@
 		    	$terms = get_terms( array(
 				    'taxonomy' => 'image_type',
 				    'hide_empty' => true,
-				    'exclude' => 22
+				    'exclude' => 22, 
+	                'orderby' => 'include',
+	                'include' => $order
 				));
 
 				if($terms) {
 					foreach ($terms as $term ) {
 						if(has_Images($term->slug) && $term->name !== "Flasher") {
-							list_Images($term->slug, $term->name);
+							list_Images($term->slug, $term->name, $order);
 							break;
 						}
 					}

@@ -451,7 +451,7 @@ function has_Images($cat) {
     return $query->have_posts();
 }
 // list images from given category
-function list_Images($cat, $name) {
+function list_Images($cat, $name, $order) {
     global $post;
     $args = array(
         'post_parent' => $post->ID,
@@ -459,8 +459,6 @@ function list_Images($cat, $name) {
         'posts_per_page'    => -1,
         'post_status' => 'inherit',
         'post_mime_type' => 'image/jpeg,image/gif,image/jpg,image/png',
-        'orderby' => 'menu_order ID',
-        'order' => 'ASC',
         'tax_query' => array(
             array(
                 'taxonomy' => 'image_type',
