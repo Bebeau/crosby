@@ -170,7 +170,7 @@ if(is_singular()) {
 			if($terms) {
 				foreach ($terms  as $term ) {
 					if(has_Images($term->slug) && $term->name != "Flasher") {
-						echo '<li><a class="tab" href="#'.$term->slug.'">'.$term->name.'</a></li>';
+						echo '<li><a class="tab" href="#'.$term->slug.'" data-post="'.$post->ID.'">'.$term->name.'</a></li>';
 					}
 				}
 			}  

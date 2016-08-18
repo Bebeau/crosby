@@ -139,13 +139,14 @@ var init = {
 
 		});
 	},
-	getImages: function(slug,name) {
+	getImages: function(slug,name,id) {
 		jQuery.ajax({
             url: ajaxurl,
             type: "GET",
             data: {
                 name: name,
                 slug: slug,
+                id: id,
                 action: 'getImages'
             },
             dataType: 'html',
@@ -173,13 +174,14 @@ var init = {
 			var tab = jQuery(this).attr("href");
 			var slug = jQuery(this).attr("href").replace("#", "");
 			var name = jQuery(this).text();
+			var id = jQuery(this).attr("data-post");
 
 			jQuery('.portfolio-menu ul li').removeClass("active");
 			jQuery(this).parent().addClass("active");
 
 			if(!jQuery(this).hasClass("info")) {
 				jQuery('.tab-content').removeClass("in");
-				init.getImages(slug,name);
+				init.getImages(slug, name, id);
 				setTimeout(
 					function(){
 						jQuery('#bio').collapse('hide');

@@ -451,10 +451,10 @@ function has_Images($cat) {
     return $query->have_posts();
 }
 // list images from given category
-function list_Images($cat, $name, $order) {
+function list_Images($cat, $name, $postID) {
     global $post;
     $args = array(
-        'post_parent' => $post->ID,
+        'post_parent' => $postID,
         'post_type' => 'attachment',
         'posts_per_page'    => -1,
         'post_status' => 'inherit',
@@ -498,8 +498,9 @@ add_action('wp_ajax_nopriv_getImages', 'listImages');
 function listImages() {
     $name = (isset($_GET['name'])) ? $_GET['name'] : 0;
     $slug = (isset($_GET['slug'])) ? $_GET['slug'] : 0;
+    $postID = (isset($_GET['id'])) ? $_GET['id'] : 0;
 
-    list_Images($slug, $name);
+    list_Images($slug, $name, $postID);
 }
 // add featured image to menu item in data-image attribute
 add_filter( 'nav_menu_link_attributes', 'add_feature_image', 10, 4 );

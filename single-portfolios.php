@@ -35,6 +35,7 @@
 		    	echo '</div>';
 
 		    	$terms = get_terms( array(
+		    		'post_parent' => $post->ID,
 				    'taxonomy' => 'image_type',
 				    'hide_empty' => true,
 				    'exclude' => 22, 
@@ -45,7 +46,7 @@
 				if($terms) {
 					foreach ($terms as $term ) {
 						if(has_Images($term->slug) && $term->name !== "Flasher") {
-							list_Images($term->slug, $term->name, $order);
+							list_Images($term->slug, $term->name, $post->ID);
 							break;
 						}
 					}
