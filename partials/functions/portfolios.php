@@ -281,8 +281,8 @@ function image_type_ordering($post) {
                 </tr>
             <?php }
         }
-        echo '</tbody></table>';
-    }
+        echo '</tbody></table>'; ?>
+    <?php }
 }
 // ajax response to save order
 add_action('wp_ajax_setOrder', 'setProjectOrder');

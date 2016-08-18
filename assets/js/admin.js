@@ -114,6 +114,13 @@ var init = {
 			}
 		});
 		jQuery( "#sortable" ).disableSelection();
+
+		order = [];
+        jQuery("#sortable tr").each(function() {
+            order.push(jQuery(this).attr("data-order"));
+        });
+        var postID = jQuery('#sortable').attr("data-post");
+        init.saveCatOrder(order, postID);
     },
     saveVideoOrder: function(order, type, postID) {
         jQuery.ajax({
