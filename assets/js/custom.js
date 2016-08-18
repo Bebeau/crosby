@@ -155,6 +155,9 @@ var init = {
                 if($data.length && !jQuery('.pane#'+slug).length ) {
                     // add data to #blog-listing #content
                     jQuery(".tab-content").append($data);
+                    if(isMobile) {
+                    	jQuery('.pane#'+slug).columnize({columns: 2 });
+                    }
                 }
             },
             error : function(jqXHR, textStatus, errorThrown) {
