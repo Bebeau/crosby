@@ -28,7 +28,7 @@ var user = {
 	            title: meta_image.title,
 	            button: { text:  meta_image.button },
 	            library: { type: 'image' },
-	            multiple: false
+	            multiple: true
 	        });
 
 	        // Runs when an image is selected.
