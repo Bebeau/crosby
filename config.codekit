@@ -124,6 +124,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/user_placeholder.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11789,
+		"inputAbbreviatedPath": "\/assets\/images\/user_placeholder.png",
+		"outputAbbreviatedPath": "\/assets\/images\/user_placeholder.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/js\/admin.js": {
 		"fileType": 64,
 		"ignore": 0,

@@ -65,7 +65,11 @@ get_header(); ?>
 						$phone = get_user_meta($userID, "phone", true);
 
 						echo '<div class="row agent">';
-							echo '<div class="col-xs-6 agent-image" style="background:url('.$agent->agent_image.')no-repeat scroll center / cover" ></div>';
+							if(!empty($agent->agent_image)) {
+								echo '<div class="col-xs-6 agent-image" style="background:url('.$agent->agent_image.')no-repeat scroll center / cover" ></div>';
+							} else {
+								echo '<div class="col-xs-6 agent-image"></div>';
+							}
 							echo '<div class="col-xs-6 agent-info">';
 								echo '<div class="outer">';
 									echo '<div class="inner">';
