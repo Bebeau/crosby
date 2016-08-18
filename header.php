@@ -245,7 +245,7 @@ if(is_singular()) {
 				if($terms) {
 					foreach ($terms  as $term ) {
 						if(has_Images($term->slug) && $term->name != "Flasher") {
-							echo '<li role="presentation"><a href="#'.$term->slug.'" aria-controls="'.$term->slug.'" role="tab" data-toggle="tab">'.$term->name.'</a></li>';
+							echo '<li role="presentation"><a href="#'.$term->slug.'" data-post="'.$post->ID.'">'.$term->name.'</a></li>';
 						}
 					}
 				}  
