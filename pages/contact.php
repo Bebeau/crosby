@@ -39,10 +39,10 @@ get_header(); ?>
 						'meta_compare' => '',
 						'meta_query'   => array(),
 						'date_query'   => array(),        
-						'include'      => array(4,2,3),
+						'include'      => '',
 						'exclude'      => array(),
 						'orderby'      => 'login',
-						'order'        => 'include',
+						'order'        => '',
 						'offset'       => '',
 						'search'       => '',
 						'number'       => '',
@@ -66,32 +66,31 @@ get_header(); ?>
 
 						echo '<div class="row agent">';
 							echo '<div class="col-xs-6 agent-image" style="background:url('.$agent->agent_image.')no-repeat scroll top center / cover" ></div>';
-								echo '<div class="col-xs-6 agent-info">';
-									echo '<div class="outer"><div class="inner">';
+							echo '<div class="col-xs-6 agent-info">';
+								echo '<div class="outer">';
+									echo '<div class="inner">';
 										echo '<h3>'.$agent->display_name.'</h3>';
 										if(!empty($phone)) {
 											echo '<div class="phone hidden-xs">'.$phone.'</div>';
 											echo '<div class="phone visible-xs"><a href="tel:'.$phone.'">'.$phone.'</a></div>';
 										}
-										if(!empty($facebook)) {
-											echo '<div class="social">';
-												if(!empty($facebook)) {
-													echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';
-												}
-												if(!empty($twitter)) {
-													echo '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>';
-												}
-												if(!empty($instagram)) {
-													echo '<a href="'.$instagram.'"><i class="fa fa-instagram"></i></a>';
-												}
-											echo '</div>';
+										// echo '<div class="social">';
+										// 	if(!empty($facebook)) {
+										// 		echo '<a href="'.$facebook.'"><i class="fa fa-facebook"></i></a>';
+										// 	}
+										// 	if(!empty($twitter)) {
+										// 		echo '<a href="'.$twitter.'"><i class="fa fa-twitter"></i></a>';
+										// 	}
+										// 	if(!empty($instagram)) {
+										// 		echo '<a href="'.$instagram.'"><i class="fa fa-instagram"></i></a>';
+										// 	}
+										// echo '</div>';
+										if(!empty($email)) {
 											echo '<div class="info">';
-												if(!empty($email)) {
-													echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
-												}
+												echo '<a class="contact-btn" href="mailto:'.$email.'">Contact</a>';
 											echo '</div>';
 										}
-									echo '</div></div>';
+									echo '</div>';
 								echo '</div>';
 							echo '</div>';
 						echo '</div>';

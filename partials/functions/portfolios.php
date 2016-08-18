@@ -169,7 +169,7 @@ function videos($post) {
                     </li>
                 <?php } elseif($video['type'] === "vimeo") {
                     $imgid = $video['id'];
-                    $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+                    $hash = unserialize(file_get_contents("https://vimeo.com/api/v2/video/$imgid.php"));
                     $thumb = $hash[0]['thumbnail_large'];
                 ?>
                 <li class="video ui-state-default" data-key="<?php echo $key; ?>" data-order="<?php echo $video['id'];?>" data-video="vimeo" data-link="https://www.vimeo.com/<?php echo $video['id']; ?>" style="background: url('<?php echo $thumb; ?>') no-repeat scroll center / contain;">

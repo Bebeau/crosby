@@ -1862,6 +1862,11 @@ p {
     position: absolute;
     top: 50%;
     left: 0; }
+.contact .phone {
+  font-size: 14pt;
+  margin: 5px 0; }
+.contact .info {
+  margin-top: 15px; }
 
 .error404 {
   text-align: center; }
