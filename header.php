@@ -7,7 +7,7 @@
 	================================================== -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<meta name="google-site-verification" content="" />
+	<meta name="google-site-verification" content="cMwy6gwG2_utC68iF--k9po6YGzJpNOPshTCiPNb2DE" />
 
 	<title><?php wp_title(); ?></title>
 	<meta name="keywords" content="" />
