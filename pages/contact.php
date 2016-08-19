@@ -25,6 +25,8 @@ get_header(); ?>
 
 					echo 'fax: <strong>'.$fax.'</strong></p>';
 
+					get_template_part( 'partials/social', 'links' );
+
 					echo '<div class="agentwrap">';
 						echo '<h2>Agents</h2><span></span>';
 					echo '</div>';

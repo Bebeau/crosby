@@ -66,7 +66,7 @@ function init_artistManagement() {
         'public' => true,
         'publicly_queryable' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'Portfolios' ),
+        'rewrite' => array( 'slug' => 'portfolio' ),
         'rewrite' => true,
         'capability_type' => 'post',
         'has_archive' => true, 
