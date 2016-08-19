@@ -15,7 +15,7 @@ var init = {
 		init.navSlideIn();
 		init.linkPatch();
 		// init.pageAjax();
-		// init.stopClick();
+		init.stopClick();
 		init.subNavCollapse();
 		if(isMobile) {
 			init.mobileHoverFix();
@@ -23,6 +23,11 @@ var init = {
 		} else {
 			init.pageIn();
 		}
+	},
+	stopClick: function() {
+		jQuery('.menu-item-object-category a').click(function(e) {
+			e.preventDefault();
+		});
 	},
 	mobileHoverFix: function() {
 		// Check if the device supports touch events

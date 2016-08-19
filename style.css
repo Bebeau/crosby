@@ -1730,6 +1730,8 @@ body {
     display: none; }
   body.home {
     background: #00041e; }
+    body.home .logo {
+      width: 275px; }
   body.single {
     background: #ffffff;
     height: auto; }
@@ -1772,6 +1774,11 @@ p {
   margin: 0 0 25px;
   color: #000e6b;
   font-family: 'Neutra'; }
+
+.menu-item-object-category a:hover {
+  cursor: default !important; }
+.menu-item-object-category .sub-menu li a:hover {
+  cursor: pointer !important; }
 
 .outer {
   /* W3C */
@@ -1912,11 +1919,11 @@ p {
       .agent .social a i {
         color: white; }
 
-#artistSocial {
+.socialWrap {
   display: block;
   text-align: center;
   margin: 15px 0; }
-  #artistSocial i {
+  .socialWrap i {
     display: inline-block;
     width: 35px;
     height: 35px;
@@ -1925,7 +1932,7 @@ p {
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     margin: 0 5px; }
-    #artistSocial i.facebook {
+    .socialWrap i.facebook {
       background: url("assets/images/admin/facebook.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
       -webkit-backface-visibility: hidden;
@@ -1948,12 +1955,12 @@ p {
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      #artistSocial i.facebook:hover {
+      .socialWrap i.facebook:hover {
         background-color: #3b5998;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out; }
-    #artistSocial i.twitter {
+    .socialWrap i.twitter {
       background: url("assets/images/admin/twitter.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
       -webkit-backface-visibility: hidden;
@@ -1976,12 +1983,12 @@ p {
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      #artistSocial i.twitter:hover {
+      .socialWrap i.twitter:hover {
         background-color: #00aced;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out; }
-    #artistSocial i.instagram {
+    .socialWrap i.instagram {
       background: url("assets/images/admin/instagram.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
       -webkit-backface-visibility: hidden;
@@ -2004,12 +2011,12 @@ p {
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      #artistSocial i.instagram:hover {
+      .socialWrap i.instagram:hover {
         background-color: #517fa4;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out; }
-    #artistSocial i.linkedin {
+    .socialWrap i.linkedin {
       background: url("assets/images/admin/linkedin.svg") no-repeat scroll center #000e6b;
       background-size: 50% 50%;
       -webkit-backface-visibility: hidden;
@@ -2032,7 +2039,7 @@ p {
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      #artistSocial i.linkedin:hover {
+      .socialWrap i.linkedin:hover {
         background-color: #0077b5;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
@@ -2059,7 +2066,7 @@ header {
   header.sub {
     position: fixed;
     background: #ebebeb;
-    width: 300px;
+    width: 350px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform: translateZ(0);
@@ -2081,32 +2088,10 @@ header {
     -moz-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
     header.sub.shrink {
-      width: 248px;
+      width: 300px;
       -webkit-transition: all 1s ease-in-out;
       -moz-transition: all 1s ease-in-out;
       transition: all 1s ease-in-out; }
-      header.sub.shrink #logo {
-        width: 100%;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        -webkit-transform: translateZ(0);
-        -moz-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        -o-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        -webkit-transform-style: preserve-3d;
-        -moz-transform-style: preserve-3d;
-        -ms-transform-style: preserve-3d;
-        -o-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out; }
     header.sub .portfolio-menu li {
       color: #000e6b; }
       header.sub .portfolio-menu li.cat_title {
@@ -2170,7 +2155,7 @@ header {
   header #logo {
     display: block;
     margin-bottom: 5px;
-    width: 275px;
+    width: 100%;
     height: auto;
     position: relative;
     margin-top: -150px;
@@ -2414,14 +2399,14 @@ header {
   z-index: 10;
   top: 50vh;
   opacity: 0;
-  margin-left: 325px;
+  margin-left: 375px;
   padding-right: 25px;
   box-sizing: border-box;
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out; }
   #singlePortfolio.shrink {
-    margin-left: 275px;
+    margin-left: 325px;
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
@@ -2704,7 +2689,7 @@ header {
   z-index: 10;
   top: 50vh;
   opacity: 0;
-  margin-left: 325px;
+  margin-left: 375px;
   padding-right: 25px;
   box-sizing: border-box;
   -webkit-backface-visibility: hidden;
@@ -2728,7 +2713,7 @@ header {
   -moz-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out; }
   #singlePage.shrink {
-    margin-left: 275px;
+    margin-left: 325px;
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
@@ -2746,6 +2731,8 @@ header {
   #singlePage a {
     color: #00041e;
     font-weight: bold; }
+  #singlePage .socialWrap {
+    text-align: left; }
 
 #bio {
   font-size: 14pt;

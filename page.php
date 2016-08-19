@@ -14,6 +14,7 @@
 					the_content();
 				echo '</div>';
 			echo '</div>';
+			get_template_part( 'partials/social', 'links' );
 		endwhile; endif; ?>
 
 	</div>

@@ -188,7 +188,7 @@ if(is_singular()) {
 		$twit_url = get_post_meta($post->ID, 'artist_twit_url', true);
 
 		if(!empty($fb_url) || !empty($ig_url) || !empty($twit_url)) {
-			echo '<div id="artistSocial">';
+			echo '<div id="artistSocial" class="socialWrap">';
 				if(!empty($fb_url)) {
 					echo '<a href="'.$fb_url.'"><i class="facebook"></i></a>';
 				}

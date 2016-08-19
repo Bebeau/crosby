@@ -52,6 +52,9 @@ body {
 	}
 	&.home {
 		background: $blue;
+		.logo {
+			width: 275px;
+		}
 	}
 	&.single {
 		background: $white;
@@ -98,6 +101,22 @@ p {
 	margin: 0 0 25px;
 	color: $lightblue;
 	font-family: 'Neutra';
+}
+.menu-item-object-category {
+	a {
+		&:hover {
+			cursor: default !important;
+		}
+	}
+	.sub-menu {
+		li {
+			a {
+				&:hover {
+					cursor: pointer !important;
+				}
+			}
+		}
+	}
 }
 .outer {
 	/* W3C */
@@ -238,7 +257,7 @@ p {
 		}
 	}
 }
-#artistSocial {
+.socialWrap {
 	display: block;
 	text-align: center;
 	margin: 15px 0;
@@ -324,23 +343,15 @@ header {
 	&.sub {
 		position: fixed;
 		background: #ebebeb;
-		width: 300px;
+		width: 350px;
 		@include backface-visibility(hidden);
 		@include transform(translateZ(0));
 		@include transform(translate3d(0,0,0));
 		@include transform-style(preserve-3d);
 		@include transition(all 1s ease-in-out);
 		&.shrink {
-			width: 248px;
+			width: 300px;
 			@include transition(all 1s ease-in-out);
-			#logo {
-				width: 100%;
-				@include backface-visibility(hidden);
-				@include transform(translateZ(0));
-				@include transform(translate3d(0,0,0));
-				@include transform-style(preserve-3d);
-				@include transition(all 0.3s ease-in-out);
-			}
 		}
 		.portfolio-menu {
 			li {
@@ -415,7 +426,7 @@ header {
 	#logo {
 		display: block;
 		margin-bottom: 5px;
-		width: 275px;
+		width: 100%;
 		height: auto;
 		position: relative;
 		margin-top: -150px;
@@ -568,12 +579,12 @@ header {
 	z-index: 10;
 	top: 50vh;
 	opacity: 0;
-	margin-left: 325px;
+	margin-left: 375px;
 	padding-right: 25px;
 	box-sizing: border-box;
 	@include transition(all 1s ease-in-out);
 	&.shrink {
-		margin-left: 275px;
+		margin-left: 325px;
 		@include transition(all 1s ease-in-out);
 	}
 	&.slideIn {
@@ -770,7 +781,7 @@ header {
 	z-index: 10;
 	top: 50vh;
 	opacity: 0;
-	margin-left: 325px;
+	margin-left: 375px;
 	padding-right: 25px;
 	box-sizing: border-box;
 	@include backface-visibility(hidden);
@@ -779,7 +790,7 @@ header {
 	@include transform-style(preserve-3d);
 	@include transition(all 1s ease-in-out);
 	&.shrink {
-		margin-left: 275px;
+		margin-left: 325px;
 		@include transition(all 1s ease-in-out);
 	}
 	&.slideIn {
@@ -797,6 +808,9 @@ header {
 	a {
 		color: $blue;
 		font-weight: bold;
+	}
+	.socialWrap {
+		text-align: left;
 	}
 }
 #bio {
