@@ -496,7 +496,7 @@ function list_Images($cat, $name, $postID) {
 add_action('wp_ajax_getImages', 'listImages');
 add_action('wp_ajax_nopriv_getImages', 'listImages');
 function listImages() {
-    $name = (isset($_GET['name'])) ? $_GET['name'] : 0;
+    $name = (isset($_GET['name'])) ? preg_replace( "/[^\.\-\' a-zA-Z0-9]/", "", $_GET['name'] ) : 0;
     $slug = (isset($_GET['slug'])) ? $_GET['slug'] : 0;
     $postID = (isset($_GET['id'])) ? $_GET['id'] : 0;
 
