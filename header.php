@@ -232,7 +232,7 @@ if(is_singular()) {
 		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 			echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-				echo 'Filter';
+				echo 'Queue';
 			    echo ' <i class="fa fa-angle-down"></i>';
 			echo '</button>';
 			echo '<ul role="tablist" class="portfolio-menu dropdown-menu" aria-labelledby="dLabel">';
@@ -249,11 +249,8 @@ if(is_singular()) {
 						}
 					}
 				}  
-				if(!empty($commercials)) {
-					echo '<li role="presentation"><a href="#commercial" aria-controls="commercial" role="tab" data-toggle="tab">Commercials</a></li>';
-				}
-				if(!empty($music_videos)) {
-					echo '<li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab">Music Videos</a></li>';
+				if(!empty($videos)) {
+					echo '<li><a class="tab" href="#videos">Videos</a></li>';
 				}
 			echo '</ul>';
 		echo '</div>';
