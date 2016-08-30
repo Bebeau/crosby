@@ -477,13 +477,8 @@ function list_Images($cat, $name, $postID) {
             while ($query->have_posts()) {
                 $query->the_post();
                 echo '<a href="#photomodal" data-toggle="modal" class="singlephoto" data-photo="'.$post->guid.'">';
-                    if(wp_is_mobile()) {
-                        $image_url = wp_get_attachment_image_src($post->id, 'medium');
-                        echo '<img src="'.$image_url[0].'" alt="" />';
-                    } else {
                         $image_url = wp_get_attachment_image_src($post->id, 'large');
                         echo '<img src="'.$image_url[0].'" alt="" />';
-                    }
                     echo '<div class="playwrap"><span class="plus"></span></div>';
                 echo '</a>';
             }
