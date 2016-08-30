@@ -23,10 +23,7 @@
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/favicon/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php bloginfo('template_directory'); ?>/favicon/apple-touch-icon-114x114.png">
-
+	
 	<!-- Facebook open graph tags -->
 	<meta property="og:title" content="<?php the_title(); ?>"/>
 	<meta property="og:description" content="<?php
