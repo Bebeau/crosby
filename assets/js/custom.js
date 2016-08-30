@@ -136,6 +136,8 @@ var init = {
 			e.preventDefault();
 			var photoURL = jQuery(this).attr("data-photo");
 
+			console.log(photoURL);
+
 			jQuery('#photomodal .modal-body').append('<img src="'+photoURL+'" alt="" />');
 
 			jQuery('#photomodal').on('hidden.bs.modal', function() {
@@ -164,6 +166,8 @@ var init = {
                     	jQuery('.pane#'+slug).columnize({columns: 2 });
                     }
                 }
+                init.photoModal();
+                init.videoModal();
             },
             error : function(jqXHR, textStatus, errorThrown) {
                 window.alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
