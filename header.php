@@ -229,7 +229,7 @@ if(is_singular()) {
 		echo '<a class="logoWrap" href="'.get_site_url().'"><img class="logo logo-sub" src="'.get_bloginfo('template_directory').'/assets/images/logo_blue.png" alt="" /></a>';
 		echo '<div class="dropdown">';
 			echo '<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-				echo 'Queue';
+				echo 'Menu';
 			    echo ' <i class="fa fa-angle-down"></i>';
 			echo '</button>';
 			echo '<ul role="tablist" class="portfolio-menu dropdown-menu" aria-labelledby="dLabel">';
