@@ -67,18 +67,18 @@
 		<meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
 		<meta property="og:description" content="<?php bloginfo('description'); ?>" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/default_facebook.jpg" />
+		<meta property="og:image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/facebook.jpg" />
 		<!-- Schema.org -->
 		<meta itemprop="name" content="<?php bloginfo('name'); ?>"> 
 		<meta itemprop="description" content="<?php bloginfo('description'); ?>"> 
-		<meta itemprop="image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/default_google.jpg">
+		<meta itemprop="image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/google.jpg">
 		<!-- Twitter Cards -->
 		<meta property="twitter:card" content="summary"> 
 		<meta property="twitter:site" content="@CrosbyC"> 
 		<meta property="twitter:title" content="<?php bloginfo('name'); ?>"> 
 		<meta property="twitter:description" content="<?php bloginfo('description'); ?>"> 
 		<meta property="twitter:creator" content="@CrosbyC"> 
-		<meta property="twitter:image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/default_twitter.jpg">
+		<meta property="twitter:image" content="<?php echo bloginfo('template_directory'); ?>/assets/images/twitter.jpg">
 		<meta property="twitter:url" content="<?php the_permalink() ?>" />
 		<meta property="twitter:domain" content="<?php echo site_url(); ?>">
 	<?php } ?>

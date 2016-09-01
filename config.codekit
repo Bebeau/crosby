@@ -69,35 +69,24 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/assets\/images\/default_facebook.jpg": {
+	"\/assets\/images\/facebook.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 126858,
-		"inputAbbreviatedPath": "\/assets\/images\/default_facebook.jpg",
-		"outputAbbreviatedPath": "\/assets\/images\/default_facebook.jpg",
+		"inputAbbreviatedPath": "\/assets\/images\/facebook.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/facebook.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/assets\/images\/default_google.jpg": {
+	"\/assets\/images\/google.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 53333,
-		"inputAbbreviatedPath": "\/assets\/images\/default_google.jpg",
-		"outputAbbreviatedPath": "\/assets\/images\/default_google.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/assets\/images\/default_twitter.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 37893,
-		"inputAbbreviatedPath": "\/assets\/images\/default_twitter.jpg",
-		"outputAbbreviatedPath": "\/assets\/images\/default_twitter.jpg",
+		"inputAbbreviatedPath": "\/assets\/images\/google.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/google.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -120,6 +109,17 @@
 		"initialSize": 9227,
 		"inputAbbreviatedPath": "\/assets\/images\/logo_blue.png",
 		"outputAbbreviatedPath": "\/assets\/images\/logo_blue.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/twitter.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 37893,
+		"inputAbbreviatedPath": "\/assets\/images\/twitter.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/twitter.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
