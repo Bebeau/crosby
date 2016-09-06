@@ -33,7 +33,7 @@ get_header(); ?>
 
 					$args = array(
 						'blog_id'      => $GLOBALS['blog_id'],
-						'role'         => 'agent',
+						'role'         => 'agent-role',
 						'role__in'     => array(),
 						'role__not_in' => array(),
 						'meta_key'     => '',
