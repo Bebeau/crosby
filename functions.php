@@ -17,7 +17,7 @@ if (!function_exists( 'load_custom_scripts' ) ) {
 
 		// Load custom scripts
 		wp_enqueue_script('bootstrap_js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array('jquery'), null, true);
-		wp_register_script('custom', get_bloginfo( 'template_url' ) . '/assets/js/custom.js', array('jquery'), null, true);
+		wp_register_script('custom', get_bloginfo( 'template_url' ) . '/assets/js/custom.min.js', array('jquery'), null, true);
         wp_localize_script('custom', 'meta_image',
             array(
                 'ajaxurl' => admin_url( 'admin-ajax.php' )

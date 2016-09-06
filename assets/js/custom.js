@@ -20,9 +20,17 @@ var init = {
 		if(isMobile) {
 			init.mobileHoverFix();
 			init.mobileFilter();
+			init.backButtonPatch();
 		} else {
 			init.pageIn();
 		}
+	},
+	backButtonPatch: function() {
+		jQuery(window).bind("pageshow", function(event) {
+		    if (event.originalEvent.persisted) {
+		        window.location.reload() 
+		    }
+		});
 	},
 	stopClick: function() {
 		jQuery('.menu-item-object-category a').click(function(e) {
