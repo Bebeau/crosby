@@ -1,8 +1,8 @@
 <?php
 
 add_role(
-    'agent',
-    __( 'Agent' ),
+    'agent-role',
+    __( 'Agent Role' ),
     array(
     	'activate_plugins' 		=> true,
     	'delete_others_pages' 	=> true,
@@ -87,7 +87,7 @@ function remove_website_input() {
 // add upload functionality for custom user roles
 add_action('admin_init', 'allow_user_uploads');
 function allow_user_uploads() {
-  $artist = get_role('agent');
+  $artist = get_role('agent-role');
   $artist->add_cap('upload_files');
 }
 
