@@ -73,6 +73,7 @@ function init_artistManagement() {
         'hierarchical' => true,
         'map_meta_cap' => true,
         'menu_position' => null,
+        'show_in_nav_menus' => true,
         'supports' => array('title', 'editor', 'thumbnail'),
         'taxonomies' => array('category')
     );
