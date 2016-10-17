@@ -157,6 +157,15 @@ p {
 	width: 100%;
 	z-index: 0;
 	background: url('assets/images/bg.jpg') no-repeat scroll top left / cover;
+	&.video_bg {
+		background: none;
+		video {
+			position: absolute;
+			height: 100vh;
+			left: 50%;
+			@include transform(translate(-50%,0));
+		}
+	}
 }
 .ibg-bg {
 	position: absolute;

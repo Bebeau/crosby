@@ -118,8 +118,20 @@
 
 if(is_front_page()) {
 	$background = get_option('custom_bg');
+	$info = new SplFileInfo($background);
+    $fileType = $info->getExtension();
 	if(!empty($background)) {
-		echo '<div class="home_bg" style="background:url('.$background.') no-repeat scroll top left / cover;"></div>';
+		if($fileType === "mp4" || $fileType === "webm" || $fileType === "ogv" || $fileType === "ogg") {
+			echo '<div class="home_bg video_bg">';
+				echo '<video muted autoplay id="bgvid" loop>';
+	                echo '<source src="'.$background.'" type="video/webm">';
+	                echo '<source src="'.$background.'" type="video/ogv">';
+	                echo '<source src="'.$background.'" type="video/mp4">';
+	            echo '</video>';
+	        echo '</div>';
+		} else {
+			echo '<div class="home_bg" style="background:url('.$background.') no-repeat scroll top left / cover;"></div>';
+		}
 	} else {
 		echo '<div class="home_bg"></div>';
 	}

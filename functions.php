@@ -174,7 +174,8 @@ function theme_background_page() {
     do_settings_sections( 'theme_setup_options' );
 
     $background = get_option('custom_bg');
-    $video = get_option('videos');
+    $info = new SplFileInfo($background);
+    $fileType = $info->getExtension();
 
     echo '<div class="wrap">';
 
@@ -183,12 +184,21 @@ function theme_background_page() {
         echo '<section id="bgUpload" data-input="custom_bg">';
             echo '<h2>Set Background Image</h2>';
             echo '<p>Suggested image size is 2880px by 1800px</p>';
-            echo '<div class="image-placeholder background">';
-                echo '<img src="'.$background.'" alt="" />';
-            echo '</div>';
             if ( !empty($background) ) {
+                echo '<div class="image-placeholder background">';
+                    if($fileType === "mp4" || $fileType === "webm" || $fileType === "ogv" || $fileType === "ogg") {
+                        echo '<video muted autoplay id="bgvid" loop>';
+                            echo '<source src="'.$background.'" type="video/webm">';
+                            echo '<source src="'.$background.'" type="video/ogv">';
+                            echo '<source src="'.$background.'" type="video/mp4">';
+                        echo '</video>';
+                    } else {
+                        echo '<img src="'.$background.'" alt="" />';
+                    }
+                echo '</div>';
                 echo '<button class="remove-background button button-large">Remove</button>';
             } else {
+                echo '<div class="image-placeholder background"></div>';
                 echo '<button class="add button button-large upload-background" id="upload-bg" style="text-align:center;" data-input="custom_bg">Upload/Set Background</button>';
             }
             echo '<input type="hidden" name="custom_bg" id="custom_bg" value="'.$background.'" />';
@@ -228,16 +238,14 @@ add_action('wp_ajax_setBackgroundImage', 'setBackground');
 add_action('wp_ajax_nopriv_setBackgroundImage', 'setBackground');
 function setBackground() {
 
-    $imageField = (isset($_GET['imageField'])) ? $_GET['imageField'] : 0;
     $imageURL = (isset($_GET['fieldVal'])) ? $_GET['fieldVal'] : 0;
-
-    var_dump($imageURL);
 
     if($imageURL !== "") {
         update_option( 'custom_bg', $imageURL);
     } else {
         update_option( 'custom_bg', "");
     }
+
 }
 
 // Create social bookmark input fields in general settings

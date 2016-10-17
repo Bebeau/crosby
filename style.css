@@ -1818,6 +1818,17 @@ p {
   width: 100%;
   z-index: 0;
   background: url("assets/images/bg.jpg") no-repeat scroll top left/cover; }
+  .home_bg.video_bg {
+    background: none; }
+    .home_bg.video_bg video {
+      position: absolute;
+      height: 100vh;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0);
+      -moz-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+      -o-transform: translate(-50%, 0);
+      transform: translate(-50%, 0); }
 
 .ibg-bg {
   position: absolute; }
