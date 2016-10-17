@@ -123,16 +123,16 @@ var init = {
 			var videoID = jQuery(this).attr("data-video");
 			var type = jQuery(this).attr("data-type");
 
-			if(type === "youtube") {
-				var yt_URL = 'https://www.youtube.com/embed/'+videoID+'?autoplay=1';
-				jQuery('.videoFrame').attr("src", yt_URL);
-			} else {
-				var vimeo_URL = 'https://player.vimeo.com/video/'+videoID+'?autoplay=1';
-				jQuery('.videoFrame').attr("src", vimeo_URL);
+			if(type === "vimeo") {
+				var videoURL = 'https://player.vimeo.com/video/'+videoID;
 			}
+			if(type === "youtube") {
+				var videoURL = 'https://www.youtube.com/embed/'+videoID;
+			}
+			jQuery('#videomodal .modal-body').html('<i class="fa fa-times-circle" data-dismiss="modal"></i><iframe src="'+videoURL+'?autoplay=1&quality=1080p" class="videoFrame" frameborder="0" allowfullscreen></iframe>');
 
 			jQuery('#videomodal').on('hidden.bs.modal', function() {
-		    	jQuery('.videoFrame').removeAttr('src');
+		    	jQuery('iframe').remove();
 		    });
 
 		});

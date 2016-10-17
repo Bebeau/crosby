@@ -93,8 +93,6 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body">
-					<i class="fa fa-times-circle" data-dismiss="modal"></i>
-					<iframe class="videoFrame" width="853" height="480" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
